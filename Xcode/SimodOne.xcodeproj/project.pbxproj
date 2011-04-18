@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD0477F0133095590039F542 /* file_a.caf in Resources */ = {isa = PBXBuildFile; fileRef = AD0477EE133095500039F542 /* file_a.caf */; };
+		AD0477F11330955B0039F542 /* file_b.caf in Resources */ = {isa = PBXBuildFile; fileRef = AD0477EF133095500039F542 /* file_b.caf */; };
+		AD2504CB132D3AEE000FEB15 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2504CA132D3AEE000FEB15 /* Accelerate.framework */; };
+		AD5B79BE132A314B002608D6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5B79BD132A314B002608D6 /* AVFoundation.framework */; };
+		AD6862DC1329FE1500AF8300 /* SOVoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6862DB1329FE1500AF8300 /* SOVoiceRecorder.m */; };
+		AD706AE81333C12400ACE0F7 /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD706AE71333C12400ACE0F7 /* libWordMatchIOS.a */; };
+		AD8542EB1312BCC900F743C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8542EA1312BCC900F743C0 /* UIKit.framework */; };
+		AD8542ED1312BCC900F743C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8542EC1312BCC900F743C0 /* Foundation.framework */; };
+		AD8542EF1312BCC900F743C0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8542EE1312BCC900F743C0 /* CoreGraphics.framework */; };
+		AD8542F51312BCC900F743C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD8542F31312BCC900F743C0 /* InfoPlist.strings */; };
+		AD8542F81312BCC900F743C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8542F71312BCC900F743C0 /* main.m */; };
+		AD8542FE1312BCC900F743C0 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8542FC1312BCC900F743C0 /* MainWindow.xib */; };
+		AD85430F1312BEB400F743C0 /* SOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD85430E1312BEB400F743C0 /* SOAppDelegate.m */; };
+		ADA1507F132A2D5300C6B769 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA1507E132A2D5300C6B769 /* AudioToolbox.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AD0477EE133095500039F542 /* file_a.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = file_a.caf; sourceTree = "<group>"; };
+		AD0477EF133095500039F542 /* file_b.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = file_b.caf; sourceTree = "<group>"; };
+		AD2504CA132D3AEE000FEB15 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		AD5B79BD132A314B002608D6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AD6862DA1329FE1500AF8300 /* SOVoiceRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOVoiceRecorder.h; sourceTree = "<group>"; };
+		AD6862DB1329FE1500AF8300 /* SOVoiceRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOVoiceRecorder.m; sourceTree = "<group>"; };
+		AD706AE71333C12400ACE0F7 /* libWordMatchIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWordMatchIOS.a; sourceTree = SOURCE_ROOT; };
+		AD8542E61312BCC900F743C0 /* SimodOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimodOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD8542EA1312BCC900F743C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AD8542EC1312BCC900F743C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AD8542EE1312BCC900F743C0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AD8542F21312BCC900F743C0 /* SimodOne-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimodOne-Info.plist"; sourceTree = "<group>"; };
+		AD8542F41312BCC900F743C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD8542F61312BCC900F743C0 /* SimodOne-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimodOne-Prefix.pch"; sourceTree = "<group>"; };
+		AD8542F71312BCC900F743C0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AD8542FD1312BCC900F743C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		AD85430D1312BEB400F743C0 /* SOAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOAppDelegate.h; sourceTree = "<group>"; };
+		AD85430E1312BEB400F743C0 /* SOAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOAppDelegate.m; sourceTree = "<group>"; };
+		ADA1507E132A2D5300C6B769 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		ADA15081132A2D6000C6B769 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD8542E31312BCC900F743C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD706AE81333C12400ACE0F7 /* libWordMatchIOS.a in Frameworks */,
+				AD2504CB132D3AEE000FEB15 /* Accelerate.framework in Frameworks */,
+				AD5B79BE132A314B002608D6 /* AVFoundation.framework in Frameworks */,
+				ADA1507F132A2D5300C6B769 /* AudioToolbox.framework in Frameworks */,
+				AD8542EB1312BCC900F743C0 /* UIKit.framework in Frameworks */,
+				AD8542ED1312BCC900F743C0 /* Foundation.framework in Frameworks */,
+				AD8542EF1312BCC900F743C0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD8542DB1312BCC900F743C0 = {
+			isa = PBXGroup;
+			children = (
+				AD98E926132D253C006F3BD6 /* Stock Samples */,
+				AD8B7D5B1317C9A400A06B7D /* Libraries */,
+				AD8542F01312BCC900F743C0 /* SimodOne */,
+				AD8542E91312BCC900F743C0 /* Frameworks */,
+				AD8542E71312BCC900F743C0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD8542E71312BCC900F743C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD8542E61312BCC900F743C0 /* SimodOne.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD8542E91312BCC900F743C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADA1507E132A2D5300C6B769 /* AudioToolbox.framework */,
+				ADA15081132A2D6000C6B769 /* AudioUnit.framework */,
+				AD5B79BD132A314B002608D6 /* AVFoundation.framework */,
+				AD2504CA132D3AEE000FEB15 /* Accelerate.framework */,
+				AD8542EA1312BCC900F743C0 /* UIKit.framework */,
+				AD8542EC1312BCC900F743C0 /* Foundation.framework */,
+				AD8542EE1312BCC900F743C0 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AD8542F01312BCC900F743C0 /* SimodOne */ = {
+			isa = PBXGroup;
+			children = (
+				AD85430D1312BEB400F743C0 /* SOAppDelegate.h */,
+				AD85430E1312BEB400F743C0 /* SOAppDelegate.m */,
+				AD8542FC1312BCC900F743C0 /* MainWindow.xib */,
+				AD8542F11312BCC900F743C0 /* Supporting Files */,
+				AD6862DA1329FE1500AF8300 /* SOVoiceRecorder.h */,
+				AD6862DB1329FE1500AF8300 /* SOVoiceRecorder.m */,
+			);
+			path = SimodOne;
+			sourceTree = "<group>";
+		};
+		AD8542F11312BCC900F743C0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD8542F21312BCC900F743C0 /* SimodOne-Info.plist */,
+				AD8542F31312BCC900F743C0 /* InfoPlist.strings */,
+				AD8542F61312BCC900F743C0 /* SimodOne-Prefix.pch */,
+				AD8542F71312BCC900F743C0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AD8B7D5B1317C9A400A06B7D /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				AD706AE71333C12400ACE0F7 /* libWordMatchIOS.a */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		AD98E926132D253C006F3BD6 /* Stock Samples */ = {
+			isa = PBXGroup;
+			children = (
+				AD0477EE133095500039F542 /* file_a.caf */,
+				AD0477EF133095500039F542 /* file_b.caf */,
+			);
+			name = "Stock Samples";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD8542E51312BCC900F743C0 /* SimodOne */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD8543011312BCC900F743C0 /* Build configuration list for PBXNativeTarget "SimodOne" */;
+			buildPhases = (
+				AD8542E21312BCC900F743C0 /* Sources */,
+				AD8542E31312BCC900F743C0 /* Frameworks */,
+				AD8542E41312BCC900F743C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimodOne;
+			productName = SimodOne;
+			productReference = AD8542E61312BCC900F743C0 /* SimodOne.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD8542DD1312BCC900F743C0 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = AD8542E01312BCC900F743C0 /* Build configuration list for PBXProject "SimodOne" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AD8542DB1312BCC900F743C0;
+			productRefGroup = AD8542E71312BCC900F743C0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD8542E51312BCC900F743C0 /* SimodOne */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD8542E41312BCC900F743C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8542F51312BCC900F743C0 /* InfoPlist.strings in Resources */,
+				AD8542FE1312BCC900F743C0 /* MainWindow.xib in Resources */,
+				AD0477F11330955B0039F542 /* file_b.caf in Resources */,
+				AD0477F0133095590039F542 /* file_a.caf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD8542E21312BCC900F743C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8542F81312BCC900F743C0 /* main.m in Sources */,
+				AD85430F1312BEB400F743C0 /* SOAppDelegate.m in Sources */,
+				AD6862DC1329FE1500AF8300 /* SOVoiceRecorder.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AD8542F31312BCC900F743C0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD8542F41312BCC900F743C0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AD8542FC1312BCC900F743C0 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD8542FD1312BCC900F743C0 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AD8542FF1312BCC900F743C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AD8543001312BCC900F743C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		AD8543021312BCC900F743C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimodOne/SimodOne-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					CoreAudio_Debug,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "SimodOne/SimodOne-Info.plist";
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/WordMatch\"";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AD8543031312BCC900F743C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimodOne/SimodOne-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "SimodOne/SimodOne-Info.plist";
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/WordMatch\"";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD8542E01312BCC900F743C0 /* Build configuration list for PBXProject "SimodOne" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8542FF1312BCC900F743C0 /* Debug */,
+				AD8543001312BCC900F743C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD8543011312BCC900F743C0 /* Build configuration list for PBXNativeTarget "SimodOne" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8543021312BCC900F743C0 /* Debug */,
+				AD8543031312BCC900F743C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AD8542DD1312BCC900F743C0 /* Project object */;
+}
