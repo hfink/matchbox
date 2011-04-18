@@ -1,8 +1,8 @@
 This project contains sources to efficiently extract 
-Mel-Feature-Cepstral-Coefficients from a given audio stream on Apple iOS / OSX.
+Mel-Frequency-Cepstral-Coefficients from a given audio stream on Apple iOS / OSX.
 
-It further includes a game prototype called "MatchBox" which uses these features
-in order to compare two spoken words for similarity.
+It further includes a game prototype called "MatchBox" which applies dynamic time warping
+on these MFCC features in order to compare two spoken words for similarity.
 
 For more information, please visit http://hfink.eu/matchbox
 
