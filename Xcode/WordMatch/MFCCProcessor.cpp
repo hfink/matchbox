@@ -158,7 +158,7 @@ MFCCProcessor::~MFCCProcessor() {
 
 void MFCCProcessor::process(const WMAudioSampleType * samples,
                             WMAudioSampleType pre_emph_filter_border,
-                            CepstraBuffer& mfcc_out,
+                            CepstraBuffer * mfcc_out,
                             WMFeatureType * spectrum_mag_out,
                             WMFeatureType * mel_spectrum_mag_out)
 {
@@ -215,32 +215,35 @@ void MFCCProcessor::process(const WMAudioSampleType * samples,
                   mel_spectrum_mag_out);        
     }    
     
-    // Perform the discrete cosine transform. We have prepared a matrix that
-    // we can simply multiply with the vector of mel_bands
-    
-    vDSP_vclr(&mfcc_out[0], 1, kNumMelCepstra());
-    
-    // Vectorized matrix multiplication
-    
-    cblas_sgemm(CblasColMajor,
-                CblasNoTrans, 
-                CblasNoTrans,
-                kNumMelCepstra(),
-                1, 
-                kNumMelBands(), 
-                1, 
-                dct_ii_matrix_.get(), 
-                kNumMelCepstra(), 
-                mel_bands_buffer_.get(), 
-                kNumMelBands(), 
-                0.0f, 
-                &mfcc_out[0], 
-                kNumMelCepstra());
-    
-    // for orthogonalized DCT version we have to multiply the first cepstral
-    // value with 1/sqrt(2)
-    const float sqrt_two_inv = 1.0f/sqrtf(2.0f);
-    mfcc_out[0] *= sqrt_two_inv;
+    if (mfcc_out != NULL) {
+        // Perform the discrete cosine transform. We have prepared a matrix that
+        // we can simply multiply with the vector of mel_bands
+        
+        vDSP_vclr(mfcc_out->c_array(), 1, kNumMelCepstra());
+        
+        // Vectorized matrix multiplication
+        
+        cblas_sgemm(CblasColMajor,
+                    CblasNoTrans, 
+                    CblasNoTrans,
+                    kNumMelCepstra(),
+                    1, 
+                    kNumMelBands(), 
+                    1, 
+                    dct_ii_matrix_.get(), 
+                    kNumMelCepstra(), 
+                    mel_bands_buffer_.get(), 
+                    kNumMelBands(), 
+                    0.0f, 
+                    mfcc_out->c_array(), 
+                    kNumMelCepstra());
+        
+        // for orthogonalized DCT version we have to multiply the first cepstral
+        // value with 1/sqrt(2)
+        const float sqrt_two_inv = 1.0f/sqrtf(2.0f);
+        mfcc_out->c_array()[0] *= sqrt_two_inv;
+        
+    }
     
     // TODO: Add optional other features like differential values or energy/
     // packet

@@ -139,7 +139,7 @@ namespace WM {
          */
         void process(const WMAudioSampleType * samples,
                      WMAudioSampleType pre_emph_filter_border,
-                     CepstraBuffer& mfcc_out,
+                     CepstraBuffer * mfcc_out,
                      WMFeatureType * spectrum_mag_out = NULL,
                      WMFeatureType * mel_spectrum_mag_out = NULL);
         
