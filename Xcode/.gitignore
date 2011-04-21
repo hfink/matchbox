@@ -1,9 +1,5 @@
-#Could we probably change this to a user-agnostic wildcard version?
-/SimodOne.xcodeproj/xcuserdata/sebastian.xcuserdatad/
-/SimodOne.xcodeproj/xcuserdata/heinrichfink.xcuserdatad/
-/WordMatch.xcodeproj/xcuserdata/sebastian.xcuserdatad/
-/workspace.xcworkspace/xcuserdata/sebastian.xcuserdatad/
-/WordMatch.xcodeproj/xcuserdata/heinrichfink.xcuserdatad/
-/workspace.xcworkspace/xcuserdata/heinrichfink.xcuserdatad/
-/MatchBox.xcodeproj/xcuserdata/heinrichfink.xcuserdatad/
-/MatchBox.xcodeproj/xcuserdata/sebastian.xcuserdatad/
+*.mode1v3
+*.pbxuser
+*.xcuserdata
+*/xcuserdata/*
+DS_store

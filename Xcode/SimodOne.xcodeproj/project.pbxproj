@@ -23,6 +23,37 @@
 		ADA1507F132A2D5300C6B769 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA1507E132A2D5300C6B769 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AD9DF362135DDD0B00B62DE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD9DF35B135DDD0B00B62DE7 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ADC34F7F1312CD6E00FD3BB7;
+			remoteInfo = Test;
+		};
+		AD9DF364135DDD0B00B62DE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD9DF35B135DDD0B00B62DE7 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD150C1B1312D40B000DE334;
+			remoteInfo = WordMatchIOS;
+		};
+		AD9DF366135DDD0B00B62DE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD9DF35B135DDD0B00B62DE7 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD957DE61312D51C0035D5B9;
+			remoteInfo = WordMatchOSX;
+		};
+		AD9DF368135DDD0B00B62DE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD9DF35B135DDD0B00B62DE7 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD0AB07B1325490700E1983B;
+			remoteInfo = iPhoneTest;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		AD0477EE133095500039F542 /* file_a.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = file_a.caf; sourceTree = "<group>"; };
 		AD0477EF133095500039F542 /* file_b.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = file_b.caf; sourceTree = "<group>"; };
@@ -42,6 +73,7 @@
 		AD8542FD1312BCC900F743C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		AD85430D1312BEB400F743C0 /* SOAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOAppDelegate.h; sourceTree = "<group>"; };
 		AD85430E1312BEB400F743C0 /* SOAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOAppDelegate.m; sourceTree = "<group>"; };
+		AD9DF35B135DDD0B00B62DE7 /* WordMatch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = WordMatch.xcodeproj; sourceTree = "<group>"; };
 		ADA1507E132A2D5300C6B769 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		ADA15081132A2D6000C6B769 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -67,6 +99,7 @@
 		AD8542DB1312BCC900F743C0 = {
 			isa = PBXGroup;
 			children = (
+				AD9DF35B135DDD0B00B62DE7 /* WordMatch.xcodeproj */,
 				AD98E926132D253C006F3BD6 /* Stock Samples */,
 				AD8B7D5B1317C9A400A06B7D /* Libraries */,
 				AD8542F01312BCC900F743C0 /* SimodOne */,
@@ -138,6 +171,17 @@
 			name = "Stock Samples";
 			sourceTree = "<group>";
 		};
+		AD9DF35C135DDD0B00B62DE7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD9DF363135DDD0B00B62DE7 /* Test */,
+				AD9DF365135DDD0B00B62DE7 /* libWordMatchIOS.a */,
+				AD9DF367135DDD0B00B62DE7 /* libWordMatchOSX.a */,
+				AD9DF369135DDD0B00B62DE7 /* iPhoneTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,12 +217,49 @@
 			mainGroup = AD8542DB1312BCC900F743C0;
 			productRefGroup = AD8542E71312BCC900F743C0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AD9DF35C135DDD0B00B62DE7 /* Products */;
+					ProjectRef = AD9DF35B135DDD0B00B62DE7 /* WordMatch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AD8542E51312BCC900F743C0 /* SimodOne */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AD9DF363135DDD0B00B62DE7 /* Test */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = Test;
+			remoteRef = AD9DF362135DDD0B00B62DE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AD9DF365135DDD0B00B62DE7 /* libWordMatchIOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWordMatchIOS.a;
+			remoteRef = AD9DF364135DDD0B00B62DE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AD9DF367135DDD0B00B62DE7 /* libWordMatchOSX.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWordMatchOSX.a;
+			remoteRef = AD9DF366135DDD0B00B62DE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AD9DF369135DDD0B00B62DE7 /* iPhoneTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iPhoneTest.app;
+			remoteRef = AD9DF368135DDD0B00B62DE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AD8542E41312BCC900F743C0 /* Resources */ = {
