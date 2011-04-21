@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		848CF52913607F6D00E32E1D /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9DF365135DDD0B00B62DE7 /* libWordMatchIOS.a */; };
 		AD0477F0133095590039F542 /* file_a.caf in Resources */ = {isa = PBXBuildFile; fileRef = AD0477EE133095500039F542 /* file_a.caf */; };
 		AD0477F11330955B0039F542 /* file_b.caf in Resources */ = {isa = PBXBuildFile; fileRef = AD0477EF133095500039F542 /* file_b.caf */; };
 		AD2504CB132D3AEE000FEB15 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2504CA132D3AEE000FEB15 /* Accelerate.framework */; };
 		AD5B79BE132A314B002608D6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5B79BD132A314B002608D6 /* AVFoundation.framework */; };
 		AD6862DC1329FE1500AF8300 /* SOVoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6862DB1329FE1500AF8300 /* SOVoiceRecorder.m */; };
-		AD706AE81333C12400ACE0F7 /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD706AE71333C12400ACE0F7 /* libWordMatchIOS.a */; };
 		AD8542EB1312BCC900F743C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8542EA1312BCC900F743C0 /* UIKit.framework */; };
 		AD8542ED1312BCC900F743C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8542EC1312BCC900F743C0 /* Foundation.framework */; };
 		AD8542EF1312BCC900F743C0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8542EE1312BCC900F743C0 /* CoreGraphics.framework */; };
@@ -24,6 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		848CF50A13607ECF00E32E1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD9DF35B135DDD0B00B62DE7 /* WordMatch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AD150C1A1312D40B000DE334;
+			remoteInfo = WordMatchIOS;
+		};
 		AD9DF362135DDD0B00B62DE7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AD9DF35B135DDD0B00B62DE7 /* WordMatch.xcodeproj */;
@@ -83,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD706AE81333C12400ACE0F7 /* libWordMatchIOS.a in Frameworks */,
+				848CF52913607F6D00E32E1D /* libWordMatchIOS.a in Frameworks */,
 				AD2504CB132D3AEE000FEB15 /* Accelerate.framework in Frameworks */,
 				AD5B79BE132A314B002608D6 /* AVFoundation.framework in Frameworks */,
 				ADA1507F132A2D5300C6B769 /* AudioToolbox.framework in Frameworks */,
@@ -196,6 +203,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				848CF50B13607ECF00E32E1D /* PBXTargetDependency */,
 			);
 			name = SimodOne;
 			productName = SimodOne;
@@ -288,6 +296,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		848CF50B13607ECF00E32E1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WordMatchIOS;
+			targetProxy = 848CF50A13607ECF00E32E1D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		AD8542F31312BCC900F743C0 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -356,6 +372,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SimodOne/SimodOne-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -381,6 +398,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SimodOne/SimodOne-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

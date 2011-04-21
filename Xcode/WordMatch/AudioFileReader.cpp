@@ -176,7 +176,7 @@ bool AudioFileReader::read_floats(size_t& num_samples,
     buf_list.mNumberBuffers = 1;
     buf_list.mBuffers[0].mNumberChannels = 1;
     buf_list.mBuffers[0].mData = data;
-    buf_list.mBuffers[0].mDataByteSize = (UInt32)num_samples * sizeof(WMAudioSampleType);
+    buf_list.mBuffers[0].mDataByteSize = (UInt32)(num_samples * sizeof(WMAudioSampleType));
     
     OSStatus err = noErr;
     UInt32 num_frames_arg = (UInt32)num_samples;
@@ -355,7 +355,7 @@ WMAudioFilePreProcessInfo AudioFileReader::preprocess(float begin_threshold_db,
             }
             
             float time_location = 
-                (total_samples_read + idx_of_last_crossing) / client_format_.mSampleRate;
+                static_cast<float>((total_samples_read + idx_of_last_crossing)) / static_cast<float>(client_format_.mSampleRate);
             
             info.threshold_start_time = time_location;
             
@@ -456,7 +456,7 @@ WMAudioFilePreProcessInfo AudioFileReader::preprocess(float begin_threshold_db,
             size_t loc_samples = 
                     (total_samples_read - packet_size + idx_of_first_crossing + offset);
             
-            float time_location = loc_samples / client_format_.mSampleRate;
+            float time_location = static_cast<float>(loc_samples) / static_cast<float>(client_format_.mSampleRate);
             
             info.threshold_end_time = time_location;
             break; //terminate, we've got all we want.

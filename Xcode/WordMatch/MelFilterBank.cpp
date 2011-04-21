@@ -124,13 +124,13 @@ void MelFilterBank::apply(const float* fft_data, float* mel_bands) const {
 
 float MelFilterBank::hz_to_mel(float hz) {
     //melFrequency = 2595 * log(1 + linearFrequency/700)
-    const float ln_10 = log(10.0f);
+    const float ln_10 = (float)log(10.0);
     const float f = 2595.0f / ln_10;
     return f * logf(1 + hz / 700.0f);
 }
 
 float MelFilterBank::mel_to_hz(float mel) {
-    const float ln_10 = log(10.0f);
+    const float ln_10 = (float)log(10.0f);
     const float f = 2595.0f / ln_10;
     return (expf(mel / f) - 1) * 700.0f;    
 } 

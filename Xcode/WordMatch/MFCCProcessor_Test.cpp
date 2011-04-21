@@ -259,7 +259,7 @@ BOOST_FIXTURE_TEST_CASE( OutputRegressionTest, PulloverReaderFixture ) {
             
             size_t idx = iPkt * num_cepstrum_components + iCmp;
             
-            double tolerance = 0.01; 
+            double tolerance = 0.02; 
             
             if (iCmp > 0.75f * num_cepstrum_components)
                 tolerance = 1;

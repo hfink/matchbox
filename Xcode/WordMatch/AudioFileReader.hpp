@@ -105,7 +105,7 @@ namespace WM {
          * at 0 db for an amplitude of 1 and -inf for an amplitude of 0.
          */
         static float decibel_to_amplitude(float db) {
-            return powf(10, db*0.05);
+            return powf(10, db*0.05f);
         }
         
         /**

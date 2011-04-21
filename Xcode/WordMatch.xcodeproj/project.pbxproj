@@ -283,13 +283,13 @@
 				AD8543A81312C7A400F743C0 /* Frameworks */,
 				AD8B7D951317F9B500A06B7D /* CoreAudioUtilities */,
 				AD8543A71312C7A400F743C0 /* Products */,
-				AD150C1B1312D40B000DE334 /* libWordMatchIOS.a */,
 			);
 			sourceTree = "<group>";
 		};
 		AD8543A71312C7A400F743C0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				AD150C1B1312D40B000DE334 /* libWordMatchIOS.a */,
 				AD957DE61312D51C0035D5B9 /* libWordMatchOSX.a */,
 				ADC34F7F1312CD6E00FD3BB7 /* Test */,
 				AD0AB07B1325490700E1983B /* iPhoneTest.app */,
@@ -698,11 +698,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "iPhoneTest/iPhoneTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LD_NO_PIE = NO;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../boost_ext/lib/iOS_SDK_4_3/Device\"",
 					"\"$(SRCROOT)/../boost_ext/lib\"",
 				);
 				LINKER_DISPLAYS_MANGLED_NAMES = YES;
@@ -732,11 +731,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "iPhoneTest/iPhoneTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LD_NO_PIE = NO;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../boost_ext/lib/iOS_SDK_4_3/Device\"",
 					"\"$(SRCROOT)/../boost_ext/lib\"",
 				);
 				LINKER_DISPLAYS_MANGLED_NAMES = YES;

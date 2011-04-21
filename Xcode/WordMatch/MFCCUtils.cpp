@@ -40,7 +40,7 @@ FeatureTypeDTW::Features get_mfcc_features(const boost::shared_ptr<WM::AudioFile
     
     static const size_t window_frame_size = 400;
     static const Float64 sample_rate = 16000.0f;
-    static const float interval_time_duration = 0.01;
+    static const float interval_time_duration = 0.01f;
     static const float preemphasis_coefficient = 0.97f;
     static const float min_frequency = 133.33f;
     static const float max_frequency = 6855.6f;
@@ -51,14 +51,14 @@ FeatureTypeDTW::Features get_mfcc_features(const boost::shared_ptr<WM::AudioFile
     
     WM::MFCCProcessor mp(window_frame_size, 
                          preemphasis_coefficient, 
-                         sample_rate, 
+                         (float)sample_rate, 
                          min_frequency, 
                          max_frequency);
     
     std::fill(&data[0], &data[window_frame_size], 0);    
     
-    static const size_t interval_frame_size = interval_time_duration * sample_rate;
-    static const float window_time_duration = window_frame_size / sample_rate;
+    static const size_t interval_frame_size = interval_time_duration * (size_t)sample_rate;
+    static const float window_time_duration = window_frame_size / (float)sample_rate;
     static const int overlap_frame_size = window_frame_size - interval_frame_size;
     
     //sanity check

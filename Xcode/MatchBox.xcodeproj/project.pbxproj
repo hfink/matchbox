@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AD073991133759A100B6258C /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD073990133759A100B6258C /* libWordMatchIOS.a */; };
+		848CF58A1360812B00E32E1D /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848CF5851360812400E32E1D /* libWordMatchIOS.a */; };
 		AD073994133768E200B6258C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD073993133768E200B6258C /* Accelerate.framework */; };
 		AD2F021513366E4600918B83 /* SOVoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F021313366E4600918B83 /* SOVoiceRecorder.m */; };
 		AD2F021A133671DD00918B83 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2F0219133671DD00918B83 /* AudioToolbox.framework */; };
@@ -34,8 +34,39 @@
 		ADFC3C391339DAF200046506 /* start_screen~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = ADFC3C371339DAF200046506 /* start_screen~iphone.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		848CF5821360812400E32E1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 848CF5781360812400E32E1D /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ADC34F7F1312CD6E00FD3BB7 /* Test */;
+			remoteInfo = Test;
+		};
+		848CF5841360812400E32E1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 848CF5781360812400E32E1D /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD150C1B1312D40B000DE334 /* libWordMatchIOS.a */;
+			remoteInfo = WordMatchIOS;
+		};
+		848CF5861360812400E32E1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 848CF5781360812400E32E1D /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD957DE61312D51C0035D5B9 /* libWordMatchOSX.a */;
+			remoteInfo = WordMatchOSX;
+		};
+		848CF5881360812400E32E1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 848CF5781360812400E32E1D /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD0AB07B1325490700E1983B /* iPhoneTest.app */;
+			remoteInfo = iPhoneTest;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		AD073990133759A100B6258C /* libWordMatchIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWordMatchIOS.a; sourceTree = SOURCE_ROOT; };
+		848CF5781360812400E32E1D /* WordMatch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = WordMatch.xcodeproj; sourceTree = "<group>"; };
 		AD073993133768E200B6258C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		AD2F021213366E4600918B83 /* SOVoiceRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SOVoiceRecorder.h; path = SimodOne/SOVoiceRecorder.h; sourceTree = SOURCE_ROOT; };
 		AD2F021313366E4600918B83 /* SOVoiceRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SOVoiceRecorder.m; path = SimodOne/SOVoiceRecorder.m; sourceTree = SOURCE_ROOT; };
@@ -79,8 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848CF58A1360812B00E32E1D /* libWordMatchIOS.a in Frameworks */,
 				AD073994133768E200B6258C /* Accelerate.framework in Frameworks */,
-				AD073991133759A100B6258C /* libWordMatchIOS.a in Frameworks */,
 				AD2F021C1336751000918B83 /* AVFoundation.framework in Frameworks */,
 				AD2F021A133671DD00918B83 /* AudioToolbox.framework in Frameworks */,
 				AD81AB851336031A006820FF /* UIKit.framework in Frameworks */,
@@ -92,9 +123,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		848CF5791360812400E32E1D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				848CF5831360812400E32E1D /* Test */,
+				848CF5851360812400E32E1D /* libWordMatchIOS.a */,
+				848CF5871360812400E32E1D /* libWordMatchOSX.a */,
+				848CF5891360812400E32E1D /* iPhoneTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		AD81AB751336031A006820FF = {
 			isa = PBXGroup;
 			children = (
+				848CF5781360812400E32E1D /* WordMatch.xcodeproj */,
 				AD81AB8A1336031A006820FF /* MatchBox */,
 				AD81AB831336031A006820FF /* Frameworks */,
 				AD81AB811336031A006820FF /* Products */,
@@ -113,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				AD073993133768E200B6258C /* Accelerate.framework */,
-				AD073990133759A100B6258C /* libWordMatchIOS.a */,
 				AD2F021B1336751000918B83 /* AVFoundation.framework */,
 				AD2F0219133671DD00918B83 /* AudioToolbox.framework */,
 				AD81AB841336031A006820FF /* UIKit.framework */,
@@ -202,12 +244,49 @@
 			mainGroup = AD81AB751336031A006820FF;
 			productRefGroup = AD81AB811336031A006820FF /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 848CF5791360812400E32E1D /* Products */;
+					ProjectRef = 848CF5781360812400E32E1D /* WordMatch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AD81AB7F1336031A006820FF /* MatchBox */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		848CF5831360812400E32E1D /* Test */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = Test;
+			remoteRef = 848CF5821360812400E32E1D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		848CF5851360812400E32E1D /* libWordMatchIOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWordMatchIOS.a;
+			remoteRef = 848CF5841360812400E32E1D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		848CF5871360812400E32E1D /* libWordMatchOSX.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWordMatchOSX.a;
+			remoteRef = 848CF5861360812400E32E1D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		848CF5891360812400E32E1D /* iPhoneTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iPhoneTest.app;
+			remoteRef = 848CF5881360812400E32E1D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AD81AB7E1336031A006820FF /* Resources */ = {

@@ -191,7 +191,7 @@ namespace simod1
                    boost::bind<T, T(&)(T, T)>(std::pow,
                                               _1,
                                               2));
-    return std::sqrt(std::accumulate(d.begin(), d.end(), 0));
+    return (T)std::sqrt(std::accumulate(d.begin(), d.end(), 0));
   }
 }
 

@@ -95,7 +95,7 @@ MFCCProcessor::MFCCProcessor(size_t user_window_size,
     //to be applied to our sample window.
     vDSP_hamm_window(hamming_window_.get(), user_window_size_, 0);
     
-    fft_log2n_ = log2l((long)fft_size_);
+    fft_log2n_ = static_cast<int>(log2l(static_cast<long>(fft_size_)));
     
     // FFT setup, will be reused
     fft_setup_ = vDSP_create_fftsetup(fft_log2n_, FFT_RADIX2);
@@ -121,7 +121,7 @@ MFCCProcessor::MFCCProcessor(size_t user_window_size,
     const float ortho_factor = sqrtf(2.0f/(float)kNumMelBands());
     for (int n = 0; n < kNumMelBands(); ++n) { // cols
         for (int k = 0; k < kNumMelCepstra(); ++k) { // rows
-            float omega = (M_PI / kNumMelBands()) * (float)k;
+            float omega = (float(M_PI) / kNumMelBands()) * (float)k;
             float val = 2*cosf(omega*((float)n + 0.5f));
             
             // we further multiply by sqrt(2/N) to creat the orthogonal 
