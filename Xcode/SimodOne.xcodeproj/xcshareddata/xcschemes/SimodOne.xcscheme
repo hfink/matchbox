@@ -27,7 +27,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AD8543A51312C7A400F743C0"
+               BlueprintIdentifier = "AD150C1A1312D40B000DE334"
                BuildableName = "libWordMatchIOS.a"
                BlueprintName = "WordMatchIOS"
                ReferencedContainer = "container:WordMatch.xcodeproj">

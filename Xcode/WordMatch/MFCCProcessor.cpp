@@ -65,7 +65,7 @@ MFCCProcessor::MFCCProcessor(size_t user_window_size,
         throw std::invalid_argument(oss.str());
     }
     
-    if ( (pre_emph_alpha <= 0) ||
+    if ( (pre_emph_alpha < 0) ||
          (pre_emph_alpha > 1) ) {
         oss << "Invalid pre-emphasis coefficient: '" << pre_emph_alpha << "'.";
         throw std::invalid_argument(oss.str());
@@ -204,20 +204,21 @@ void MFCCProcessor::process(const WMAudioSampleType * samples,
         std::copy(&mel_bands_buffer_[0], 
                   &mel_bands_buffer_[kNumMelBands()], 
                   mel_spectrum_mag_out);        
-    }        
+    }    
     
     // take the log of the mel bands
 
-    //We only have a vectorized version to get the log10 on OS X
+    if (mfcc_out != NULL) {    
+    
+        //We only have a vectorized version to get the log10 on OS X
 #ifdef HAVE_VDSP_FORCE_LIB
-    const int num_mel_bands = kNumMelBands();
-    vvlog10f(mel_bands_buffer_.get(), mel_bands_buffer_.get(), &num_mel_bands);
+        const int num_mel_bands = kNumMelBands();
+        vvlog10f(mel_bands_buffer_.get(), mel_bands_buffer_.get(), &num_mel_bands);
 #else
-    for (int i = 0; i < kNumMelBands(); ++i)
-        mel_bands_buffer_[i] = log10f(mel_bands_buffer_[i]);
+        for (int i = 0; i < kNumMelBands(); ++i)
+            mel_bands_buffer_[i] = log10f(mel_bands_buffer_[i]);
 #endif
     
-    if (mfcc_out != NULL) {
         // Perform the discrete cosine transform. We have prepared a matrix that
         // we can simply multiply with the vector of mel_bands
         
