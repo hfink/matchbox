@@ -300,8 +300,11 @@ BOOST_FIXTURE_TEST_CASE( OutputRegressionTest, PulloverReaderFixture ) {
             if (iCmp > 0.75f*num_mel_bands)
                 tolerance = 1;
             
+            //Our original reference spectrum was already log10, but we return
+            //the unprocessed mel power spectrum... therefore we need to
+            //compensate for that            
             BOOST_CHECK_CLOSE(mel_spectrum[idx], 
-                              WmRegressionData::reference_melspectrum[idx],
+                              powf(10, WmRegressionData::reference_melspectrum[idx]),
                               tolerance);
         }
     }     
