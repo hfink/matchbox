@@ -174,7 +174,9 @@ void MFCCProcessor::process(const WMAudioSampleType * samples,
     vDSP_vclr(&process_buffer_[user_window_size_], 1, fft_size_ - user_window_size_);
     
     // Pre-emphasis, a high-pass filter
-    pre_emphasize(pre_emph_filter_border);
+    if (pre_emph_alpha_ != 0) {
+        pre_emphasize(pre_emph_filter_border);
+    }
     
     // Apply Hamming Window before performing FFT
     apply_hamming_window();
@@ -196,6 +198,14 @@ void MFCCProcessor::process(const WMAudioSampleType * samples,
     // mel triangular bandpass filter
     mel_filter_bank_.apply(process_buffer_.get(), mel_bands_buffer_.get());
     
+    //Copy mel power spectrum, if requested.
+    
+    if (mel_spectrum_mag_out != NULL) {
+        std::copy(&mel_bands_buffer_[0], 
+                  &mel_bands_buffer_[kNumMelBands()], 
+                  mel_spectrum_mag_out);        
+    }        
+    
     // take the log of the mel bands
 
     //We only have a vectorized version to get the log10 on OS X
@@ -206,14 +216,6 @@ void MFCCProcessor::process(const WMAudioSampleType * samples,
     for (int i = 0; i < kNumMelBands(); ++i)
         mel_bands_buffer_[i] = log10f(mel_bands_buffer_[i]);
 #endif
-    
-    //Copy mel power spectrum, if requested.
-    
-    if (mel_spectrum_mag_out != NULL) {
-        std::copy(&mel_bands_buffer_[0], 
-                  &mel_bands_buffer_[kNumMelBands()], 
-                  mel_spectrum_mag_out);        
-    }    
     
     if (mfcc_out != NULL) {
         // Perform the discrete cosine transform. We have prepared a matrix that

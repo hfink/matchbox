@@ -31,6 +31,8 @@
 
 #include "MelFilterBank.hpp"
 
+#include <Accelerate/Accelerate.h>
+
 namespace WM {
 
     /**
