@@ -34,6 +34,9 @@
 		AD38FEE113223D0F00E00A15 /* DebugUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD38FEDE13223D0F00E00A15 /* DebugUtils.cpp */; };
 		AD38FEE213223D0F00E00A15 /* DebugUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AD38FEDF13223D0F00E00A15 /* DebugUtils.h */; };
 		AD38FEE313223D0F00E00A15 /* DebugUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AD38FEDF13223D0F00E00A15 /* DebugUtils.h */; };
+		AD441AEB138659C4005359F5 /* WordMatchSession.h in Headers */ = {isa = PBXBuildFile; fileRef = AD441AEA138659C4005359F5 /* WordMatchSession.h */; };
+		AD441AED13866275005359F5 /* WordMatchSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD441AEC13866275005359F5 /* WordMatchSession.cpp */; };
+		AD441AEE13866275005359F5 /* WordMatchSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD441AEC13866275005359F5 /* WordMatchSession.cpp */; };
 		AD706AEB1333C48500ACE0F7 /* MFCCUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD706AE91333C47F00ACE0F7 /* MFCCUtils.cpp */; };
 		AD706AEC1333C48500ACE0F7 /* MFCCUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD706AE91333C47F00ACE0F7 /* MFCCUtils.cpp */; };
 		AD706AED1333C48500ACE0F7 /* MFCCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AD706AEA1333C48000ACE0F7 /* MFCCUtils.h */; };
@@ -164,6 +167,8 @@
 		AD38FEDD13223CFA00E00A15 /* MFCCProcessor_Test_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCCProcessor_Test_Data.h; path = WordMatch/MFCCProcessor_Test_Data.h; sourceTree = "<group>"; };
 		AD38FEDE13223D0F00E00A15 /* DebugUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DebugUtils.cpp; path = WordMatch/DebugUtils.cpp; sourceTree = "<group>"; };
 		AD38FEDF13223D0F00E00A15 /* DebugUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebugUtils.h; path = WordMatch/DebugUtils.h; sourceTree = "<group>"; };
+		AD441AEA138659C4005359F5 /* WordMatchSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordMatchSession.h; path = WordMatch/WordMatchSession.h; sourceTree = "<group>"; };
+		AD441AEC13866275005359F5 /* WordMatchSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WordMatchSession.cpp; path = WordMatch/WordMatchSession.cpp; sourceTree = "<group>"; };
 		AD5D2BF8131FBBFD00BCD5AA /* WordMatch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "WordMatch-Prefix.pch"; path = "WordMatch/WordMatch-Prefix.pch"; sourceTree = "<group>"; };
 		AD706AE91333C47F00ACE0F7 /* MFCCUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFCCUtils.cpp; path = WordMatch/MFCCUtils.cpp; sourceTree = "<group>"; };
 		AD706AEA1333C48000ACE0F7 /* MFCCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCCUtils.h; path = WordMatch/MFCCUtils.h; sourceTree = "<group>"; };
@@ -347,6 +352,8 @@
 				AD5D2BF8131FBBFD00BCD5AA /* WordMatch-Prefix.pch */,
 				AD1D277C132D179600CD1E95 /* WordMatch.cpp */,
 				AD2504C6132D38B9000FEB15 /* Types.h */,
+				AD441AEA138659C4005359F5 /* WordMatchSession.h */,
+				AD441AEC13866275005359F5 /* WordMatchSession.cpp */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -445,6 +452,7 @@
 				AD2504C7132D38B9000FEB15 /* Types.h in Headers */,
 				AD706AED1333C48500ACE0F7 /* MFCCUtils.h in Headers */,
 				AD706AF41333C73400ACE0F7 /* dtw.hpp in Headers */,
+				AD441AEB138659C4005359F5 /* WordMatchSession.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +606,7 @@
 				ADDE799B13261B3700A285C9 /* DTWMFCC_Test.cpp in Sources */,
 				ADDE799813261B3200A285C9 /* DebugUtils.cpp in Sources */,
 				AD706AF81333C74D00ACE0F7 /* all_tests.cpp in Sources */,
+				AD441AEE13866275005359F5 /* WordMatchSession.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +624,7 @@
 				AD38FEE013223D0F00E00A15 /* DebugUtils.cpp in Sources */,
 				AD1D277D132D179600CD1E95 /* WordMatch.cpp in Sources */,
 				AD706AEB1333C48500ACE0F7 /* MFCCUtils.cpp in Sources */,
+				AD441AED13866275005359F5 /* WordMatchSession.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

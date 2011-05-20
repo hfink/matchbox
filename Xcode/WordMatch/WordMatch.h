@@ -28,6 +28,8 @@
 
 #include "Types.h"
 
+#include "WordMatchSession.h"
+
 /**
  * Returns the minimum distance for two audio files.
  * Use WMGetPreProcessInfoFor for both files before, and then pass
