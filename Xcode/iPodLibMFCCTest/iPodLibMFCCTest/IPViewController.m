@@ -12,10 +12,15 @@
 
 #include <dispatch/dispatch.h>
 
+#include <mach/mach_time.h>
+
 #include "WordMatch.h"
+
+#include "IPSongReader.h"
 
 @implementation IPViewController
 @synthesize ibHeaderLabel = ibHeaderLabel_;
+@synthesize ibMfccAvgLabel;
 @synthesize ibTitleLabel = ibTitleLabel_;
 @synthesize ibActivityIndicator = ibActivityIndicator_;
 @synthesize ibAvgDurationPerSong = ibAvgDurationPerSong_;
@@ -35,6 +40,7 @@
     [ibTitleLabel_ release];
     [ibHeaderLabel_ release];
     [ibCounterLabel release];
+    [ibMfccAvgLabel release];
     [super dealloc];
 }
 
@@ -69,6 +75,7 @@
     [self setIbTitleLabel:nil];
     [self setIbHeaderLabel:nil];
     [self setIbCounterLabel:nil];
+    [self setIbMfccAvgLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -98,6 +105,29 @@
         
         song_processing_operation = [NSBlockOperation blockOperationWithBlock:^{
             
+            //Initialization the MFCC Session provided by our WordMatch lib
+            
+            static const float mfcc_duration = 30.0f;            
+            
+            float * mfcc_average = malloc(sizeof(float)*13);
+            memset(mfcc_average, 0, sizeof(float)*13);
+            
+            WMSessionRef mfcc_session;            
+            WMMfccConfiguration mfcc_config;
+            mfcc_config.mel_min_freq = 20.0f;
+            mfcc_config.mel_max_freq = 15000.0f;
+            mfcc_config.sampling_rate = 44100.0f;
+            mfcc_config.pre_empha_alpha = 0.97f;
+            mfcc_config.window_size = 1024;            
+            
+            WMSessionResult result = WMSessionCreate(mfcc_duration, 
+                                                     mfcc_config, 
+                                                     mfcc_session);
+            
+            if (result != kWMSessionResultOK) {
+                NSLog(@"WMSession returned %hd, exiting calculation", result);
+            }            
+            
             dispatch_queue_t main_queue = dispatch_get_main_queue();            
             
             NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
@@ -124,18 +154,59 @@
             
             int songs_counter = 0;
             
-            double song_processing_start = WMMachTimeToMilliSeconds(mach_absolute_time());                            
+            uint64_t now = mach_absolute_time();
+            double song_processing_start = WMMachTimeToMilliSeconds(now);                            
             double song_processing_end = 0;
             
             BOOL was_canceled = NO;
+            BOOL was_error = NO;            
             
             for (MPMediaItem* song in all_songs) {
+            
+                //Resetting the session
+                result = WMSessionReset(mfcc_session);
+                if (result != kWMSessionResultOK) {
+                    NSLog(@"Could not reset WMSessin: %hd", result);
+                    was_error = YES;
+                    break;
+                }
                 
-                //TODO: create IP Song reader in here, define block
                 NSString * title = [song valueForProperty:MPMediaItemPropertyTitle];
+                NSURL* song_url = [song valueForProperty:MPMediaItemPropertyAssetURL];
                 
-                //just do something for now...
-                [NSThread sleepForTimeInterval:0.1];
+                IPSongReader* song_reader = [[IPSongReader alloc] initWithURL:song_url 
+                                                                  forDuration:mfcc_duration 
+                                                                    withBlock:^BOOL(CMSampleBufferRef sample_buffer) {
+                                                                        
+                                                                        if (!WMSessionIsCompleted(mfcc_session)) {
+                                                                            WMSessionResult mfcc_result = WMSessionFeedFromSampleBuffer(sample_buffer, mfcc_session);
+                                                                            if (mfcc_result != kWMSessionResultOK) {
+                                                                                NSLog(@"MFCC calculation returned an error: %hd", mfcc_result);
+                                                                                return NO;
+                                                                            }
+                                                                        } else {
+                                                                            NSLog(@"Session was already completed.");
+                                                                        }
+                                                                        
+                                                                        return TRUE;
+                                                                    }];
+                
+                //Start processing that stuff
+                BOOL success = [song_reader consumeRange];
+                if (!success) {
+                    NSLog(@"Could not consume the song properly.");
+                    was_error = YES;
+                    [song_reader release];
+                    break;
+                }
+                
+                //Get the average MFCC values
+                result = WMSessionGetAverage(mfcc_average);
+                if (result != kWMSessionResultOK) {
+                    NSLog(@"WMSessionGetAverage returned an error: %hd", result);
+                    [song_reader release];
+                    break;
+                }
                 
                 song_processing_end = WMMachTimeToMilliSeconds(mach_absolute_time());
                 
@@ -156,12 +227,29 @@
                     [self.ibBenchmarkProgress setProgress:songs_counter/(float)[all_songs count]];
                     
                     str = [[NSString alloc] initWithFormat:@"%i / %u", songs_counter, [all_songs count]];                    
-                    
-                    [self.ibCounterLabel setText:str];
-                    
+                    [self.ibCounterLabel setText:str];                    
                     [str release];
                     
+                    str = [[NSString alloc] initWithFormat:@"%.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f", 
+                                                           mfcc_average[0], 
+                                                           mfcc_average[1],
+                                                           mfcc_average[2],
+                                                           mfcc_average[3],
+                                                           mfcc_average[4],
+                                                           mfcc_average[5],
+                                                           mfcc_average[6],
+                                                           mfcc_average[7],
+                                                           mfcc_average[8],
+                                                           mfcc_average[9],
+                                                           mfcc_average[10],
+                                                           mfcc_average[11],
+                                                           mfcc_average[12]];                    
+                    [self.ibCounterLabel setText:str];                    
+                    [str release];                    
+                    
                 });
+                
+                [song_reader release];
                 
                 //Check early exit
                 
@@ -178,7 +266,12 @@
                 [self.ibTotalDuration setText:str];
                 [str release];
                 
-                [self.ibTitleLabel setText:@"User canceled benchmark"];
+                if (was_canceled)
+                    [self.ibTitleLabel setText:@"User canceled benchmark"];
+                else if (was_error)
+                    [self.ibTitleLabel setText:@"Error in benchmark process"];                    
+                else
+                    [self.ibTitleLabel setText:@"All song were processed successfully"];                    
                 
                 isExecutingBenchmark = NO;
                 
@@ -189,7 +282,13 @@
             });           
             
             [songs_query release];
-            [pool release];                        
+            [pool release];                  
+            result = WMSessionDestroy(mfcc_session);
+            if (result != kWMSessionResultOK)
+                NSLog(@"After destruction, WMSession returned %hd", result);
+            
+            free(mfcc_average);
+            
         }];
         
         [song_processing_queue addOperation:song_processing_operation];

@@ -17,12 +17,15 @@
 //Make note that the block will be called synchronously, and that CMSampleBufferRef
 //has to be retained in order to be used somewhere else...
 
+//Also make note, that we always seek to the middle of the file!!!
 - (id)initWithURL:(NSURL*)url 
-     forTimeRange:(CMTimeRange)timeRange 
-        withBlock:(BOOL (^)(CMSampleBufferRef)) handler;
+     forDuration:(float)seconds 
+        withBlock:(BOOL (^)(CMSampleBufferRef)) consumer_block;
 
-- (void)startReadingRange;
-- (void)stopReadingRange;
+//Make note that this is blocking until all is finished or something happened
+//This interface really should be enhanced for canceling, etc...
+//returns true if the complete range was successfully consumed
+- (BOOL)consumeRange;
 
 //continue in here...
 

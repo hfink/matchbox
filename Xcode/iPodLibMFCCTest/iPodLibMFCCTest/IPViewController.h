@@ -22,8 +22,10 @@
     NSOperation* song_processing_operation;
     UILabel *ibHeaderLabel_;
     UILabel *ibCounterLabel;
+    UILabel *ibMfccAvgLabel;
 }
 @property (nonatomic, retain) IBOutlet UILabel *ibHeaderLabel;
+@property (nonatomic, retain) IBOutlet UILabel *ibMfccAvgLabel;
 
 @property (nonatomic, retain) IBOutlet UILabel *ibTitleLabel;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *ibActivityIndicator;
