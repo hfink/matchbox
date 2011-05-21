@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AD441B0113866707005359F5 /* IPSongReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AD441B0013866707005359F5 /* IPSongReader.m */; };
+		AD63B3921387B4BF00041189 /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3911387B4BF00041189 /* libWordMatchIOS.a */; };
+		AD63B3951387B4DF00041189 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3931387B4DF00041189 /* CoreMedia.framework */; };
+		AD63B3961387B4DF00041189 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3941387B4DF00041189 /* MediaPlayer.framework */; };
+		AD63B3981387B4E500041189 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3971387B4E500041189 /* AVFoundation.framework */; };
 		AD8C39491384105900E10DB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C39481384105900E10DB0 /* UIKit.framework */; };
 		AD8C394B1384105900E10DB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C394A1384105900E10DB0 /* Foundation.framework */; };
 		AD8C394D1384105900E10DB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C394C1384105900E10DB0 /* CoreGraphics.framework */; };
@@ -26,6 +30,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AD63B3861387B3EE00041189 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ADC34F7F1312CD6E00FD3BB7;
+			remoteInfo = Test;
+		};
+		AD63B3881387B3EE00041189 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD150C1B1312D40B000DE334;
+			remoteInfo = WordMatchIOS;
+		};
+		AD63B38A1387B3EE00041189 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD957DE61312D51C0035D5B9;
+			remoteInfo = WordMatchOSX;
+		};
+		AD63B38C1387B3EE00041189 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD0AB07B1325490700E1983B;
+			remoteInfo = iPhoneTest;
+		};
+		AD63B38F1387B3F600041189 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AD150C1A1312D40B000DE334;
+			remoteInfo = WordMatchIOS;
+		};
 		AD8C396C1384105900E10DB0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AD8C393B1384105900E10DB0 /* Project object */;
@@ -38,6 +77,11 @@
 /* Begin PBXFileReference section */
 		AD441AFF13866707005359F5 /* IPSongReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSongReader.h; sourceTree = "<group>"; };
 		AD441B0013866707005359F5 /* IPSongReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSongReader.m; sourceTree = "<group>"; };
+		AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WordMatch.xcodeproj; path = ../WordMatch.xcodeproj; sourceTree = "<group>"; };
+		AD63B3911387B4BF00041189 /* libWordMatchIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWordMatchIOS.a; sourceTree = SOURCE_ROOT; };
+		AD63B3931387B4DF00041189 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		AD63B3941387B4DF00041189 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		AD63B3971387B4E500041189 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AD8C39441384105900E10DB0 /* iPodLibMFCCTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPodLibMFCCTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8C39481384105900E10DB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AD8C394A1384105900E10DB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,6 +109,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD63B3981387B4E500041189 /* AVFoundation.framework in Frameworks */,
+				AD63B3951387B4DF00041189 /* CoreMedia.framework in Frameworks */,
+				AD63B3961387B4DF00041189 /* MediaPlayer.framework in Frameworks */,
+				AD63B3921387B4BF00041189 /* libWordMatchIOS.a in Frameworks */,
 				AD8C39491384105900E10DB0 /* UIKit.framework in Frameworks */,
 				AD8C394B1384105900E10DB0 /* Foundation.framework in Frameworks */,
 				AD8C394D1384105900E10DB0 /* CoreGraphics.framework in Frameworks */,
@@ -84,9 +132,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD63B3801387B3EE00041189 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD63B3871387B3EE00041189 /* Test */,
+				AD63B3891387B3EE00041189 /* libWordMatchIOS.a */,
+				AD63B38B1387B3EE00041189 /* libWordMatchOSX.a */,
+				AD63B38D1387B3EE00041189 /* iPhoneTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		AD8C39391384105900E10DB0 = {
 			isa = PBXGroup;
 			children = (
+				AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */,
 				AD8C394E1384105900E10DB0 /* iPodLibMFCCTest */,
 				AD8C396E1384105900E10DB0 /* iPodLibMFCCTestTests */,
 				AD8C39471384105900E10DB0 /* Frameworks */,
@@ -106,6 +166,10 @@
 		AD8C39471384105900E10DB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD63B3971387B4E500041189 /* AVFoundation.framework */,
+				AD63B3931387B4DF00041189 /* CoreMedia.framework */,
+				AD63B3941387B4DF00041189 /* MediaPlayer.framework */,
+				AD63B3911387B4BF00041189 /* libWordMatchIOS.a */,
 				AD8C39481384105900E10DB0 /* UIKit.framework */,
 				AD8C394A1384105900E10DB0 /* Foundation.framework */,
 				AD8C394C1384105900E10DB0 /* CoreGraphics.framework */,
@@ -174,6 +238,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AD63B3901387B3F600041189 /* PBXTargetDependency */,
 			);
 			name = iPodLibMFCCTest;
 			productName = iPodLibMFCCTest;
@@ -214,6 +279,12 @@
 			mainGroup = AD8C39391384105900E10DB0;
 			productRefGroup = AD8C39451384105900E10DB0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AD63B3801387B3EE00041189 /* Products */;
+					ProjectRef = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AD8C39431384105900E10DB0 /* iPodLibMFCCTest */,
@@ -221,6 +292,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AD63B3871387B3EE00041189 /* Test */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = Test;
+			remoteRef = AD63B3861387B3EE00041189 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AD63B3891387B3EE00041189 /* libWordMatchIOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWordMatchIOS.a;
+			remoteRef = AD63B3881387B3EE00041189 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AD63B38B1387B3EE00041189 /* libWordMatchOSX.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWordMatchOSX.a;
+			remoteRef = AD63B38A1387B3EE00041189 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AD63B38D1387B3EE00041189 /* iPhoneTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iPhoneTest.app;
+			remoteRef = AD63B38C1387B3EE00041189 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AD8C39421384105900E10DB0 /* Resources */ = {
@@ -283,6 +385,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AD63B3901387B3F600041189 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WordMatchIOS;
+			targetProxy = AD63B38F1387B3F600041189 /* PBXContainerItemProxy */;
+		};
 		AD8C396D1384105900E10DB0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AD8C39431384105900E10DB0 /* iPodLibMFCCTest */;
@@ -366,8 +473,14 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iPodLibMFCCTest/IP-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../WordMatch\"";
 				INFOPLIST_FILE = "iPodLibMFCCTest/iPodLibMFCCTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -380,8 +493,14 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iPodLibMFCCTest/IP-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../WordMatch\"";
 				INFOPLIST_FILE = "iPodLibMFCCTest/iPodLibMFCCTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

@@ -50,5 +50,12 @@ bool WMGetPreProcessInfoForFile(CFURLRef file,
                                 float end_threshold_db,
                                 WMAudioFilePreProcessInfo* info_out);
 
+/**
+ * Convenience functions to convert mach_time to milliseconds and vice-versa
+ */
+
+uint64_t WMMilliSecondsToMachTime(double ms);
+
+double WMMachTimeToMilliSeconds(uint64_t mach);
 
 #endif //WORD_MATCH_H

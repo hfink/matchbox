@@ -37,6 +37,10 @@
 		AD441AEB138659C4005359F5 /* WordMatchSession.h in Headers */ = {isa = PBXBuildFile; fileRef = AD441AEA138659C4005359F5 /* WordMatchSession.h */; };
 		AD441AED13866275005359F5 /* WordMatchSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD441AEC13866275005359F5 /* WordMatchSession.cpp */; };
 		AD441AEE13866275005359F5 /* WordMatchSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD441AEC13866275005359F5 /* WordMatchSession.cpp */; };
+		AD63B37A1387B21700041189 /* CAHostTimeBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD63B3781387B21700041189 /* CAHostTimeBase.cpp */; };
+		AD63B37B1387B21700041189 /* CAHostTimeBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD63B3781387B21700041189 /* CAHostTimeBase.cpp */; };
+		AD63B37C1387B21700041189 /* CAHostTimeBase.h in Headers */ = {isa = PBXBuildFile; fileRef = AD63B3791387B21700041189 /* CAHostTimeBase.h */; };
+		AD63B37D1387B21700041189 /* CAHostTimeBase.h in Headers */ = {isa = PBXBuildFile; fileRef = AD63B3791387B21700041189 /* CAHostTimeBase.h */; };
 		AD706AEB1333C48500ACE0F7 /* MFCCUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD706AE91333C47F00ACE0F7 /* MFCCUtils.cpp */; };
 		AD706AEC1333C48500ACE0F7 /* MFCCUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD706AE91333C47F00ACE0F7 /* MFCCUtils.cpp */; };
 		AD706AED1333C48500ACE0F7 /* MFCCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AD706AEA1333C48000ACE0F7 /* MFCCUtils.h */; };
@@ -170,6 +174,8 @@
 		AD441AEA138659C4005359F5 /* WordMatchSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordMatchSession.h; path = WordMatch/WordMatchSession.h; sourceTree = "<group>"; };
 		AD441AEC13866275005359F5 /* WordMatchSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WordMatchSession.cpp; path = WordMatch/WordMatchSession.cpp; sourceTree = "<group>"; };
 		AD5D2BF8131FBBFD00BCD5AA /* WordMatch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "WordMatch-Prefix.pch"; path = "WordMatch/WordMatch-Prefix.pch"; sourceTree = "<group>"; };
+		AD63B3781387B21700041189 /* CAHostTimeBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CAHostTimeBase.cpp; path = Extras/CoreAudio/PublicUtility/CAHostTimeBase.cpp; sourceTree = DEVELOPER_DIR; };
+		AD63B3791387B21700041189 /* CAHostTimeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAHostTimeBase.h; path = Extras/CoreAudio/PublicUtility/CAHostTimeBase.h; sourceTree = DEVELOPER_DIR; };
 		AD706AE91333C47F00ACE0F7 /* MFCCUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFCCUtils.cpp; path = WordMatch/MFCCUtils.cpp; sourceTree = "<group>"; };
 		AD706AEA1333C48000ACE0F7 /* MFCCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCCUtils.h; path = WordMatch/MFCCUtils.h; sourceTree = "<group>"; };
 		AD706AEF1333C49E00ACE0F7 /* benchmark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = benchmark.cpp; path = WordMatch/benchmark.cpp; sourceTree = "<group>"; };
@@ -405,6 +411,8 @@
 		AD8B7D951317F9B500A06B7D /* CoreAudioUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				AD63B3781387B21700041189 /* CAHostTimeBase.cpp */,
+				AD63B3791387B21700041189 /* CAHostTimeBase.h */,
 				AD7D16C1131BAACF0099C57D /* CABitOperations.h */,
 				AD8B7D961317FA3200A06B7D /* CADebugMacros.cpp */,
 				AD8B7D971317FA3200A06B7D /* CADebugMacros.h */,
@@ -453,6 +461,7 @@
 				AD706AED1333C48500ACE0F7 /* MFCCUtils.h in Headers */,
 				AD706AF41333C73400ACE0F7 /* dtw.hpp in Headers */,
 				AD441AEB138659C4005359F5 /* WordMatchSession.h in Headers */,
+				AD63B37C1387B21700041189 /* CAHostTimeBase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +481,7 @@
 				AD2504C8132D38B9000FEB15 /* Types.h in Headers */,
 				AD706AEE1333C48500ACE0F7 /* MFCCUtils.h in Headers */,
 				AD706AF51333C73400ACE0F7 /* dtw.hpp in Headers */,
+				AD63B37D1387B21700041189 /* CAHostTimeBase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +635,7 @@
 				AD1D277D132D179600CD1E95 /* WordMatch.cpp in Sources */,
 				AD706AEB1333C48500ACE0F7 /* MFCCUtils.cpp in Sources */,
 				AD441AED13866275005359F5 /* WordMatchSession.cpp in Sources */,
+				AD63B37A1387B21700041189 /* CAHostTimeBase.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +653,7 @@
 				AD38FEE113223D0F00E00A15 /* DebugUtils.cpp in Sources */,
 				AD1D277E132D179600CD1E95 /* WordMatch.cpp in Sources */,
 				AD706AEC1333C48500ACE0F7 /* MFCCUtils.cpp in Sources */,
+				AD63B37B1387B21700041189 /* CAHostTimeBase.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
