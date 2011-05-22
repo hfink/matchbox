@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AD441B0113866707005359F5 /* IPSongReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AD441B0013866707005359F5 /* IPSongReader.m */; };
-		AD63B3921387B4BF00041189 /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3911387B4BF00041189 /* libWordMatchIOS.a */; };
 		AD63B3951387B4DF00041189 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3931387B4DF00041189 /* CoreMedia.framework */; };
 		AD63B3961387B4DF00041189 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3941387B4DF00041189 /* MediaPlayer.framework */; };
 		AD63B3981387B4E500041189 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3971387B4E500041189 /* AVFoundation.framework */; };
+		AD85FC791389527D00371916 /* sine_440hz_44100khz_10sec.wav in Resources */ = {isa = PBXBuildFile; fileRef = AD85FC771389526C00371916 /* sine_440hz_44100khz_10sec.wav */; };
 		AD8C39491384105900E10DB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C39481384105900E10DB0 /* UIKit.framework */; };
 		AD8C394B1384105900E10DB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C394A1384105900E10DB0 /* Foundation.framework */; };
 		AD8C394D1384105900E10DB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C394C1384105900E10DB0 /* CoreGraphics.framework */; };
@@ -25,8 +25,15 @@
 		AD8C396A1384105900E10DB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C394A1384105900E10DB0 /* Foundation.framework */; };
 		AD8C396B1384105900E10DB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C394C1384105900E10DB0 /* CoreGraphics.framework */; };
 		AD8C39731384105900E10DB0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD8C39711384105900E10DB0 /* InfoPlist.strings */; };
-		AD8C39761384105900E10DB0 /* IPTests.h in Resources */ = {isa = PBXBuildFile; fileRef = AD8C39751384105900E10DB0 /* IPTests.h */; };
-		AD8C39781384105900E10DB0 /* IPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8C39771384105900E10DB0 /* IPTests.m */; };
+		AD98A3CE1389146700F6FE76 /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD98A3CD1389146700F6FE76 /* libWordMatchIOS.a */; };
+		AD98A3D0138915FB00F6FE76 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD98A3CF138915FB00F6FE76 /* Accelerate.framework */; };
+		AD98A3D41389162800F6FE76 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD98A3D31389162800F6FE76 /* AudioToolbox.framework */; };
+		ADA770B51389233B00486AF0 /* IPSongReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA770B41389233B00486AF0 /* IPSongReaderTest.m */; };
+		ADA770CC138945FA00486AF0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA770CB138945FA00486AF0 /* Accelerate.framework */; };
+		ADA770CE1389460000486AF0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA770CD1389460000486AF0 /* AudioToolbox.framework */; };
+		ADA770D01389460300486AF0 /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA770CF1389460300486AF0 /* libWordMatchIOS.a */; };
+		ADA770D21389460900486AF0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA770D11389460900486AF0 /* CoreMedia.framework */; };
+		ADA770D41389460F00486AF0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA770D31389460F00486AF0 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,10 +85,10 @@
 		AD441AFF13866707005359F5 /* IPSongReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSongReader.h; sourceTree = "<group>"; };
 		AD441B0013866707005359F5 /* IPSongReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSongReader.m; sourceTree = "<group>"; };
 		AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WordMatch.xcodeproj; path = ../WordMatch.xcodeproj; sourceTree = "<group>"; };
-		AD63B3911387B4BF00041189 /* libWordMatchIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWordMatchIOS.a; sourceTree = SOURCE_ROOT; };
 		AD63B3931387B4DF00041189 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		AD63B3941387B4DF00041189 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		AD63B3971387B4E500041189 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AD85FC771389526C00371916 /* sine_440hz_44100khz_10sec.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sine_440hz_44100khz_10sec.wav; path = ../../sine_440hz_44100khz_10sec.wav; sourceTree = "<group>"; };
 		AD8C39441384105900E10DB0 /* iPodLibMFCCTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPodLibMFCCTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8C39481384105900E10DB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AD8C394A1384105900E10DB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -100,8 +107,17 @@
 		AD8C39701384105900E10DB0 /* iPodLibMFCCTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iPodLibMFCCTestTests-Info.plist"; sourceTree = "<group>"; };
 		AD8C39721384105900E10DB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD8C39741384105900E10DB0 /* iPodLibMFCCTestTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iPodLibMFCCTestTests-Prefix.pch"; sourceTree = "<group>"; };
-		AD8C39751384105900E10DB0 /* IPTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPTests.h; sourceTree = "<group>"; };
-		AD8C39771384105900E10DB0 /* IPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPTests.m; sourceTree = "<group>"; };
+		AD98A3CD1389146700F6FE76 /* libWordMatchIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWordMatchIOS.a; sourceTree = SOURCE_ROOT; };
+		AD98A3CF138915FB00F6FE76 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		AD98A3D11389161000F6FE76 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		AD98A3D31389162800F6FE76 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		ADA770B31389233B00486AF0 /* IPSongReaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSongReaderTest.h; sourceTree = "<group>"; };
+		ADA770B41389233B00486AF0 /* IPSongReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSongReaderTest.m; sourceTree = "<group>"; };
+		ADA770CB138945FA00486AF0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		ADA770CD1389460000486AF0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		ADA770CF1389460300486AF0 /* libWordMatchIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWordMatchIOS.a; sourceTree = SOURCE_ROOT; };
+		ADA770D11389460900486AF0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		ADA770D31389460F00486AF0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,10 +125,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD98A3D41389162800F6FE76 /* AudioToolbox.framework in Frameworks */,
+				AD98A3D0138915FB00F6FE76 /* Accelerate.framework in Frameworks */,
+				AD98A3CE1389146700F6FE76 /* libWordMatchIOS.a in Frameworks */,
 				AD63B3981387B4E500041189 /* AVFoundation.framework in Frameworks */,
 				AD63B3951387B4DF00041189 /* CoreMedia.framework in Frameworks */,
 				AD63B3961387B4DF00041189 /* MediaPlayer.framework in Frameworks */,
-				AD63B3921387B4BF00041189 /* libWordMatchIOS.a in Frameworks */,
 				AD8C39491384105900E10DB0 /* UIKit.framework in Frameworks */,
 				AD8C394B1384105900E10DB0 /* Foundation.framework in Frameworks */,
 				AD8C394D1384105900E10DB0 /* CoreGraphics.framework in Frameworks */,
@@ -123,6 +141,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADA770D41389460F00486AF0 /* AVFoundation.framework in Frameworks */,
+				ADA770D21389460900486AF0 /* CoreMedia.framework in Frameworks */,
+				ADA770D01389460300486AF0 /* libWordMatchIOS.a in Frameworks */,
+				ADA770CE1389460000486AF0 /* AudioToolbox.framework in Frameworks */,
+				ADA770CC138945FA00486AF0 /* Accelerate.framework in Frameworks */,
 				AD8C39691384105900E10DB0 /* UIKit.framework in Frameworks */,
 				AD8C396A1384105900E10DB0 /* Foundation.framework in Frameworks */,
 				AD8C396B1384105900E10DB0 /* CoreGraphics.framework in Frameworks */,
@@ -146,6 +169,11 @@
 		AD8C39391384105900E10DB0 = {
 			isa = PBXGroup;
 			children = (
+				ADA770D31389460F00486AF0 /* AVFoundation.framework */,
+				ADA770D11389460900486AF0 /* CoreMedia.framework */,
+				ADA770CF1389460300486AF0 /* libWordMatchIOS.a */,
+				ADA770CD1389460000486AF0 /* AudioToolbox.framework */,
+				ADA770CB138945FA00486AF0 /* Accelerate.framework */,
 				AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */,
 				AD8C394E1384105900E10DB0 /* iPodLibMFCCTest */,
 				AD8C396E1384105900E10DB0 /* iPodLibMFCCTestTests */,
@@ -166,10 +194,13 @@
 		AD8C39471384105900E10DB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD98A3D31389162800F6FE76 /* AudioToolbox.framework */,
+				AD98A3D11389161000F6FE76 /* CoreAudio.framework */,
+				AD98A3CF138915FB00F6FE76 /* Accelerate.framework */,
+				AD98A3CD1389146700F6FE76 /* libWordMatchIOS.a */,
 				AD63B3971387B4E500041189 /* AVFoundation.framework */,
 				AD63B3931387B4DF00041189 /* CoreMedia.framework */,
 				AD63B3941387B4DF00041189 /* MediaPlayer.framework */,
-				AD63B3911387B4BF00041189 /* libWordMatchIOS.a */,
 				AD8C39481384105900E10DB0 /* UIKit.framework */,
 				AD8C394A1384105900E10DB0 /* Foundation.framework */,
 				AD8C394C1384105900E10DB0 /* CoreGraphics.framework */,
@@ -207,9 +238,10 @@
 		AD8C396E1384105900E10DB0 /* iPodLibMFCCTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				AD8C39751384105900E10DB0 /* IPTests.h */,
-				AD8C39771384105900E10DB0 /* IPTests.m */,
+				AD85FC771389526C00371916 /* sine_440hz_44100khz_10sec.wav */,
 				AD8C396F1384105900E10DB0 /* Supporting Files */,
+				ADA770B31389233B00486AF0 /* IPSongReaderTest.h */,
+				ADA770B41389233B00486AF0 /* IPSongReaderTest.m */,
 			);
 			path = iPodLibMFCCTestTests;
 			sourceTree = "<group>";
@@ -340,7 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD8C39731384105900E10DB0 /* InfoPlist.strings in Resources */,
-				AD8C39761384105900E10DB0 /* IPTests.h in Resources */,
+				AD85FC791389527D00371916 /* sine_440hz_44100khz_10sec.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD8C39781384105900E10DB0 /* IPTests.m in Sources */,
+				ADA770B51389233B00486AF0 /* IPSongReaderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +505,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iPodLibMFCCTest/IP-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../WordMatch\"";
 				INFOPLIST_FILE = "iPodLibMFCCTest/iPodLibMFCCTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -493,6 +526,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iPodLibMFCCTest/IP-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../WordMatch\"";
 				INFOPLIST_FILE = "iPodLibMFCCTest/iPodLibMFCCTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -518,13 +552,21 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iPodLibMFCCTestTests/iPodLibMFCCTestTests-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iPodLibMFCCTestTests/iPodLibMFCCTestTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = (
+					"-lstdc++",
 					"-framework",
 					SenTestingKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../WordMatch\"";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -540,13 +582,21 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iPodLibMFCCTestTests/iPodLibMFCCTestTests-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iPodLibMFCCTestTests/iPodLibMFCCTestTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = (
+					"-lstdc++",
 					"-framework",
 					SenTestingKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../WordMatch\"";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

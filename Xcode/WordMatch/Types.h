@@ -65,4 +65,15 @@ struct WMMfccConfiguration {
 
 typedef struct WMMfccConfiguration WMMfccConfiguration;
 
+
+enum {
+    kWMSessionResultOK = 0,
+    kWMSessionResultErrorGeneric = 1,
+    kWMSessionResultErrorInvalidWindowSize = 2
+};
+
+typedef SInt16 WMSessionResult;
+
+typedef struct opaqueWMSession* WMSessionRef;
+
 #endif //WORD_MATCH_TYPES_H

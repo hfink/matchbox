@@ -174,43 +174,61 @@
                 NSString * title = [song valueForProperty:MPMediaItemPropertyTitle];
                 NSURL* song_url = [song valueForProperty:MPMediaItemPropertyAssetURL];
                 
-                IPSongReader* song_reader = [[IPSongReader alloc] initWithURL:song_url 
-                                                                  forDuration:mfcc_duration 
-                                                                    withBlock:^BOOL(CMSampleBufferRef sample_buffer) {
-                                                                        
-                                                                        if (!WMSessionIsCompleted(mfcc_session)) {
-                                                                            WMSessionResult mfcc_result = WMSessionFeedFromSampleBuffer(sample_buffer, mfcc_session);
-                                                                            if (mfcc_result != kWMSessionResultOK) {
-                                                                                NSLog(@"MFCC calculation returned an error: %hd", mfcc_result);
-                                                                                return NO;
+                if (song_url == nil) {
+                    
+                    NSLog(@"Can not access MPMediaItemPropertyAssetURL for song '%@'.", title);
+                    duration = 0;
+                    
+                } else {
+                    
+                    IPSongReader* song_reader = [[IPSongReader alloc] initWithURL:song_url 
+                                                                      forDuration:mfcc_duration 
+                                                                        withBlock:^BOOL(CMSampleBufferRef sample_buffer) {
+                                                                            
+                                                                            if (!WMSessionIsCompleted(mfcc_session)) {
+                                                                                WMSessionResult mfcc_result = WMSessionFeedFromSampleBuffer(sample_buffer, mfcc_session);
+                                                                                if (mfcc_result != kWMSessionResultOK) {
+                                                                                    NSLog(@"MFCC calculation returned an error: %hd", mfcc_result);
+                                                                                    return NO;
+                                                                                }
+                                                                            } else {
+                                                                                NSLog(@"Session was already completed.");
                                                                             }
-                                                                        } else {
-                                                                            NSLog(@"Session was already completed.");
-                                                                        }
-                                                                        
-                                                                        return TRUE;
-                                                                    }];
-                
-                //Start processing that stuff
-                BOOL success = [song_reader consumeRange];
-                if (!success) {
-                    NSLog(@"Could not consume the song properly.");
-                    was_error = YES;
-                    [song_reader release];
-                    break;
+                                                                            
+                                                                            return TRUE;
+                                                                        }];
+                    
+                    
+                    //Make the paths below easier to maintain by additn try catch finally
+                    if (song_reader == nil) {
+                        NSLog(@"Song reader initialization failed.");
+                        was_error = YES;
+                        break;
+                    }
+                    
+                    //Start processing that stuff
+                    BOOL success = [song_reader consumeRange];
+                    if (!success) {
+                        NSLog(@"Could not consume the song properly.");
+                        was_error = YES;
+                        [song_reader release];
+                        break;
+                    }
+                    
+                    //Get the average MFCC values
+                    result = WMSessionGetAverage(mfcc_average);
+                    if (result != kWMSessionResultOK) {
+                        NSLog(@"WMSessionGetAverage returned an error: %hd", result);
+                        [song_reader release];
+                        break;
+                    }
+                    
+                    song_processing_end = WMMachTimeToMilliSeconds(mach_absolute_time());
+                    
+                    duration = (song_processing_end - song_processing_start)*1e-3;
+                    
+                    [song_reader release];                    
                 }
-                
-                //Get the average MFCC values
-                result = WMSessionGetAverage(mfcc_average);
-                if (result != kWMSessionResultOK) {
-                    NSLog(@"WMSessionGetAverage returned an error: %hd", result);
-                    [song_reader release];
-                    break;
-                }
-                
-                song_processing_end = WMMachTimeToMilliSeconds(mach_absolute_time());
-                
-                duration = (song_processing_end - song_processing_start)*1e-3;
                 
                 songs_counter++;                
                 
@@ -244,12 +262,10 @@
                                                            mfcc_average[10],
                                                            mfcc_average[11],
                                                            mfcc_average[12]];                    
-                    [self.ibCounterLabel setText:str];                    
+                    [self.ibMfccAvgLabel setText:str];                    
                     [str release];                    
                     
                 });
-                
-                [song_reader release];
                 
                 //Check early exit
                 

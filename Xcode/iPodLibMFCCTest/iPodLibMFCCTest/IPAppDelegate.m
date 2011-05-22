@@ -10,6 +10,8 @@
 
 #import "IPViewController.h"
 
+#import <AVFoundation/AVFoundation.h>
+
 @implementation IPAppDelegate
 
 
@@ -20,7 +22,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-     
+    
+    NSError *audioSessionError = nil;
+    AVAudioSession *mySession = [AVAudioSession sharedInstance];    
+    [mySession setCategory: AVAudioSessionCategoryAudioProcessing     
+                     error: &audioSessionError];
+    [mySession setActive: YES                                       
+                   error: &audioSessionError];
+
+    // maybe consider this as well for optimization...
+//    [[AVAudioSession sharedInstance] setPreferredIOBufferDuration:0.1 error:&activationError];
+//    NSLog(@"setupAudio BUFFER DURATION ERROR IS %@", activationError);         
+    
+    if (audioSessionError != nil) {
+        NSLog(@"Error occured during AVSession configuration: %@", 
+              audioSessionError);
+    }    
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;

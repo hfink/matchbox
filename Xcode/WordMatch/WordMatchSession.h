@@ -27,16 +27,6 @@
  * The name of this API is simply WMSession
  */
 
-enum {
-    kWMSessionResultOK = 0,
-    kWMSessionResultErrorGeneric = 1,
-    kWMSessionResultErrorInvalidWindowSize = 2
-};
-
-typedef SInt16 WMSessionResult;
-
-typedef struct opaqueWMSession* WMSessionRef;
-
 //make note that hopsize will always be window_size/2, and that window size
 //must be 2*N
 //as experiment, for complete duration will be stored
@@ -51,7 +41,7 @@ WMSessionResult WMSessionReset(WMSessionRef session);
 WMSessionResult WMSessionFeedFromSampleBuffer(CMSampleBufferRef sample_buffer, 
                                               WMSessionRef session);
 
-WMSessionResult WMSessionIsCompleted(WMSessionRef session);
+bool WMSessionIsCompleted(WMSessionRef session);
 
 //Note that this requires to have a float[13] properly allocated by the caller, in future
 //this will be queryable by this api via MFCCConfiguration num mfcc's

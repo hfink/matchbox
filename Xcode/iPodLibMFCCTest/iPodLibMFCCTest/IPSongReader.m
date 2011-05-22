@@ -33,16 +33,27 @@
         
         //This currently is the mixdown option with the same
         //Probably you can ask this from a preference panel setup stuff...
+//		NSDictionary *audio_settings = [NSDictionary dictionaryWithObjectsAndKeys:
+//									  [NSNumber numberWithFloat:44100.0],AVSampleRateKey,
+//                                      //This should force mixdown to mono
+//									  [NSNumber numberWithInt:1],AVNumberOfChannelsKey,
+//									  [NSNumber numberWithInt:32],AVLinearPCMBitDepthKey,
+//									  [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
+//									  [NSNumber numberWithBool:YES], AVLinearPCMIsFloatKey,
+//                                      //For Max architextures, this has to be changed!
+//									  [NSNumber numberWithBool:0], AVLinearPCMIsBigEndianKey,
+//									  [NSNumber numberWithBool:YES], AVLinearPCMIsNonInterleaved,
+//									  [NSData data], AVChannelLayoutKey, nil];  
+        
+        
 		NSDictionary *audio_settings = [NSDictionary dictionaryWithObjectsAndKeys:
 									  [NSNumber numberWithFloat:44100.0],AVSampleRateKey,
-                                      //This should force mixdown to mono
-									  [NSNumber numberWithInt:1],AVNumberOfChannelsKey,
-									  [NSNumber numberWithInt:32],AVLinearPCMBitDepthKey,
+									  [NSNumber numberWithInt:2],AVNumberOfChannelsKey,	//how many channels has original? 
+									  [NSNumber numberWithInt:32],AVLinearPCMBitDepthKey, //was 16
 									  [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
-									  [NSNumber numberWithBool:YES], AVLinearPCMIsFloatKey,
-                                      //For Max architextures, this has to be changed!
+									  [NSNumber numberWithBool:YES], AVLinearPCMIsFloatKey,  //was NO
 									  [NSNumber numberWithBool:0], AVLinearPCMIsBigEndianKey,
-									  [NSNumber numberWithBool:YES], AVLinearPCMIsNonInterleaved,
+									  [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
 									  [NSData data], AVChannelLayoutKey, nil];        
         
         NSError * error = nil;
@@ -70,6 +81,8 @@
         
         Float64 total_duration_secs = CMTimeGetSeconds([url_asset duration]);
         
+        NSLog(@"Total duration is %f", total_duration_secs);
+        
         CMTime start_read_time = CMTimeMakeWithSeconds(total_duration_secs*0.5 - seconds*0.5, 600);
         
         CMTimeRange read_range;
@@ -78,6 +91,12 @@
         
         //setting the proper range to read
         asset_reader.timeRange = read_range;
+        
+        if (![asset_reader canAddOutput:asset_output]) {
+            NSLog(@"Cannot add asset output to asset reader.");
+            [self release];
+            return nil;
+        }
         
         [asset_reader addOutput:asset_output];
         

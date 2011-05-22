@@ -24,6 +24,9 @@
 #include "MFCCProcessor.hpp"
 #include "MFCCUtils.h"
 #include "CAHostTimeBase.h"
+#include "CAStreamBasicDescription.h"
+
+#include <CoreAudio/CoreAudioTypes.h>
 
 #include <stdexcept>
 #include <iostream>
@@ -119,4 +122,9 @@ extern "C" double WMMachTimeToMilliSeconds(uint64_t mach) {
 	return result;
 }
 
+extern "C" void WMPrintAudioStreamBasicDescription(const AudioStreamBasicDescription* desc)
+{
+    CAStreamBasicDescription desc_obj(*desc);
+    desc_obj.Print();
+}
 
