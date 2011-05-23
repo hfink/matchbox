@@ -3,7 +3,7 @@
 //  IP
 //
 //  Created by Heinrich Fink on 5/18/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Heinrich Fink. All rights reserved.
 //
 
 #import "IPViewController.h"
@@ -122,10 +122,11 @@
             
             WMSessionResult result = WMSessionCreate(mfcc_duration, 
                                                      mfcc_config, 
-                                                     mfcc_session);
+                                                     &mfcc_session);
             
             if (result != kWMSessionResultOK) {
                 NSLog(@"WMSession returned %hd, exiting calculation", result);
+                return;
             }            
             
             dispatch_queue_t main_queue = dispatch_get_main_queue();            
@@ -147,6 +148,8 @@
                 NSString * str = [[NSString alloc] initWithFormat:@"Reading %u songs", [all_songs count]];        
                 
                 [self.ibHeaderLabel setText:str];
+                
+                [str release];
                 
             });            
             
@@ -206,6 +209,18 @@
                         break;
                     }
                     
+                    dispatch_async(main_queue, ^{                      
+                    
+                        [self.ibTitleLabel setText:title];
+                        [self.ibBenchmarkProgress setProgress:songs_counter/(float)[all_songs count]];
+                        
+                        NSString* str = [[NSString alloc] initWithFormat:@"%i / %u", songs_counter, [all_songs count]];                    
+                        [self.ibCounterLabel setText:str];                    
+                        [str release];                    
+                        
+                    });
+                    
+                    
                     //Start processing that stuff
                     BOOL success = [song_reader consumeRange];
                     if (!success) {
@@ -241,13 +256,6 @@
                     [self.ibAvgDurationPerSong setText:str];
                     [str release];
                     
-                    [self.ibTitleLabel setText:title];
-                    [self.ibBenchmarkProgress setProgress:songs_counter/(float)[all_songs count]];
-                    
-                    str = [[NSString alloc] initWithFormat:@"%i / %u", songs_counter, [all_songs count]];                    
-                    [self.ibCounterLabel setText:str];                    
-                    [str release];
-                    
                     str = [[NSString alloc] initWithFormat:@"%.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f", 
                                                            mfcc_average[0], 
                                                            mfcc_average[1],
@@ -263,6 +271,7 @@
                                                            mfcc_average[11],
                                                            mfcc_average[12]];                    
                     [self.ibMfccAvgLabel setText:str];                    
+                    
                     [str release];                    
                     
                 });
@@ -283,11 +292,11 @@
                 [str release];
                 
                 if (was_canceled)
-                    [self.ibTitleLabel setText:@"User canceled benchmark"];
+                    [self.ibHeaderLabel setText:@"User canceled benchmark"];
                 else if (was_error)
-                    [self.ibTitleLabel setText:@"Error in benchmark process"];                    
+                    [self.ibHeaderLabel setText:@"Error in benchmark process"];                    
                 else
-                    [self.ibTitleLabel setText:@"All song were processed successfully"];                    
+                    [self.ibHeaderLabel setText:@"All song were processed successfully"];                    
                 
                 isExecutingBenchmark = NO;
                 

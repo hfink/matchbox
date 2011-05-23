@@ -32,7 +32,7 @@
 //as experiment, for complete duration will be stored
 WMSessionResult WMSessionCreate(float session_duration,
                                 WMMfccConfiguration mfcc_configuration,
-                                WMSessionRef session_out);
+                                WMSessionRef* session_out);
 
 WMSessionResult WMSessionDestroy(WMSessionRef session);
 

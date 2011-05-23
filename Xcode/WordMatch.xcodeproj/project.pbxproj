@@ -807,6 +807,10 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../boost_ext/include\"",
+					/Developer/Extras/CoreAudio/PublicUtility,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LD_NO_PIE = NO;
 				LINKER_DISPLAYS_MANGLED_NAMES = YES;
@@ -839,6 +843,10 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../boost_ext/include\"",
+					/Developer/Extras/CoreAudio/PublicUtility,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LD_NO_PIE = NO;
 				LINKER_DISPLAYS_MANGLED_NAMES = YES;
@@ -889,6 +897,10 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../boost_ext/include\"",
+					/Developer/Extras/CoreAudio/PublicUtility,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -916,6 +928,10 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../boost_ext/include\"",
+					/Developer/Extras/CoreAudio/PublicUtility,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

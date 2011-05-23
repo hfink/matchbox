@@ -29,7 +29,7 @@ struct opaqueWMSession {
     size_t num_of_overlap_samples;
     AudioBufferList* non_interleaved_stereo_buffer;
     // of each CMSampleBuffer in this session, has to stay the same    
-    size_t incoming_frames_per_buffer;
+    size_t max_incoming_frames_per_buffer;
     
     opaqueWMSession() : session_duration(0), 
                         mfcc_data(NULL),
@@ -41,7 +41,7 @@ struct opaqueWMSession {
                         preemph_border(0),
                         num_of_overlap_samples(0),
                         non_interleaved_stereo_buffer(NULL), 
-                        incoming_frames_per_buffer(0)
+                        max_incoming_frames_per_buffer(0)
     {}
     
 };
@@ -77,7 +77,7 @@ void cleanup_session(opaqueWMSession* session) {
 
 extern "C" WMSessionResult WMSessionCreate(float session_duration,
                                            WMMfccConfiguration mfcc_configuration,
-                                           WMSessionRef session_out)
+                                           WMSessionRef* session_out)
 {
     if (session_duration <= 0)
         return kWMSessionResultErrorInvalidArgument;
@@ -141,7 +141,7 @@ extern "C" WMSessionResult WMSessionCreate(float session_duration,
         return kWMSessionResultErrorGeneric;
     }
     
-    session_out = new_session;
+    *session_out = new_session;
     
     return kWMSessionResultOK;
 }
@@ -207,6 +207,8 @@ extern "C" WMSessionResult WMSessionFeedFromSampleBuffer(CMSampleBufferRef sampl
         return kWMSessionResultErrorGeneric;
     }
     
+    WMSessionResult return_code = kWMSessionResultOK;
+    
     Boolean is_data_ready = CMSampleBufferDataIsReady(sample_buffer);
     
     if (!is_data_ready) {
@@ -214,6 +216,10 @@ extern "C" WMSessionResult WMSessionFeedFromSampleBuffer(CMSampleBufferRef sampl
                   << std::endl;
         return kWMSessionResultErrorGeneric;
     }
+    
+    //Debug info, prints out time in sample...
+//    std::cout << "Presentation time:" << std::endl;
+//    CMTimeShow(CMSampleBufferGetPresentationTimeStamp(sample_buffer));
     
     //Check the format description
     CMFormatDescriptionRef format_desc = 
@@ -291,15 +297,17 @@ extern "C" WMSessionResult WMSessionFeedFromSampleBuffer(CMSampleBufferRef sampl
             session->non_interleaved_stereo_buffer->mBuffers[1].mDataByteSize = byte_size;
             session->non_interleaved_stereo_buffer->mBuffers[1].mNumberChannels = 1;
             
-            session->incoming_frames_per_buffer = frame_count;
+            session->max_incoming_frames_per_buffer = frame_count;
         }
         
-        if (session->incoming_frames_per_buffer != frame_count) {
+        if (session->max_incoming_frames_per_buffer < frame_count) {
             
-            std::cerr << "Error: Varying frame count during buffer feed. "
+            std::cerr << "Error: Frame count too large during buffer feed. "
                       << "Original: "
-                      << session->incoming_frames_per_buffer << " vs now: "
+                      << session->max_incoming_frames_per_buffer << " vs now: "
                       << frame_count << "." << std::endl;
+            
+            return_code = kWMSessionResultErrorGeneric;
             
         } else {
         
@@ -432,13 +440,14 @@ extern "C" WMSessionResult WMSessionFeedFromSampleBuffer(CMSampleBufferRef sampl
         //TODO: implement non-interleaved mode
         std::cerr << "Warning: currently, only interleaved stereo streams are "
                   << "supported." << std::endl;
+        return_code = kWMSessionResultErrorGeneric;
     }
     
     CFRelease(audio_data);
     
     session->num_read_samples += (int)count_samples;
     
-    return kWMSessionResultOK;
+    return return_code;
 }
 
 extern "C" WMSessionResult WMSessionGetAverage(WMFeatureType* average_out, 
@@ -457,27 +466,6 @@ extern "C" WMSessionResult WMSessionGetAverage(WMFeatureType* average_out,
         
     }
     
-    float num_features_inv = 1.0f/(float)kWMSessionNumberOfMFCCs;
-    
-    static const float div_vector[13] = { 
-        num_features_inv, 
-        num_features_inv,
-        num_features_inv,
-        num_features_inv,
-        num_features_inv,
-        num_features_inv,
-        num_features_inv,
-        num_features_inv,
-        num_features_inv,    
-        num_features_inv,    
-        num_features_inv,    
-        num_features_inv,    
-        num_features_inv 
-    };    
-
-    // we calculate the average by multiply the matrix of feature-vectors 
-    // (as rows), by the vector (1/num_expected_features)
-    
     //Note that this approach is rather a performance test case than the best
     //way to calculate the average over all MFCC extracted features.
     //A better approach would be to keep book of a running sum after each
@@ -489,18 +477,13 @@ extern "C" WMSessionResult WMSessionGetAverage(WMFeatureType* average_out,
     
     std::fill(&average_out[0], &average_out[kWMSessionNumberOfMFCCs], 0);
     
-    cblas_sgemv(CblasRowMajor, 
-                CblasNoTrans, 
-                session->num_of_features_expected, 
-                kWMSessionNumberOfMFCCs, 
-                1, 
-                session->mfcc_data, 
-                session->num_of_features_expected, 
-                div_vector, 
-                1, 
-                0, 
-                average_out, 
-                1);
+    //Calculating mean per component
+    for (size_t i = 0; i<kWMSessionNumberOfMFCCs; ++i) {
+        vDSP_meanv(&session->mfcc_data[i], 
+                   kWMSessionNumberOfMFCCs, 
+                   &average_out[i], 
+                   session->num_of_features_expected);
+    }
     
     return kWMSessionResultOK;
 }
