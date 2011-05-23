@@ -23,6 +23,7 @@
     UILabel *ibHeaderLabel_;
     UILabel *ibCounterLabel;
     UILabel *ibMfccAvgLabel;
+    UILabel *ibArtistLabel;
 }
 @property (nonatomic, retain) IBOutlet UILabel *ibHeaderLabel;
 @property (nonatomic, retain) IBOutlet UILabel *ibMfccAvgLabel;
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *ibActivityIndicator;
 @property (nonatomic, retain) IBOutlet UILabel *ibAvgDurationPerSong;
 @property (nonatomic, retain) IBOutlet UIButton *ibBenchmarkButton;
+@property (nonatomic, retain) IBOutlet UILabel *ibArtistLabel;
 
 @property (nonatomic, retain) IBOutlet UILabel *ibTotalDuration;
 @property (nonatomic, retain) IBOutlet UIProgressView *ibBenchmarkProgress;

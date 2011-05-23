@@ -81,7 +81,7 @@
         
         Float64 total_duration_secs = CMTimeGetSeconds([url_asset duration]);
         
-        NSLog(@"Total duration is %f", total_duration_secs);
+//        NSLog(@"Total duration is %f", total_duration_secs);
         
         CMTime start_read_time = CMTimeMakeWithSeconds(total_duration_secs*0.5 - seconds*0.5, 600);
         

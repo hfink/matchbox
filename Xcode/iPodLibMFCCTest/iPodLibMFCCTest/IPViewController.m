@@ -25,6 +25,7 @@
 @synthesize ibActivityIndicator = ibActivityIndicator_;
 @synthesize ibAvgDurationPerSong = ibAvgDurationPerSong_;
 @synthesize ibBenchmarkButton = ibBenchmarkButton_;
+@synthesize ibArtistLabel;
 @synthesize ibTotalDuration = ibTotalDuration_;
 @synthesize ibBenchmarkProgress = ibBenchmarkProgress_;
 @synthesize ibCounterLabel;
@@ -41,6 +42,7 @@
     [ibHeaderLabel_ release];
     [ibCounterLabel release];
     [ibMfccAvgLabel release];
+    [ibArtistLabel release];
     [super dealloc];
 }
 
@@ -54,6 +56,20 @@
 
 #pragma mark - View lifecycle
 
+- (void)hideRunningLabels
+{
+    [self.ibArtistLabel setHidden:YES];
+    [self.ibTitleLabel setHidden:YES];    
+    [self.ibMfccAvgLabel setHidden:YES];        
+}
+
+- (void)showRunningLabels
+{
+    [self.ibArtistLabel setHidden:NO];
+    [self.ibTitleLabel setHidden:NO];    
+    [self.ibMfccAvgLabel setHidden:NO];        
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -61,6 +77,7 @@
     isExecutingBenchmark = NO;
     song_processing_queue = [[NSOperationQueue alloc] init];
     [song_processing_queue setName:@"SongProcessingQueue"];
+    [self hideRunningLabels];
 }
 
 
@@ -76,6 +93,7 @@
     [self setIbHeaderLabel:nil];
     [self setIbCounterLabel:nil];
     [self setIbMfccAvgLabel:nil];
+    [self setIbArtistLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -175,6 +193,7 @@
                 }
                 
                 NSString * title = [song valueForProperty:MPMediaItemPropertyTitle];
+                NSString * artist = [song valueForProperty:MPMediaItemPropertyArtist];                
                 NSURL* song_url = [song valueForProperty:MPMediaItemPropertyAssetURL];
                 
                 if (song_url == nil) {
@@ -211,7 +230,10 @@
                     
                     dispatch_async(main_queue, ^{                      
                     
+                        [self showRunningLabels];
+                        
                         [self.ibTitleLabel setText:title];
+                        [self.ibArtistLabel setText:artist];
                         [self.ibBenchmarkProgress setProgress:songs_counter/(float)[all_songs count]];
                         
                         NSString* str = [[NSString alloc] initWithFormat:@"%i / %u", songs_counter, [all_songs count]];                    
@@ -252,11 +274,16 @@
                 dispatch_async(main_queue, ^{  
                     
                     double avg_song_time = duration / (double)songs_counter;
+                    
                     NSString * str = [[NSString alloc] initWithFormat:@"%.2f sec", avg_song_time];
                     [self.ibAvgDurationPerSong setText:str];
                     [str release];
                     
-                    str = [[NSString alloc] initWithFormat:@"%.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f", 
+                    str = [[NSString alloc] initWithFormat:@"%.2f sec", duration];
+                    [self.ibTotalDuration setText:str];
+                    [str release];
+                    
+                    str = [[NSString alloc] initWithFormat:@"%.1f %.1f %.1f %.1f %.1f %.1f %.1f %.1f %.1f %.1f %.1f %.1f %.1f", 
                                                            mfcc_average[0], 
                                                            mfcc_average[1],
                                                            mfcc_average[2],
@@ -299,6 +326,8 @@
                     [self.ibHeaderLabel setText:@"All song were processed successfully"];                    
                 
                 isExecutingBenchmark = NO;
+                
+                [self hideRunningLabels];
                 
                 [self.ibBenchmarkButton setTitle:@"Run Benchmark" forState:UIControlStateNormal];
                 [self.ibBenchmarkProgress setProgress:.0f];
