@@ -3,7 +3,7 @@
 //  iPodLibMFCCTest
 //
 //  Created by Heinrich Fink on 5/20/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Heinrich Fink. All rights reserved.
 //
 
 #import "IPSongReader.h"

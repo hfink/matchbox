@@ -3,7 +3,7 @@
 //  IP
 //
 //  Created by Heinrich Fink on 5/18/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Heinrich Fink. All rights reserved.
 //
 
 #import "IPAppDelegate.h"
@@ -40,6 +40,8 @@
         NSLog(@"Error occured during AVSession configuration: %@", 
               audioSessionError);
     }    
+    
+    application.idleTimerDisabled = YES;
     
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
