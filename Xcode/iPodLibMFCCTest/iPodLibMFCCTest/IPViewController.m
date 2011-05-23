@@ -256,6 +256,7 @@
                     result = WMSessionGetAverage(mfcc_average, mfcc_session);
                     if (result != kWMSessionResultOK) {
                         NSLog(@"WMSessionGetAverage returned an error: %hd", result);
+                        was_error = YES;
                         [song_reader release];
                         break;
                     }
