@@ -73,6 +73,7 @@ static const float kTestDuration = 2;
         WMPrintAudioStreamBasicDescription(asbd);
         
         CMItemCount count_samples = CMSampleBufferGetNumSamples(sampler);
+        
         NSLog(@"Got %ld num of samples.", count_samples);
         
         AudioBufferList abl;

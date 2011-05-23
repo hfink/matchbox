@@ -169,11 +169,6 @@
 		AD8C39391384105900E10DB0 = {
 			isa = PBXGroup;
 			children = (
-				ADA770D31389460F00486AF0 /* AVFoundation.framework */,
-				ADA770D11389460900486AF0 /* CoreMedia.framework */,
-				ADA770CF1389460300486AF0 /* libWordMatchIOS.a */,
-				ADA770CD1389460000486AF0 /* AudioToolbox.framework */,
-				ADA770CB138945FA00486AF0 /* Accelerate.framework */,
 				AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */,
 				AD8C394E1384105900E10DB0 /* iPodLibMFCCTest */,
 				AD8C396E1384105900E10DB0 /* iPodLibMFCCTestTests */,
@@ -249,6 +244,11 @@
 		AD8C396F1384105900E10DB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ADA770D31389460F00486AF0 /* AVFoundation.framework */,
+				ADA770D11389460900486AF0 /* CoreMedia.framework */,
+				ADA770CF1389460300486AF0 /* libWordMatchIOS.a */,
+				ADA770CD1389460000486AF0 /* AudioToolbox.framework */,
+				ADA770CB138945FA00486AF0 /* Accelerate.framework */,
 				AD8C39701384105900E10DB0 /* iPodLibMFCCTestTests-Info.plist */,
 				AD8C39711384105900E10DB0 /* InfoPlist.strings */,
 				AD8C39741384105900E10DB0 /* iPodLibMFCCTestTests-Prefix.pch */,

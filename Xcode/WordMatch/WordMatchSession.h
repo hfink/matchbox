@@ -45,7 +45,8 @@ bool WMSessionIsCompleted(WMSessionRef session);
 
 //Note that this requires to have a float[13] properly allocated by the caller, in future
 //this will be queryable by this api via MFCCConfiguration num mfcc's
-WMSessionResult WMSessionGetAverage(WMFeatureType* average_out);
+WMSessionResult WMSessionGetAverage(WMFeatureType* average_out, 
+                                    WMSessionRef session);
 
 #endif
 

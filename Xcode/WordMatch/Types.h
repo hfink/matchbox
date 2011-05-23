@@ -69,7 +69,8 @@ typedef struct WMMfccConfiguration WMMfccConfiguration;
 enum {
     kWMSessionResultOK = 0,
     kWMSessionResultErrorGeneric = 1,
-    kWMSessionResultErrorInvalidWindowSize = 2
+    kWMSessionResultErrorInvalidWindowSize = 2,
+    kWMSessionResultErrorInvalidArgument = 3
 };
 
 typedef SInt16 WMSessionResult;
