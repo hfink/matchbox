@@ -459,11 +459,8 @@ extern "C" WMSessionResult WMSessionGetAverage(WMFeatureType* average_out,
     
     if (!WMSessionIsCompleted(session)) {
         
-        std::cerr << "Error: Calculation of features average was requested "
-                  << "but session is not complete yet. " << std::endl;
-        
-        return kWMSessionResultErrorGeneric;
-        
+        std::cout << "Warning: Calculation of features average was requested "
+                  << "but session is not completed yet. " << std::endl;
     }
     
     //Note that this approach is rather a performance test case than the best
@@ -477,12 +474,13 @@ extern "C" WMSessionResult WMSessionGetAverage(WMFeatureType* average_out,
     
     std::fill(&average_out[0], &average_out[kWMSessionNumberOfMFCCs], 0);
     
+    
     //Calculating mean per component
     for (size_t i = 0; i<kWMSessionNumberOfMFCCs; ++i) {
         vDSP_meanv(&session->mfcc_data[i], 
                    kWMSessionNumberOfMFCCs, 
                    &average_out[i], 
-                   session->num_of_features_expected);
+                   session->num_of_features_set);
     }
     
     return kWMSessionResultOK;

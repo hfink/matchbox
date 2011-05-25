@@ -21,9 +21,11 @@
         
         consumer_block_ = consumer_block;
         
-        NSDictionary* options = [NSDictionary dictionaryWithObjectsAndKeys:NO, AVURLAssetPreferPreciseDurationAndTimingKey, nil];
+        NSDictionary* options = [[NSDictionary alloc] initWithObjectsAndKeys:NO, AVURLAssetPreferPreciseDurationAndTimingKey, nil];
         
-        AVURLAsset* url_asset = [AVURLAsset URLAssetWithURL:url options:options];
+        AVURLAsset* url_asset = [[AVURLAsset alloc] initWithURL:url options:options];
+        
+        [options release];
         
         //Note: it's ok if we block here, this class shall be used on a 
         //worker thread anyways
@@ -46,22 +48,16 @@
 //									  [NSData data], AVChannelLayoutKey, nil];  
         
         
-		NSDictionary *audio_settings = [NSDictionary dictionaryWithObjectsAndKeys:
-									  [NSNumber numberWithFloat:44100.0],AVSampleRateKey,
-									  [NSNumber numberWithInt:2],AVNumberOfChannelsKey,	//how many channels has original? 
-									  [NSNumber numberWithInt:32],AVLinearPCMBitDepthKey, //was 16
-									  [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
-									  [NSNumber numberWithBool:YES], AVLinearPCMIsFloatKey,  //was NO
-									  [NSNumber numberWithBool:0], AVLinearPCMIsBigEndianKey,
-									  [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
-									  [NSData data], AVChannelLayoutKey, nil];        
-        
         NSError * error = nil;
         
-        AVAssetReader* asset_reader = [AVAssetReader assetReaderWithAsset:url_asset 
-                                                                   error:&error];
+        AVAssetReader* asset_reader = [[AVAssetReader alloc] initWithAsset:url_asset 
+                                                                     error:&error];
+        
+        [url_asset release];
         
         self.assetReader = asset_reader;
+        
+        [asset_reader release];
         
         if (error != nil) {
             NSLog(@"There was an error create the the AssetReader: '%@'.", 
@@ -70,11 +66,25 @@
             return nil;
         }
         
+		NSDictionary *audio_settings = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                        [NSNumber numberWithFloat:44100.0],AVSampleRateKey,
+                                        [NSNumber numberWithInt:2],AVNumberOfChannelsKey,	//how many channels has original? 
+                                        [NSNumber numberWithInt:32],AVLinearPCMBitDepthKey, //was 16
+                                        [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
+                                        [NSNumber numberWithBool:YES], AVLinearPCMIsFloatKey,  //was NO
+                                        [NSNumber numberWithBool:0], AVLinearPCMIsBigEndianKey,
+                                        [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
+                                        [NSData data], AVChannelLayoutKey, nil];              
+        
 		AVAssetReaderAudioMixOutput * asset_output = 
-            [AVAssetReaderAudioMixOutput assetReaderAudioMixOutputWithAudioTracks:[url_asset tracks]
-                                                                    audioSettings:audio_settings];        
+            [[AVAssetReaderAudioMixOutput alloc] initWithAudioTracks:[url_asset tracks]
+                                                       audioSettings:audio_settings];    
+        
+        [audio_settings release];
         
         self.assetOutput = asset_output;
+        
+        [asset_output release];
         
         // Set the proper time range
         CMTime read_duration = CMTimeMakeWithSeconds(seconds, 600);
@@ -146,6 +156,18 @@
         NSLog(@"Reader encountered an error: '%@'", 
               [[assetReader_ error] localizedDescription]);
         return NO;
+    } else if ([assetReader_ status] == AVAssetReaderStatusUnknown) {
+        NSLog(@"Reader has encountered an unknown error.");
+        return NO;
+    } else if ([assetReader_ status] == AVAssetReaderStatusReading) {
+        NSLog(@"copyNextBuffer returned NULL, but reader is still reading.");
+        return NO;
+    }
+    
+    //sanity check
+    if ([assetReader_ status] != AVAssetReaderStatusCompleted) {
+        NSLog(@"AssetReader finished reading without an error, but process \
+                was also not completed.");
     }
     
     return YES;

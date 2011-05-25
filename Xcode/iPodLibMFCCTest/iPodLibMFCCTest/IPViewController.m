@@ -59,15 +59,13 @@
 - (void)hideRunningLabels
 {
     [self.ibArtistLabel setHidden:YES];
-    [self.ibTitleLabel setHidden:YES];    
-    [self.ibMfccAvgLabel setHidden:YES];        
+    [self.ibTitleLabel setHidden:YES];          
 }
 
 - (void)showRunningLabels
 {
     [self.ibArtistLabel setHidden:NO];
-    [self.ibTitleLabel setHidden:NO];    
-    [self.ibMfccAvgLabel setHidden:NO];        
+    [self.ibTitleLabel setHidden:NO];           
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -135,7 +133,7 @@
             mfcc_config.mel_min_freq = 20.0f;
             mfcc_config.mel_max_freq = 15000.0f;
             mfcc_config.sampling_rate = 44100.0f;
-            mfcc_config.pre_empha_alpha = 0.97f;
+            mfcc_config.pre_empha_alpha = 0.97f;           
             mfcc_config.window_size = 1024;            
             
             WMSessionResult result = WMSessionCreate(mfcc_duration, 
@@ -154,8 +152,17 @@
             MPMediaPropertyPredicate *music_type_filter = 
             [MPMediaPropertyPredicate predicateWithValue: [NSNumber numberWithInt:MPMediaTypeMusic]
                                              forProperty: MPMediaItemPropertyMediaType];       
+
+            //DEBUG
+            
+//            MPMediaPropertyPredicate* debug_filter = [MPMediaPropertyPredicate predicateWithValue: @"Intro"
+//                                                                                      forProperty: MPMediaItemPropertyTitle];                   
+            
+            //EOF DEBUG
             
             NSSet* predicate_set = [NSSet setWithObject:music_type_filter];
+
+//            NSSet* predicate_set = [NSSet setWithObjects:music_type_filter, debug_filter, nil];
             
             MPMediaQuery* songs_query = [[MPMediaQuery alloc] initWithFilterPredicates:predicate_set];
             
@@ -182,8 +189,12 @@
             BOOL was_canceled = NO;
             BOOL was_error = NO;            
             
-            for (MPMediaItem* song in all_songs) {
+            NSAutoreleasePool* song_pool = nil;            
             
+            for (MPMediaItem* song in all_songs) {
+                
+                song_pool = [[NSAutoreleasePool alloc] init];                
+                
                 //Resetting the session
                 result = WMSessionReset(mfcc_session);
                 if (result != kWMSessionResultOK) {
@@ -220,11 +231,22 @@
                                                                             return TRUE;
                                                                         }];
                     
-                    
                     //Make the paths below easier to maintain by additn try catch finally
                     if (song_reader == nil) {
                         NSLog(@"Song reader initialization failed.");
                         was_error = YES;
+                        break;
+                        continue;
+                    }                    
+                    
+                    Float64 duration_sec = CMTimeGetSeconds([song_reader.assetReader.asset duration]);
+                    if (duration_sec < mfcc_duration+2) {
+                        NSLog(@"Song '%@' by '%@' is too short, skipping it. You \
+                              should remove this song from the test set to \
+                              prevent it from biasing the results.", 
+                              title, 
+                              artist);
+                        [song_reader release];
                         break;
                     }
                     
@@ -236,7 +258,7 @@
                         [self.ibArtistLabel setText:artist];
                         [self.ibBenchmarkProgress setProgress:songs_counter/(float)[all_songs count]];
                         
-                        NSString* str = [[NSString alloc] initWithFormat:@"%i / %u", songs_counter, [all_songs count]];                    
+                        NSString* str = [[NSString alloc] initWithFormat:@"%i / %u", songs_counter+1, [all_songs count]];                    
                         [self.ibCounterLabel setText:str];                    
                         [str release];                    
                         
@@ -265,7 +287,8 @@
                     
                     duration = (song_processing_end - song_processing_start)*1e-3;
                     
-                    [song_reader release];                    
+                    [song_reader release];     
+                    
                 }
                 
                 songs_counter++;                
@@ -311,7 +334,11 @@
                     break;
                 }
                 
+                [song_pool release];
+                song_pool = nil;
             }            
+            
+            [song_pool release];
             
             dispatch_async(main_queue, ^{  
                 
@@ -328,7 +355,7 @@
                 
                 isExecutingBenchmark = NO;
                 
-                [self hideRunningLabels];
+                //[self hideRunningLabels];
                 
                 [self.ibBenchmarkButton setTitle:@"Run Benchmark" forState:UIControlStateNormal];
                 [self.ibBenchmarkProgress setProgress:.0f];
