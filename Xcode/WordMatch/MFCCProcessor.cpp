@@ -264,11 +264,18 @@ void MFCCProcessor::pre_emphasize_to_buffer(float border_value,
     
     // s2(n) = s(n) - a*s(n-1), where a is between 0.96 ..0.99
     
-    //TODO: how to vectorize that??? -> eventually with vDSP_vswsum
+    // multiply with -pre_emph_coeff into process buffer 
     
-    for (size_t i = user_window_size_-1; i > 0; --i) {
-        process_buffer_[i] = orig_audio[i] - pre_emph_alpha_*  orig_audio[i-1];
-    }
+    // vector add + factor, mind the offset
+    const float pre_emph_neg = -pre_emph_alpha_;
+    vDSP_vsma(orig_audio, 
+              1, 
+              &pre_emph_neg, 
+              &orig_audio[1], 
+              1, 
+              &(process_buffer_.get())[1], 
+              1, 
+              user_window_size_-1);
     
     // deal with border properly
     process_buffer_[0] = orig_audio[0] - pre_emph_alpha_*  border_value;

@@ -186,7 +186,6 @@ namespace WM {
         
         typedef boost::scoped_array<float> FloatScopedArray;
 
-        FloatScopedArray pre_emph_buffer_;                
         FloatScopedArray process_buffer_;        
         FloatScopedArray hamming_window_;
         
