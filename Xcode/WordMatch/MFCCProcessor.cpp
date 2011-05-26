@@ -166,17 +166,20 @@ void MFCCProcessor::process(const WMAudioSampleType * samples,
     if ( samples == NULL )
         return;
     
-    //copy data
-    size_t num_bytes = sizeof(WMAudioSampleType)*user_window_size_;
-    memcpy(process_buffer_.get(), samples, num_bytes);
-    
-    //make sure that the rest of process buffer is set to zero
-    vDSP_vclr(&process_buffer_[user_window_size_], 1, fft_size_ - user_window_size_);
+    //we either copy straight to the process buffer, or we perform 
+    //pre-emphasis and set the process buffer as the target
+
     
     // Pre-emphasis, a high-pass filter
     if (pre_emph_alpha_ != 0) {
-        pre_emphasize(pre_emph_filter_border);
+        pre_emphasize_to_buffer(pre_emph_filter_border, samples);
+    } else {
+        size_t num_bytes = sizeof(WMAudioSampleType)*user_window_size_;
+        memcpy(process_buffer_.get(), samples, num_bytes);        
     }
+    
+    //make sure that the rest of process buffer is set to zero
+    vDSP_vclr(&process_buffer_[user_window_size_], 1, fft_size_ - user_window_size_);    
     
     // Apply Hamming Window before performing FFT
     apply_hamming_window();
@@ -253,7 +256,8 @@ void MFCCProcessor::process(const WMAudioSampleType * samples,
     
 }
 
-void MFCCProcessor::pre_emphasize(float border_value)
+void MFCCProcessor::pre_emphasize_to_buffer(float border_value,
+                                            const WMAudioSampleType* orig_audio)
 {
     // Apply a high-pass filter to compensate the high-frequency part that was
     // suppressed during sound production of humans
@@ -263,12 +267,11 @@ void MFCCProcessor::pre_emphasize(float border_value)
     //TODO: how to vectorize that??? -> eventually with vDSP_vswsum
     
     for (size_t i = user_window_size_-1; i > 0; --i) {
-        process_buffer_[i] = process_buffer_[i] - pre_emph_alpha_*  process_buffer_[i-1];
-        
+        process_buffer_[i] = orig_audio[i] - pre_emph_alpha_*  orig_audio[i-1];
     }
     
     // deal with border properly
-    process_buffer_[0] = process_buffer_[0] - pre_emph_alpha_*  border_value;
+    process_buffer_[0] = orig_audio[0] - pre_emph_alpha_*  border_value;
     
 }
 

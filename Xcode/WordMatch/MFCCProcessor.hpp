@@ -172,7 +172,8 @@ namespace WM {
         
         //Pre-emphasizes the signal. See MFCCProcessor::process for an
         //explanation of the border value.
-        void pre_emphasize(float border_value);
+        void pre_emphasize_to_buffer(float border_value, 
+                                     const WMAudioSampleType* orig_audio);
         
         void apply_hamming_window();
         void calculate_spectrum_magnitudes();
@@ -184,7 +185,8 @@ namespace WM {
         const float pre_emph_alpha_;
         
         typedef boost::scoped_array<float> FloatScopedArray;
-        
+
+        FloatScopedArray pre_emph_buffer_;                
         FloatScopedArray process_buffer_;        
         FloatScopedArray hamming_window_;
         
