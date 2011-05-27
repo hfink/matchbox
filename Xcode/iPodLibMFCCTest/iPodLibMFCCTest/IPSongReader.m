@@ -16,6 +16,7 @@
 - (id)initWithURL:(NSURL*)url 
       forDuration:(float)seconds 
      samplingRate:(Float64)samplingRate
+      numChannels:(NSUInteger)numChannels
         withBlock:(BOOL (^)(CMSampleBufferRef)) consumer_block {
     
     if ((self = [super init])) { // equivalent to "self does not equal nil"
@@ -33,21 +34,6 @@
         
         //TODO: setting AVSampleRateConverterAudioQualityKey to low might help
         //performance in here...
-        
-        //This currently is the mixdown option with the same
-        //Probably you can ask this from a preference panel setup stuff...
-//		NSDictionary *audio_settings = [NSDictionary dictionaryWithObjectsAndKeys:
-//									  [NSNumber numberWithFloat:44100.0],AVSampleRateKey,
-//                                      //This should force mixdown to mono
-//									  [NSNumber numberWithInt:1],AVNumberOfChannelsKey,
-//									  [NSNumber numberWithInt:32],AVLinearPCMBitDepthKey,
-//									  [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
-//									  [NSNumber numberWithBool:YES], AVLinearPCMIsFloatKey,
-//                                      //For Max architextures, this has to be changed!
-//									  [NSNumber numberWithBool:0], AVLinearPCMIsBigEndianKey,
-//									  [NSNumber numberWithBool:YES], AVLinearPCMIsNonInterleaved,
-//									  [NSData data], AVChannelLayoutKey, nil];  
-        
         
         NSError * error = nil;
         
@@ -69,13 +55,13 @@
         
 		NSDictionary *audio_settings = [[NSDictionary alloc] initWithObjectsAndKeys:
                                         [NSNumber numberWithFloat:samplingRate],AVSampleRateKey,
-                                        [NSNumber numberWithInt:2],AVNumberOfChannelsKey,	//how many channels has original? 
+                                        [NSNumber numberWithInt:numChannels],AVNumberOfChannelsKey,	//how many channels has original? 
                                         [NSNumber numberWithInt:32],AVLinearPCMBitDepthKey, //was 16
                                         [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
                                         [NSNumber numberWithBool:YES], AVLinearPCMIsFloatKey,  //was NO
                                         [NSNumber numberWithBool:0], AVLinearPCMIsBigEndianKey,
                                         [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
-                                        [NSData data], AVChannelLayoutKey, nil];              
+                                        [NSData data], AVChannelLayoutKey,nil];              
         
 		AVAssetReaderAudioMixOutput * asset_output = 
             [[AVAssetReaderAudioMixOutput alloc] initWithAudioTracks:[url_asset tracksWithMediaType:AVMediaTypeAudio]

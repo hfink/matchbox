@@ -29,13 +29,18 @@
     NSUInteger mfccWindowSize;
     Float64 mfccMelMax;
     UISegmentedControl *ibModeSelector;
+    UISegmentedControl *ibChannelSwitch;
+    NSUInteger numChannelsRequest;
 }
 - (IBAction)ibChangeMode:(id)sender;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *ibChannelSwitch;
+- (IBAction)ibChangeChannelMode:(id)sender;
 
 @property (nonatomic, retain) IBOutlet UISegmentedControl *ibModeSelector;
 @property (nonatomic, assign) Float64 samplingRate;
 @property (nonatomic, assign) NSUInteger mfccWindowSize;
 @property (nonatomic, assign) Float64 mfccMelMax;
+@property (nonatomic, assign) NSUInteger numChannelsRequest;
 
 @property (nonatomic, retain) IBOutlet UILabel *ibHeaderLabel;
 @property (nonatomic, retain) IBOutlet UILabel *ibMfccAvgLabel;

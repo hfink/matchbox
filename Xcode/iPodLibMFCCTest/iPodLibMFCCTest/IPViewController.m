@@ -31,8 +31,10 @@
 @synthesize ibCounterLabel;
 @synthesize mfccMelMax;
 @synthesize mfccWindowSize;
+@synthesize ibChannelSwitch;
 @synthesize ibModeSelector;
 @synthesize samplingRate;
+@synthesize numChannelsRequest;
 
 - (void)dealloc
 {
@@ -48,6 +50,7 @@
     [ibMfccAvgLabel release];
     [ibArtistLabel release];
     [ibModeSelector release];
+    [ibChannelSwitch release];
     [super dealloc];
 }
 
@@ -85,6 +88,7 @@
     self.mfccMelMax = 15000;
     self.samplingRate = 44100;
     self.mfccWindowSize = 1024;
+    self.numChannelsRequest = 2;
 }
 
 
@@ -102,6 +106,7 @@
     [self setIbMfccAvgLabel:nil];
     [self setIbArtistLabel:nil];
     [self setIbModeSelector:nil];
+    [self setIbChannelSwitch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -124,6 +129,7 @@
     } else {
         
         self.ibModeSelector.enabled = NO;
+        self.ibChannelSwitch.enabled = NO;
         
         [self.ibBenchmarkButton setTitle:@"Stop Benchmark" forState:UIControlStateNormal];        
         isExecutingBenchmark = YES;
@@ -229,6 +235,7 @@
                     IPSongReader* song_reader = [[IPSongReader alloc] initWithURL:song_url 
                                                                       forDuration:mfcc_duration 
                                                                      samplingRate:self.samplingRate
+                                                                      numChannels:self.numChannelsRequest
                                                                         withBlock:^BOOL(CMSampleBufferRef sample_buffer) {
                                                                             
                                                                             if (!WMSessionIsCompleted(mfcc_session)) {
@@ -370,6 +377,7 @@
                 
                 //[self hideRunningLabels];
                 self.ibModeSelector.enabled = YES;
+                self.ibChannelSwitch.enabled = YES;
                 
                 [self.ibBenchmarkButton setTitle:@"Run Benchmark" forState:UIControlStateNormal];
                 [self.ibBenchmarkProgress setProgress:.0f];
@@ -408,4 +416,11 @@
     }
     
 }
+- (IBAction)ibChangeChannelMode:(id)sender {
+    if (self.ibChannelSwitch.selectedSegmentIndex == 0)
+        self.numChannelsRequest = 1;
+    else
+        self.numChannelsRequest = 2;
+}
+
 @end

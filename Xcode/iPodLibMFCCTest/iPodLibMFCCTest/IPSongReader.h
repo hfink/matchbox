@@ -31,6 +31,7 @@
 - (id)initWithURL:(NSURL*)url 
      forDuration:(float)seconds 
      samplingRate:(Float64)samplingRate
+      numChannels:(NSUInteger)numChannels
         withBlock:(BOOL (^)(CMSampleBufferRef)) consumer_block;
 
 //Make note that this is blocking until all is finished or something happened

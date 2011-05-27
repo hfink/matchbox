@@ -275,6 +275,12 @@ extern "C" WMSessionResult WMSessionFeedFromSampleBuffer(CMSampleBufferRef sampl
     size_t window_size = session->mfcc_configuration.window_size;    
     size_t hop_size = window_size / 2;
     
+    
+    //Note: in here we could perform manual mixing of left/right channels, 
+    //if Apple's APIs don't support it (mixing it by ourselves
+    //might be the best case anyway...)
+    const float* noninterleaved_data = NULL;
+    
     if (ca_asbd.IsInterleaved() && (asbd->mChannelsPerFrame == 2)) {
         
         //Delayed allocation of the buffer for de-interleaving the incoming 
@@ -329,118 +335,117 @@ extern "C" WMSessionResult WMSessionFeedFromSampleBuffer(CMSampleBufferRef sampl
                       1, 
                       frame_count);            
             
-            //Note: in here we could perform manual mixing of left/right channels, 
-            //if Apple's APIs don't support it (mixing it by ourselves
-            //might be the best case anyway...)
-            const float* noninterleaved_data = noninterleaved_proxy.realp;
+            noninterleaved_data = noninterleaved_proxy.realp;
+        }
+        
+    } else if (asbd->mChannelsPerFrame == 1) {
+        noninterleaved_data = (const float*)abl.mBuffers[0].mData;
+    } else {
+        std::cout << "Unsupported stream format." << std::endl;
+        return_code = kWMSessionResultErrorGeneric;        
+    }
             
-            //This is an offset into the direct buffer access, depending on the
-            //previous buffer overlap configuration
-            size_t direct_buffer_access_offset = 0;
+    if (noninterleaved_data != NULL) {
             
-            WM::MFCCProcessor::CepstraBuffer mfcc_results;
+        //This is an offset into the direct buffer access, depending on the
+        //previous buffer overlap configuration
+        size_t direct_buffer_access_offset = 0;
+        
+        WM::MFCCProcessor::CepstraBuffer mfcc_results;
+        
+        //If we have an overlap left from the previous buffer read opertion
+        //we'll have to take care of that. To "knit" together the ends
+        //we use the overlap_buffer provided by the session.
+        if (session->num_of_overlap_samples != 0) {
             
-            //If we have an overlap left from the previous buffer read opertion
-            //we'll have to take care of that. To "knit" together the ends
-            //we use the overlap_buffer provided by the session.
-            if (session->num_of_overlap_samples != 0) {
-                
-                //copy samples from the new buffer into the rest of the tmp
-                //overlap buffer. The upperbound size of hop_size*3 is derived
-                //from the worst scenario where we might have to executed 
-                //MFCC extraction twice on this tmp buffer.
-                memcpy(&session->overlap_buffer[session->num_of_overlap_samples], 
-                       noninterleaved_data, 
-                       sizeof(float)*(hop_size*3 - session->num_of_overlap_samples));
-                
-                //perform MFCC extraction
-                session->mfcc_processor->process(&session->overlap_buffer[0], 
+            //copy samples from the new buffer into the rest of the tmp
+            //overlap buffer. The upperbound size of hop_size*3 is derived
+            //from the worst scenario where we might have to executed 
+            //MFCC extraction twice on this tmp buffer.
+            memcpy(&session->overlap_buffer[session->num_of_overlap_samples], 
+                   noninterleaved_data, 
+                   sizeof(float)*(hop_size*3 - session->num_of_overlap_samples));
+            
+            //perform MFCC extraction
+            session->mfcc_processor->process(&session->overlap_buffer[0], 
+                                             session->preemph_border, 
+                                             &mfcc_results);
+            
+            copy_mfcc_and_advance(mfcc_results, session);
+            
+            session->preemph_border = session->overlap_buffer[hop_size - 1];
+            
+            //Since we can assume that hopsize is exactly window_size/2, 
+            //there could be only one execution left were we would have
+            //to use overlap data
+            if ( (session->num_of_overlap_samples > hop_size) && 
+                 !WMSessionIsCompleted(session) ) {
+            
+                //we have already enough data in the tmp buffer from the
+                //previous copy operation
+                session->mfcc_processor->process(&session->overlap_buffer[hop_size], 
                                                  session->preemph_border, 
                                                  &mfcc_results);
                 
                 copy_mfcc_and_advance(mfcc_results, session);
                 
-                session->preemph_border = session->overlap_buffer[hop_size - 1];
+                session->preemph_border = session->overlap_buffer[hop_size*2 - 1];                    
                 
-                //Since we can assume that hopsize is exactly window_size/2, 
-                //there could be only one execution left were we would have
-                //to use overlap data
-                if ( (session->num_of_overlap_samples > hop_size) && 
-                     !WMSessionIsCompleted(session) ) {
-                
-                    //we have already enough data in the tmp buffer from the
-                    //previous copy operation
-                    session->mfcc_processor->process(&session->overlap_buffer[hop_size], 
-                                                     session->preemph_border, 
-                                                     &mfcc_results);
-                    
-                    copy_mfcc_and_advance(mfcc_results, session);
-                    
-                    session->preemph_border = session->overlap_buffer[hop_size*2 - 1];                    
-                    
-                    direct_buffer_access_offset = hop_size*2 - session->num_of_overlap_samples;                    
-                    
-                } else {
-                    
-                    //adapt offset accordingly
-                    direct_buffer_access_offset = hop_size - session->num_of_overlap_samples;
-                    
-                }
-                
-            }
-            
-            // We are done dealing with a possible overlap from the previous
-            // feed operation. We will now access the de-interleaved data 
-            // directly, without copying back and forth. We will stop when
-            // we don't have enough samples left to execute a full MFCC
-            // extraction, or when the session has gathered enough feature data
-            // (when it is complete).
-            
-            size_t direct_frame_access = direct_buffer_access_offset;
-            
-            while (((direct_frame_access + window_size) <= frame_count) && 
-                   !WMSessionIsCompleted(session)) 
-            {
-                
-                session->mfcc_processor->process(&noninterleaved_data[direct_frame_access], 
-                                                 session->preemph_border, 
-                                                 &mfcc_results);
-                
-                copy_mfcc_and_advance(mfcc_results, session);
-                
-                session->preemph_border = noninterleaved_data[direct_frame_access + hop_size - 1];                               
-                
-                direct_frame_access += hop_size;
-            }
-            
-            //There will always be some samples left as we advance by hop_size,
-            //but require that window_size must be available.
-            if (direct_frame_access < (frame_count-1)) {
-                
-                //Copying the rest that wasn't processed into the overlap
-                //buffer.
-                size_t num_overlap_samples = (frame_count-1) - direct_frame_access;
-                session->num_of_overlap_samples = num_overlap_samples;
-                memcpy(session->overlap_buffer, 
-                       &noninterleaved_data[direct_frame_access], 
-                       num_overlap_samples*sizeof(float));
+                direct_buffer_access_offset = hop_size*2 - session->num_of_overlap_samples;                    
                 
             } else {
-                //That's an incorrect state. Return an error.
-                std::cerr << "Reached an impossible state, where we have "
-                          << " consumed all samples, even with a hop_size set." 
-                          << std::endl;
-                CFRelease(audio_data);
-                return kWMSessionResultErrorGeneric;
+                
+                //adapt offset accordingly
+                direct_buffer_access_offset = hop_size - session->num_of_overlap_samples;
+                
             }
             
         }
         
-    } else {
-        //TODO: implement non-interleaved mode
-        std::cerr << "Warning: currently, only interleaved stereo streams are "
-                  << "supported." << std::endl;
-        return_code = kWMSessionResultErrorGeneric;
+        // We are done dealing with a possible overlap from the previous
+        // feed operation. We will now access the de-interleaved data 
+        // directly, without copying back and forth. We will stop when
+        // we don't have enough samples left to execute a full MFCC
+        // extraction, or when the session has gathered enough feature data
+        // (when it is complete).
+        
+        size_t direct_frame_access = direct_buffer_access_offset;
+        
+        while (((direct_frame_access + window_size) <= frame_count) && 
+               !WMSessionIsCompleted(session)) 
+        {
+            
+            session->mfcc_processor->process(&noninterleaved_data[direct_frame_access], 
+                                             session->preemph_border, 
+                                             &mfcc_results);
+            
+            copy_mfcc_and_advance(mfcc_results, session);
+            
+            session->preemph_border = noninterleaved_data[direct_frame_access + hop_size - 1];                               
+            
+            direct_frame_access += hop_size;
+        }
+        
+        //There will always be some samples left as we advance by hop_size,
+        //but require that window_size must be available.
+        if (direct_frame_access < (frame_count-1)) {
+            
+            //Copying the rest that wasn't processed into the overlap
+            //buffer.
+            size_t num_overlap_samples = (frame_count-1) - direct_frame_access;
+            session->num_of_overlap_samples = num_overlap_samples;
+            memcpy(session->overlap_buffer, 
+                   &noninterleaved_data[direct_frame_access], 
+                   num_overlap_samples*sizeof(float));
+            
+        } else {
+            //That's an incorrect state. Return an error.
+            std::cerr << "Reached an impossible state, where we have "
+                      << " consumed all samples, even with a hop_size set." 
+                      << std::endl;
+            CFRelease(audio_data);
+            return kWMSessionResultErrorGeneric;
+        }
     }
     
     CFRelease(audio_data);
