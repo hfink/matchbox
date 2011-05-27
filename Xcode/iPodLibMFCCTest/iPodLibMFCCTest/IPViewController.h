@@ -24,7 +24,19 @@
     UILabel *ibCounterLabel;
     UILabel *ibMfccAvgLabel;
     UILabel *ibArtistLabel;
+    
+    Float64 samplingRate;
+    NSUInteger mfccWindowSize;
+    Float64 mfccMelMax;
+    UISegmentedControl *ibModeSelector;
 }
+- (IBAction)ibChangeMode:(id)sender;
+
+@property (nonatomic, retain) IBOutlet UISegmentedControl *ibModeSelector;
+@property (nonatomic, assign) Float64 samplingRate;
+@property (nonatomic, assign) NSUInteger mfccWindowSize;
+@property (nonatomic, assign) Float64 mfccMelMax;
+
 @property (nonatomic, retain) IBOutlet UILabel *ibHeaderLabel;
 @property (nonatomic, retain) IBOutlet UILabel *ibMfccAvgLabel;
 

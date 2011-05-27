@@ -15,6 +15,7 @@
 
 - (id)initWithURL:(NSURL*)url 
       forDuration:(float)seconds 
+     samplingRate:(Float64)samplingRate
         withBlock:(BOOL (^)(CMSampleBufferRef)) consumer_block {
     
     if ((self = [super init])) { // equivalent to "self does not equal nil"
@@ -67,7 +68,7 @@
         }
         
 		NSDictionary *audio_settings = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                        [NSNumber numberWithFloat:44100.0],AVSampleRateKey,
+                                        [NSNumber numberWithFloat:samplingRate],AVSampleRateKey,
                                         [NSNumber numberWithInt:2],AVNumberOfChannelsKey,	//how many channels has original? 
                                         [NSNumber numberWithInt:32],AVLinearPCMBitDepthKey, //was 16
                                         [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,

@@ -29,6 +29,10 @@
 @synthesize ibTotalDuration = ibTotalDuration_;
 @synthesize ibBenchmarkProgress = ibBenchmarkProgress_;
 @synthesize ibCounterLabel;
+@synthesize mfccMelMax;
+@synthesize mfccWindowSize;
+@synthesize ibModeSelector;
+@synthesize samplingRate;
 
 - (void)dealloc
 {
@@ -43,6 +47,7 @@
     [ibCounterLabel release];
     [ibMfccAvgLabel release];
     [ibArtistLabel release];
+    [ibModeSelector release];
     [super dealloc];
 }
 
@@ -76,6 +81,10 @@
     song_processing_queue = [[NSOperationQueue alloc] init];
     [song_processing_queue setName:@"SongProcessingQueue"];
     [self hideRunningLabels];
+    
+    self.mfccMelMax = 15000;
+    self.samplingRate = 44100;
+    self.mfccWindowSize = 1024;
 }
 
 
@@ -92,6 +101,7 @@
     [self setIbCounterLabel:nil];
     [self setIbMfccAvgLabel:nil];
     [self setIbArtistLabel:nil];
+    [self setIbModeSelector:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -113,6 +123,8 @@
         
     } else {
         
+        self.ibModeSelector.enabled = NO;
+        
         [self.ibBenchmarkButton setTitle:@"Stop Benchmark" forState:UIControlStateNormal];        
         isExecutingBenchmark = YES;
         
@@ -131,10 +143,10 @@
             WMSessionRef mfcc_session;            
             WMMfccConfiguration mfcc_config;
             mfcc_config.mel_min_freq = 20.0f;
-            mfcc_config.mel_max_freq = 15000.0f;
-            mfcc_config.sampling_rate = 44100.0f;
+            mfcc_config.mel_max_freq = self.mfccMelMax;
+            mfcc_config.sampling_rate = self.samplingRate;
             mfcc_config.pre_empha_alpha = 0.97f;           
-            mfcc_config.window_size = 1024;            
+            mfcc_config.window_size = self.mfccWindowSize;            
             
             WMSessionResult result = WMSessionCreate(mfcc_duration, 
                                                      mfcc_config, 
@@ -216,6 +228,7 @@
                     
                     IPSongReader* song_reader = [[IPSongReader alloc] initWithURL:song_url 
                                                                       forDuration:mfcc_duration 
+                                                                     samplingRate:self.samplingRate
                                                                         withBlock:^BOOL(CMSampleBufferRef sample_buffer) {
                                                                             
                                                                             if (!WMSessionIsCompleted(mfcc_session)) {
@@ -356,6 +369,7 @@
                 isExecutingBenchmark = NO;
                 
                 //[self hideRunningLabels];
+                self.ibModeSelector.enabled = YES;
                 
                 [self.ibBenchmarkButton setTitle:@"Run Benchmark" forState:UIControlStateNormal];
                 [self.ibBenchmarkProgress setProgress:.0f];
@@ -378,6 +392,19 @@
         [self.ibActivityIndicator startAnimating];
         [self.ibBenchmarkProgress setProgress:.0f];
                 
+    }
+    
+}
+- (IBAction)ibChangeMode:(id)sender {
+    
+    if (self.ibModeSelector.selectedSegmentIndex == 0) {
+        self.mfccWindowSize = 370;
+        self.mfccMelMax = 8000;
+        self.samplingRate = 16000;
+    } else {
+        self.mfccWindowSize = 1024;
+        self.mfccMelMax = 15000;
+        self.samplingRate = 44100;        
     }
     
 }

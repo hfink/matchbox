@@ -459,8 +459,12 @@ extern "C" WMSessionResult WMSessionGetAverage(WMFeatureType* average_out,
     
     if (!WMSessionIsCompleted(session)) {
         
-        std::cout << "Warning: Calculation of features average was requested "
-                  << "but session is not completed yet. " << std::endl;
+        //issue this warning only, if diff is larger than one
+        //a diff of one can easily happen due to numerical issue with downsampling
+        if (session->num_of_features_expected - session->num_of_features_set > 1) {
+            std::cout << "Warning: Calculation of features average was requested "
+                      << "but session is not completed yet. " << std::endl;
+        }
     }
     
     //Note that this approach is rather a performance test case than the best

@@ -30,6 +30,7 @@
 //Make note that this initializer might return nil on initialization failure...
 - (id)initWithURL:(NSURL*)url 
      forDuration:(float)seconds 
+     samplingRate:(Float64)samplingRate
         withBlock:(BOOL (^)(CMSampleBufferRef)) consumer_block;
 
 //Make note that this is blocking until all is finished or something happened
