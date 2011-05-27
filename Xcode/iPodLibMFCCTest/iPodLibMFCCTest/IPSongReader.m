@@ -32,9 +32,6 @@
         //Note: it's ok if we block here, this class shall be used on a 
         //worker thread anyways
         
-        //TODO: setting AVSampleRateConverterAudioQualityKey to low might help
-        //performance in here...
-        
         NSError * error = nil;
         
         AVAssetReader* asset_reader = [[AVAssetReader alloc] initWithAsset:url_asset 
@@ -55,10 +52,10 @@
         
 		NSDictionary *audio_settings = [[NSDictionary alloc] initWithObjectsAndKeys:
                                         [NSNumber numberWithFloat:samplingRate],AVSampleRateKey,
-                                        [NSNumber numberWithInt:numChannels],AVNumberOfChannelsKey,	//how many channels has original? 
-                                        [NSNumber numberWithInt:32],AVLinearPCMBitDepthKey, //was 16
+                                        [NSNumber numberWithInt:numChannels],AVNumberOfChannelsKey,
+                                        [NSNumber numberWithInt:32],AVLinearPCMBitDepthKey,
                                         [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
-                                        [NSNumber numberWithBool:YES], AVLinearPCMIsFloatKey,  //was NO
+                                        [NSNumber numberWithBool:YES], AVLinearPCMIsFloatKey,
                                         [NSNumber numberWithBool:0], AVLinearPCMIsBigEndianKey,
                                         [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
                                         [NSData data], AVChannelLayoutKey,nil];              
@@ -77,8 +74,6 @@
         CMTime read_duration = CMTimeMakeWithSeconds(seconds, 600);
         
         Float64 total_duration_secs = CMTimeGetSeconds([url_asset duration]);
-        
-//        NSLog(@"Total duration is %f", total_duration_secs);
         
         CMTime start_read_time = CMTimeMakeWithSeconds(total_duration_secs*0.5 - seconds*0.5, 600);
         
@@ -122,6 +117,7 @@
     
     while (sample_buffer != NULL) {
         
+        //this calls the block as given by the client
         BOOL consumption_success = consumer_block_(sample_buffer);
         
         if (!consumption_success) {

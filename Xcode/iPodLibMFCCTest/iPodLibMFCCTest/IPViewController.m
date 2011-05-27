@@ -81,10 +81,14 @@
 {
     [super viewDidLoad];
     isExecutingBenchmark = NO;
+    
+    //We use an operation queue to hand off the batch processing task
+    //of processing all media files available
     song_processing_queue = [[NSOperationQueue alloc] init];
     [song_processing_queue setName:@"SongProcessingQueue"];
     [self hideRunningLabels];
     
+    //Initial configuration
     self.mfccMelMax = 15000;
     self.samplingRate = 44100;
     self.mfccWindowSize = 1024;
@@ -171,16 +175,16 @@
             [MPMediaPropertyPredicate predicateWithValue: [NSNumber numberWithInt:MPMediaTypeMusic]
                                              forProperty: MPMediaItemPropertyMediaType];       
 
-            //DEBUG
-            
-//            MPMediaPropertyPredicate* debug_filter = [MPMediaPropertyPredicate predicateWithValue: @"Intro"
-//                                                                                      forProperty: MPMediaItemPropertyTitle];                   
-            
-            //EOF DEBUG
-            
-            NSSet* predicate_set = [NSSet setWithObject:music_type_filter];
 
+            //Use the commented code to pick out a particular song with its title
+            //from the iPod lib.
+            
+//            MPMediaPropertyPredicate* debug_filter = [MPMediaPropertyPredicate predicateWithValue: @"Wake Up"
+//                                                                                      forProperty: MPMediaItemPropertyTitle];                   
 //            NSSet* predicate_set = [NSSet setWithObjects:music_type_filter, debug_filter, nil];
+            
+            NSSet* predicate_set = [NSSet setWithObject:music_type_filter];            
+
             
             MPMediaQuery* songs_query = [[MPMediaQuery alloc] initWithFilterPredicates:predicate_set];
             

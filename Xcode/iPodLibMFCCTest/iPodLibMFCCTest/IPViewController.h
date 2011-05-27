@@ -32,10 +32,12 @@
     UISegmentedControl *ibChannelSwitch;
     NSUInteger numChannelsRequest;
 }
-- (IBAction)ibChangeMode:(id)sender;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *ibChannelSwitch;
-- (IBAction)ibChangeChannelMode:(id)sender;
 
+- (IBAction)ibChangeChannelMode:(id)sender;
+- (IBAction)ibChangeMode:(id)sender;
+- (IBAction)startOrStopBenchmark:(id)sender;
+
+@property (nonatomic, retain) IBOutlet UISegmentedControl *ibChannelSwitch;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *ibModeSelector;
 @property (nonatomic, assign) Float64 samplingRate;
 @property (nonatomic, assign) NSUInteger mfccWindowSize;
@@ -54,7 +56,5 @@
 @property (nonatomic, retain) IBOutlet UILabel *ibTotalDuration;
 @property (nonatomic, retain) IBOutlet UIProgressView *ibBenchmarkProgress;
 @property (nonatomic, retain) IBOutlet UILabel *ibCounterLabel;
-
-- (IBAction)startOrStopBenchmark:(id)sender;
 
 @end

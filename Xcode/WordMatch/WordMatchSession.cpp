@@ -217,10 +217,6 @@ extern "C" WMSessionResult WMSessionFeedFromSampleBuffer(CMSampleBufferRef sampl
         return kWMSessionResultErrorGeneric;
     }
     
-    //Debug info, prints out time in sample...
-//    std::cout << "Presentation time:" << std::endl;
-//    CMTimeShow(CMSampleBufferGetPresentationTimeStamp(sample_buffer));
-    
     //Check the format description
     CMFormatDescriptionRef format_desc = 
         CMSampleBufferGetFormatDescription(sample_buffer);
@@ -248,15 +244,16 @@ extern "C" WMSessionResult WMSessionFeedFromSampleBuffer(CMSampleBufferRef sampl
     //sanity check. Our algorithm requires that the frame_count is at least
     //size of the window
     if (frame_count < session->mfcc_configuration.window_size) {
-        std::cerr << "Error: Incoming number of frames '" << frame_count 
-                  << "' is smaller than the window size." << std::endl;
-        return kWMSessionResultErrorGeneric;
+        std::cout << "Warning: Incoming number of frames '" << frame_count 
+                  << "' is smaller than the window size Skipping feature "
+                  << "calculation for this packet." << std::endl;
+        //TODO: check is we should tread this as an error
+        return kWMSessionResultOK;
     }
     
     AudioBufferList abl;
     CMBlockBufferRef audio_data;
     
-    //TODO: check if you can force re-encoding in here...
     OSStatus result = CMSampleBufferGetAudioBufferListWithRetainedBlockBuffer(sample_buffer, 
                                                                               NULL, 
                                                                               &abl, 
@@ -480,7 +477,6 @@ extern "C" WMSessionResult WMSessionGetAverage(WMFeatureType* average_out,
     //require the complete set of MFCC data per session to be available.
     
     //TODO: is there a CBLAS command that only sums up, without multiplying?
-    
     std::fill(&average_out[0], &average_out[kWMSessionNumberOfMFCCs], 0);
     
     

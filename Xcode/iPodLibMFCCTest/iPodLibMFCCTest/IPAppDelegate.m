@@ -29,12 +29,6 @@
                      error: &audioSessionError];
     [mySession setActive: YES                                       
                    error: &audioSessionError];
-
-    // maybe consider this as well for optimization...
-    // Probably, if you set this carefully, you can determine the actual buffer
-    // size that CMSampleBufferRef will holds when bein delivered by avassetoutput
-//    [[AVAudioSession sharedInstance] setPreferredIOBufferDuration:0.1 error:&activationError];
-//    NSLog(@"setupAudio BUFFER DURATION ERROR IS %@", activationError);         
     
     if (audioSessionError != nil) {
         NSLog(@"Error occured during AVSession configuration: %@", 
