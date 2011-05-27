@@ -77,7 +77,7 @@
                                         [NSData data], AVChannelLayoutKey, nil];              
         
 		AVAssetReaderAudioMixOutput * asset_output = 
-            [[AVAssetReaderAudioMixOutput alloc] initWithAudioTracks:[url_asset tracks]
+            [[AVAssetReaderAudioMixOutput alloc] initWithAudioTracks:[url_asset tracksWithMediaType:AVMediaTypeAudio]
                                                        audioSettings:audio_settings];    
         
         [audio_settings release];
