@@ -84,8 +84,6 @@
     
     //We use an operation queue to hand off the batch processing task
     //of processing all media files available
-    song_processing_queue = [[NSOperationQueue alloc] init];
-    [song_processing_queue setName:@"SongProcessingQueue"];
     [self hideRunningLabels];
     
     //Initial configuration
@@ -114,7 +112,6 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    [song_processing_queue release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -128,7 +125,7 @@
     if (isExecutingBenchmark) {
         
         //stop the benchmark process
-        [song_processing_queue cancelAllOperations];
+        isExecutingBenchmark = NO;
         
     } else {
         
@@ -138,10 +135,11 @@
         [self.ibBenchmarkButton setTitle:@"Stop Benchmark" forState:UIControlStateNormal];        
         isExecutingBenchmark = YES;
         
-        //Kick off media query. We will put this into a background operation
-        //running somewhere else...
+        //Note that this MUST be low priority or else we will get a weird
+        //error by AVFoundation later on...
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
         
-        song_processing_operation = [NSBlockOperation blockOperationWithBlock:^{
+        dispatch_async(queue, ^{
             
             //Initialization the MFCC Session provided by our WordMatch lib
             
@@ -352,8 +350,7 @@
                 });
                 
                 //Check early exit
-                
-                if ([song_processing_operation isCancelled] == YES) {
+                if (isExecutingBenchmark == NO) {
                     was_canceled = YES;
                     break;
                 }
@@ -397,9 +394,7 @@
             
             free(mfcc_average);
             
-        }];
-        
-        [song_processing_queue addOperation:song_processing_operation];
+        });
         
         [self.ibActivityIndicator startAnimating];
         [self.ibBenchmarkProgress setProgress:.0f];

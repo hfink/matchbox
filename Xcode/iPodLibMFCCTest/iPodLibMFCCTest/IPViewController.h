@@ -18,7 +18,7 @@
     UIActivityIndicatorView *ibActivityIndicator_;
     
     BOOL isExecutingBenchmark;
-    NSOperationQueue* song_processing_queue;
+    
     NSOperation* song_processing_operation;
     UILabel *ibHeaderLabel_;
     UILabel *ibCounterLabel;
