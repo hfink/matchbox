@@ -269,7 +269,7 @@
                               title, 
                               artist);
                         [song_reader release];
-                        break;
+                        continue;
                     }
                     
                     dispatch_async(main_queue, ^{                      
