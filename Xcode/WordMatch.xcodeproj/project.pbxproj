@@ -70,6 +70,14 @@
 		AD8C559C13254B0700828918 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C559A13254B0700828918 /* Accelerate.framework */; };
 		AD8C559D13254B0700828918 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C559B13254B0700828918 /* AudioToolbox.framework */; };
 		AD8C559F13254B0F00828918 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C559E13254B0F00828918 /* CoreFoundation.framework */; };
+		AD94F44B13AE3D560047CDA8 /* CAHostTimeBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD94F44913AE3D560047CDA8 /* CAHostTimeBase.cpp */; };
+		AD94F44C13AE3D560047CDA8 /* CAHostTimeBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD94F44913AE3D560047CDA8 /* CAHostTimeBase.cpp */; };
+		AD94F44D13AE3D560047CDA8 /* CAHostTimeBase.h in Headers */ = {isa = PBXBuildFile; fileRef = AD94F44A13AE3D560047CDA8 /* CAHostTimeBase.h */; };
+		AD94F44E13AE3D560047CDA8 /* CAHostTimeBase.h in Headers */ = {isa = PBXBuildFile; fileRef = AD94F44A13AE3D560047CDA8 /* CAHostTimeBase.h */; };
+		AD94F45213AE3D6D0047CDA8 /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD94F45013AE3D6D0047CDA8 /* CAStreamBasicDescription.cpp */; };
+		AD94F45313AE3D6D0047CDA8 /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD94F45013AE3D6D0047CDA8 /* CAStreamBasicDescription.cpp */; };
+		AD94F45413AE3D6D0047CDA8 /* CAStreamBasicDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = AD94F45113AE3D6D0047CDA8 /* CAStreamBasicDescription.h */; };
+		AD94F45513AE3D6D0047CDA8 /* CAStreamBasicDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = AD94F45113AE3D6D0047CDA8 /* CAStreamBasicDescription.h */; };
 		AD957DF71312D5390035D5B9 /* libWordMatchOSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD957DE61312D51C0035D5B9 /* libWordMatchOSX.a */; };
 		AD97EE0B131D5E37002B6019 /* TriangleFilter_Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD97EE09131D5E37002B6019 /* TriangleFilter_Test.cpp */; };
 		ADA2043E13215F180081DD52 /* 04-blumentopf-3.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = ADA2043D13215F0A0081DD52 /* 04-blumentopf-3.wav */; };
@@ -189,6 +197,10 @@
 		AD8C559A13254B0700828918 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		AD8C559B13254B0700828918 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		AD8C559E13254B0F00828918 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		AD94F44913AE3D560047CDA8 /* CAHostTimeBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CAHostTimeBase.cpp; path = Extras/CoreAudio/PublicUtility/CAHostTimeBase.cpp; sourceTree = DEVELOPER_DIR; };
+		AD94F44A13AE3D560047CDA8 /* CAHostTimeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAHostTimeBase.h; path = Extras/CoreAudio/PublicUtility/CAHostTimeBase.h; sourceTree = DEVELOPER_DIR; };
+		AD94F45013AE3D6D0047CDA8 /* CAStreamBasicDescription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CAStreamBasicDescription.cpp; path = Extras/CoreAudio/PublicUtility/CAStreamBasicDescription.cpp; sourceTree = DEVELOPER_DIR; };
+		AD94F45113AE3D6D0047CDA8 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAStreamBasicDescription.h; path = Extras/CoreAudio/PublicUtility/CAStreamBasicDescription.h; sourceTree = DEVELOPER_DIR; };
 		AD957DE61312D51C0035D5B9 /* libWordMatchOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWordMatchOSX.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD97EE09131D5E37002B6019 /* TriangleFilter_Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TriangleFilter_Test.cpp; path = WordMatch/TriangleFilter_Test.cpp; sourceTree = "<group>"; };
 		ADA2043D13215F0A0081DD52 /* 04-blumentopf-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "04-blumentopf-3.wav"; path = "../matlab/samples/named/04-blumentopf-3.wav"; sourceTree = "<group>"; };
@@ -398,6 +410,10 @@
 		AD8B7D951317F9B500A06B7D /* CoreAudioUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				AD94F45013AE3D6D0047CDA8 /* CAStreamBasicDescription.cpp */,
+				AD94F45113AE3D6D0047CDA8 /* CAStreamBasicDescription.h */,
+				AD94F44913AE3D560047CDA8 /* CAHostTimeBase.cpp */,
+				AD94F44A13AE3D560047CDA8 /* CAHostTimeBase.h */,
 				AD7D16C1131BAACF0099C57D /* CABitOperations.h */,
 				AD8B7D961317FA3200A06B7D /* CADebugMacros.cpp */,
 				AD8B7D971317FA3200A06B7D /* CADebugMacros.h */,
@@ -445,6 +461,8 @@
 				AD2504C7132D38B9000FEB15 /* Types.h in Headers */,
 				AD706AED1333C48500ACE0F7 /* MFCCUtils.h in Headers */,
 				AD706AF41333C73400ACE0F7 /* dtw.hpp in Headers */,
+				AD94F44D13AE3D560047CDA8 /* CAHostTimeBase.h in Headers */,
+				AD94F45413AE3D6D0047CDA8 /* CAStreamBasicDescription.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +482,8 @@
 				AD2504C8132D38B9000FEB15 /* Types.h in Headers */,
 				AD706AEE1333C48500ACE0F7 /* MFCCUtils.h in Headers */,
 				AD706AF51333C73400ACE0F7 /* dtw.hpp in Headers */,
+				AD94F44E13AE3D560047CDA8 /* CAHostTimeBase.h in Headers */,
+				AD94F45513AE3D6D0047CDA8 /* CAStreamBasicDescription.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +635,8 @@
 				AD38FEE013223D0F00E00A15 /* DebugUtils.cpp in Sources */,
 				AD1D277D132D179600CD1E95 /* WordMatch.cpp in Sources */,
 				AD706AEB1333C48500ACE0F7 /* MFCCUtils.cpp in Sources */,
+				AD94F44B13AE3D560047CDA8 /* CAHostTimeBase.cpp in Sources */,
+				AD94F45213AE3D6D0047CDA8 /* CAStreamBasicDescription.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +654,8 @@
 				AD38FEE113223D0F00E00A15 /* DebugUtils.cpp in Sources */,
 				AD1D277E132D179600CD1E95 /* WordMatch.cpp in Sources */,
 				AD706AEC1333C48500ACE0F7 /* MFCCUtils.cpp in Sources */,
+				AD94F44C13AE3D560047CDA8 /* CAHostTimeBase.cpp in Sources */,
+				AD94F45313AE3D6D0047CDA8 /* CAStreamBasicDescription.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
