@@ -23,6 +23,10 @@
 #include "AudioFileReader.hpp"
 #include "MFCCProcessor.hpp"
 #include "MFCCUtils.h"
+#include "CAHostTimeBase.h"
+#include "CAStreamBasicDescription.h"
+
+#include <CoreAudio/CoreAudioTypes.h>
 
 #include <stdexcept>
 #include <iostream>
@@ -101,5 +105,26 @@ extern "C" bool WMGetPreProcessInfoForFile(CFURLRef file,
     
     return true;
     
+}
+
+extern "C" uint64_t WMMilliSecondsToMachTime(double ms) {
+	//convert to nanoseconds
+	double dNs = ms * 1e6;
+	uint64_t uintNs = static_cast<uint64_t >( dNs );
+	
+	uint64_t machTime = CAHostTimeBase::ConvertFromNanos(uintNs);
+	return machTime;
+}
+
+extern "C" double WMMachTimeToMilliSeconds(uint64_t mach) {
+	uint64_t nsecUint = CAHostTimeBase::ConvertToNanos(mach);
+	double result = static_cast<double >( nsecUint ) * 1e-6;
+	return result;
+}
+
+extern "C" void WMPrintAudioStreamBasicDescription(const AudioStreamBasicDescription* desc)
+{
+    CAStreamBasicDescription desc_obj(*desc);
+    desc_obj.Print();
 }
 

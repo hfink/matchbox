@@ -50,4 +50,31 @@ typedef struct WMAudioFilePreProcessInfo {
     
 } WMAudioFilePreProcessInfo;
 
+
+/**
+ * Describe basic configurtion parameters for a MFCC extraction. In future we
+ * could add num mel bands, and num mfccs here as well.
+ */
+struct WMMfccConfiguration {
+    Float64 sampling_rate;
+    size_t window_size;
+    float pre_empha_alpha;
+    float mel_min_freq;
+    float mel_max_freq;
+};
+
+typedef struct WMMfccConfiguration WMMfccConfiguration;
+
+
+enum {
+    kWMSessionResultOK = 0,
+    kWMSessionResultErrorGeneric = 1,
+    kWMSessionResultErrorInvalidWindowSize = 2,
+    kWMSessionResultErrorInvalidArgument = 3
+};
+
+typedef SInt16 WMSessionResult;
+
+typedef struct opaqueWMSession* WMSessionRef;
+
 #endif //WORD_MATCH_TYPES_H

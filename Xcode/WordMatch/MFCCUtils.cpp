@@ -133,7 +133,7 @@ FeatureTypeDTW::Features get_mfcc_features(const boost::shared_ptr<WM::AudioFile
         
         mp.process(data,
                    left_of_packet,
-                   cepstra);
+                   &cepstra);
 
 
         //copy MFCC's 2th to 8th as our features (as in Matlab prototype)

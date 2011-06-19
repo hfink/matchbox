@@ -65,7 +65,7 @@ MFCCProcessor::MFCCProcessor(size_t user_window_size,
         throw std::invalid_argument(oss.str());
     }
     
-    if ( (pre_emph_alpha <= 0) ||
+    if ( (pre_emph_alpha < 0) ||
          (pre_emph_alpha > 1) ) {
         oss << "Invalid pre-emphasis coefficient: '" << pre_emph_alpha << "'.";
         throw std::invalid_argument(oss.str());
@@ -158,7 +158,7 @@ MFCCProcessor::~MFCCProcessor() {
 
 void MFCCProcessor::process(const WMAudioSampleType * samples,
                             WMAudioSampleType pre_emph_filter_border,
-                            CepstraBuffer& mfcc_out,
+                            CepstraBuffer * mfcc_out,
                             WMFeatureType * spectrum_mag_out,
                             WMFeatureType * mel_spectrum_mag_out)
 {
@@ -166,15 +166,20 @@ void MFCCProcessor::process(const WMAudioSampleType * samples,
     if ( samples == NULL )
         return;
     
-    //copy data
-    size_t num_bytes = sizeof(WMAudioSampleType)*user_window_size_;
-    memcpy(process_buffer_.get(), samples, num_bytes);
-    
-    //make sure that the rest of process buffer is set to zero
-    vDSP_vclr(&process_buffer_[user_window_size_], 1, fft_size_ - user_window_size_);
+    //we either copy straight to the process buffer, or we perform 
+    //pre-emphasis and set the process buffer as the target
+
     
     // Pre-emphasis, a high-pass filter
-    pre_emphasize(pre_emph_filter_border);
+    if (pre_emph_alpha_ != 0) {
+        pre_emphasize_to_buffer(pre_emph_filter_border, samples);
+    } else {
+        size_t num_bytes = sizeof(WMAudioSampleType)*user_window_size_;
+        memcpy(process_buffer_.get(), samples, num_bytes);        
+    }
+    
+    //make sure that the rest of process buffer is set to zero
+    vDSP_vclr(&process_buffer_[user_window_size_], 1, fft_size_ - user_window_size_);    
     
     // Apply Hamming Window before performing FFT
     apply_hamming_window();
@@ -196,17 +201,6 @@ void MFCCProcessor::process(const WMAudioSampleType * samples,
     // mel triangular bandpass filter
     mel_filter_bank_.apply(process_buffer_.get(), mel_bands_buffer_.get());
     
-    // take the log of the mel bands
-
-    //We only have a vectorized version to get the log10 on OS X
-#ifdef HAVE_VDSP_FORCE_LIB
-    const int num_mel_bands = kNumMelBands();
-    vvlog10f(mel_bands_buffer_.get(), mel_bands_buffer_.get(), &num_mel_bands);
-#else
-    for (int i = 0; i < kNumMelBands(); ++i)
-        mel_bands_buffer_[i] = log10f(mel_bands_buffer_[i]);
-#endif
-    
     //Copy mel power spectrum, if requested.
     
     if (mel_spectrum_mag_out != NULL) {
@@ -215,54 +209,76 @@ void MFCCProcessor::process(const WMAudioSampleType * samples,
                   mel_spectrum_mag_out);        
     }    
     
-    // Perform the discrete cosine transform. We have prepared a matrix that
-    // we can simply multiply with the vector of mel_bands
+    // take the log of the mel bands
+
+    if (mfcc_out != NULL) {    
     
-    vDSP_vclr(&mfcc_out[0], 1, kNumMelCepstra());
+        //We only have a vectorized version to get the log10 on OS X
+#ifdef HAVE_VDSP_FORCE_LIB
+        const int num_mel_bands = kNumMelBands();
+        vvlog10f(mel_bands_buffer_.get(), mel_bands_buffer_.get(), &num_mel_bands);
+#else
+        for (int i = 0; i < kNumMelBands(); ++i)
+            mel_bands_buffer_[i] = log10f(mel_bands_buffer_[i]);
+#endif
     
-    // Vectorized matrix multiplication
-    
-    cblas_sgemm(CblasColMajor,
-                CblasNoTrans, 
-                CblasNoTrans,
-                kNumMelCepstra(),
-                1, 
-                kNumMelBands(), 
-                1, 
-                dct_ii_matrix_.get(), 
-                kNumMelCepstra(), 
-                mel_bands_buffer_.get(), 
-                kNumMelBands(), 
-                0.0f, 
-                &mfcc_out[0], 
-                kNumMelCepstra());
-    
-    // for orthogonalized DCT version we have to multiply the first cepstral
-    // value with 1/sqrt(2)
-    const float sqrt_two_inv = 1.0f/sqrtf(2.0f);
-    mfcc_out[0] *= sqrt_two_inv;
+        // Perform the discrete cosine transform. We have prepared a matrix that
+        // we can simply multiply with the vector of mel_bands
+        
+        vDSP_vclr(mfcc_out->c_array(), 1, kNumMelCepstra());
+        
+        // Vectorized matrix multiplication
+        
+        cblas_sgemm(CblasColMajor,
+                    CblasNoTrans, 
+                    CblasNoTrans,
+                    kNumMelCepstra(),
+                    1, 
+                    kNumMelBands(), 
+                    1, 
+                    dct_ii_matrix_.get(), 
+                    kNumMelCepstra(), 
+                    mel_bands_buffer_.get(), 
+                    kNumMelBands(), 
+                    0.0f, 
+                    mfcc_out->c_array(), 
+                    kNumMelCepstra());
+        
+        // for orthogonalized DCT version we have to multiply the first cepstral
+        // value with 1/sqrt(2)
+        const float sqrt_two_inv = 1.0f/sqrtf(2.0f);
+        mfcc_out->c_array()[0] *= sqrt_two_inv;
+        
+    }
     
     // TODO: Add optional other features like differential values or energy/
     // packet
     
 }
 
-void MFCCProcessor::pre_emphasize(float border_value)
+void MFCCProcessor::pre_emphasize_to_buffer(float border_value,
+                                            const WMAudioSampleType* orig_audio)
 {
     // Apply a high-pass filter to compensate the high-frequency part that was
     // suppressed during sound production of humans
     
     // s2(n) = s(n) - a*s(n-1), where a is between 0.96 ..0.99
     
-    //TODO: how to vectorize that??? -> eventually with vDSP_vswsum
+    // multiply with -pre_emph_coeff into process buffer 
     
-    for (size_t i = user_window_size_-1; i > 0; --i) {
-        process_buffer_[i] = process_buffer_[i] - pre_emph_alpha_*  process_buffer_[i-1];
-        
-    }
+    // vector add + factor, mind the offset
+    const float pre_emph_neg = -pre_emph_alpha_;
+    vDSP_vsma(orig_audio, 
+              1, 
+              &pre_emph_neg, 
+              &orig_audio[1], 
+              1, 
+              &(process_buffer_.get())[1], 
+              1, 
+              user_window_size_-1);
     
     // deal with border properly
-    process_buffer_[0] = process_buffer_[0] - pre_emph_alpha_*  border_value;
+    process_buffer_[0] = orig_audio[0] - pre_emph_alpha_*  border_value;
     
 }
 

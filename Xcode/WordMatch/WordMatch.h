@@ -28,6 +28,9 @@
 
 #include "Types.h"
 
+#include "WordMatchSession.h"
+#include <CoreAudio/CoreAudioTypes.h>
+
 /**
  * Returns the minimum distance for two audio files.
  * Use WMGetPreProcessInfoFor for both files before, and then pass
@@ -48,5 +51,18 @@ bool WMGetPreProcessInfoForFile(CFURLRef file,
                                 float end_threshold_db,
                                 WMAudioFilePreProcessInfo* info_out);
 
+/**
+ * Convenience functions to convert mach_time to milliseconds and vice-versa
+ */
+
+uint64_t WMMilliSecondsToMachTime(double ms);
+
+double WMMachTimeToMilliSeconds(uint64_t mach);
+
+/**
+ * Prints out a description of  AudioStreamBasicDescription to stdout 
+ * for debugging purposes.
+ */
+void WMPrintAudioStreamBasicDescription(const AudioStreamBasicDescription* desc);
 
 #endif //WORD_MATCH_H

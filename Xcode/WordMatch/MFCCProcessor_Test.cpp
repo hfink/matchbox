@@ -128,11 +128,11 @@ BOOST_AUTO_TEST_CASE( DeterministicBehaviour ) {
     MFCCProcessor::CepstraBuffer cepstra_2;
     cepstra_2.assign(0);
         
-    mp.process(data, 0, cepstra_1);
+    mp.process(data, 0, &cepstra_1);
     
     //process again, and compare
     
-    mp.process(data, 0, cepstra_2);    
+    mp.process(data, 0, &cepstra_2);    
     
     for (int i = 0; i<13; ++i) {
         BOOST_REQUIRE_EQUAL(cepstra_1[i], cepstra_2[i]);
@@ -246,7 +246,7 @@ BOOST_FIXTURE_TEST_CASE( OutputRegressionTest, PulloverReaderFixture ) {
         
         mp.process(data, 
                    left_of_packet,
-                   cepstra[iPacket], 
+                   &(cepstra[iPacket]), 
                    &spectrum[iPacket*mp.fft_size_half()],
                    &mel_spectrum[iPacket*num_mel_bands]);       
 
@@ -300,8 +300,11 @@ BOOST_FIXTURE_TEST_CASE( OutputRegressionTest, PulloverReaderFixture ) {
             if (iCmp > 0.75f*num_mel_bands)
                 tolerance = 1;
             
+            //Our original reference spectrum was already log10, but we return
+            //the unprocessed mel power spectrum... therefore we need to
+            //compensate for that            
             BOOST_CHECK_CLOSE(mel_spectrum[idx], 
-                              WmRegressionData::reference_melspectrum[idx],
+                              powf(10, WmRegressionData::reference_melspectrum[idx]),
                               tolerance);
         }
     }     

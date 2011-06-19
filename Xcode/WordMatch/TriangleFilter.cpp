@@ -21,6 +21,8 @@
 
 #include "TriangleFilter.hpp"
 
+#include <Accelerate/Accelerate.h>
+
 #include <sstream>
 #include <stdexcept>
 
