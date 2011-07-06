@@ -28,6 +28,8 @@
 
 #include "Types.h"
 
+#include "WordMatchSession.h"
+
 #include <CoreAudio/CoreAudioTypes.h>
 
 /**

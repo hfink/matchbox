@@ -39,28 +39,28 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 848CF5781360812400E32E1D /* WordMatch.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = ADC34F7F1312CD6E00FD3BB7 /* Test */;
+			remoteGlobalIDString = ADC34F7F1312CD6E00FD3BB7;
 			remoteInfo = Test;
 		};
 		848CF5841360812400E32E1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 848CF5781360812400E32E1D /* WordMatch.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = AD150C1B1312D40B000DE334 /* libWordMatchIOS.a */;
+			remoteGlobalIDString = AD150C1B1312D40B000DE334;
 			remoteInfo = WordMatchIOS;
 		};
 		848CF5861360812400E32E1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 848CF5781360812400E32E1D /* WordMatch.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = AD957DE61312D51C0035D5B9 /* libWordMatchOSX.a */;
+			remoteGlobalIDString = AD957DE61312D51C0035D5B9;
 			remoteInfo = WordMatchOSX;
 		};
 		848CF5881360812400E32E1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 848CF5781360812400E32E1D /* WordMatch.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = AD0AB07B1325490700E1983B /* iPhoneTest.app */;
+			remoteGlobalIDString = AD0AB07B1325490700E1983B;
 			remoteInfo = iPhoneTest;
 		};
 /* End PBXContainerItemProxy section */

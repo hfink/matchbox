@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD441B0113866707005359F5 /* IPSongReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AD441B0013866707005359F5 /* IPSongReader.m */; };
+		AD63B3951387B4DF00041189 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3931387B4DF00041189 /* CoreMedia.framework */; };
+		AD63B3961387B4DF00041189 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3941387B4DF00041189 /* MediaPlayer.framework */; };
+		AD63B3981387B4E500041189 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD63B3971387B4E500041189 /* AVFoundation.framework */; };
+		AD85FC791389527D00371916 /* sine_440hz_44100khz_10sec.wav in Resources */ = {isa = PBXBuildFile; fileRef = AD85FC771389526C00371916 /* sine_440hz_44100khz_10sec.wav */; };
+		AD8C39491384105900E10DB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C39481384105900E10DB0 /* UIKit.framework */; };
+		AD8C394B1384105900E10DB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C394A1384105900E10DB0 /* Foundation.framework */; };
+		AD8C394D1384105900E10DB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C394C1384105900E10DB0 /* CoreGraphics.framework */; };
+		AD8C39531384105900E10DB0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD8C39511384105900E10DB0 /* InfoPlist.strings */; };
+		AD8C39561384105900E10DB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8C39551384105900E10DB0 /* main.m */; };
+		AD8C39591384105900E10DB0 /* IPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8C39581384105900E10DB0 /* IPAppDelegate.m */; };
+		AD8C395C1384105900E10DB0 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8C395A1384105900E10DB0 /* MainWindow.xib */; };
+		AD8C395F1384105900E10DB0 /* IPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8C395E1384105900E10DB0 /* IPViewController.m */; };
+		AD8C39621384105900E10DB0 /* IPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8C39601384105900E10DB0 /* IPViewController.xib */; };
+		AD8C39691384105900E10DB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C39481384105900E10DB0 /* UIKit.framework */; };
+		AD8C396A1384105900E10DB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C394A1384105900E10DB0 /* Foundation.framework */; };
+		AD8C396B1384105900E10DB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C394C1384105900E10DB0 /* CoreGraphics.framework */; };
+		AD8C39731384105900E10DB0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD8C39711384105900E10DB0 /* InfoPlist.strings */; };
+		AD98A3CE1389146700F6FE76 /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD98A3CD1389146700F6FE76 /* libWordMatchIOS.a */; };
+		AD98A3D0138915FB00F6FE76 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD98A3CF138915FB00F6FE76 /* Accelerate.framework */; };
+		AD98A3D41389162800F6FE76 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD98A3D31389162800F6FE76 /* AudioToolbox.framework */; };
+		ADA770B51389233B00486AF0 /* IPSongReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA770B41389233B00486AF0 /* IPSongReaderTest.m */; };
+		ADA770CC138945FA00486AF0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA770CB138945FA00486AF0 /* Accelerate.framework */; };
+		ADA770CE1389460000486AF0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA770CD1389460000486AF0 /* AudioToolbox.framework */; };
+		ADA770D01389460300486AF0 /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA770CF1389460300486AF0 /* libWordMatchIOS.a */; };
+		ADA770D21389460900486AF0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA770D11389460900486AF0 /* CoreMedia.framework */; };
+		ADA770D41389460F00486AF0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA770D31389460F00486AF0 /* AVFoundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD63B3861387B3EE00041189 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ADC34F7F1312CD6E00FD3BB7;
+			remoteInfo = Test;
+		};
+		AD63B3881387B3EE00041189 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD150C1B1312D40B000DE334;
+			remoteInfo = WordMatchIOS;
+		};
+		AD63B38A1387B3EE00041189 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD957DE61312D51C0035D5B9;
+			remoteInfo = WordMatchOSX;
+		};
+		AD63B38C1387B3EE00041189 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD0AB07B1325490700E1983B;
+			remoteInfo = iPhoneTest;
+		};
+		AD63B38F1387B3F600041189 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AD150C1A1312D40B000DE334;
+			remoteInfo = WordMatchIOS;
+		};
+		AD8C396C1384105900E10DB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD8C393B1384105900E10DB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD8C39431384105900E10DB0;
+			remoteInfo = iPodLibMFCCTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AD441AFF13866707005359F5 /* IPSongReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSongReader.h; sourceTree = "<group>"; };
+		AD441B0013866707005359F5 /* IPSongReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSongReader.m; sourceTree = "<group>"; };
+		AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WordMatch.xcodeproj; path = ../WordMatch.xcodeproj; sourceTree = "<group>"; };
+		AD63B3931387B4DF00041189 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		AD63B3941387B4DF00041189 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		AD63B3971387B4E500041189 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AD85FC771389526C00371916 /* sine_440hz_44100khz_10sec.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sine_440hz_44100khz_10sec.wav; path = ../../sine_440hz_44100khz_10sec.wav; sourceTree = "<group>"; };
+		AD8C39441384105900E10DB0 /* iPodLibMFCCTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPodLibMFCCTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD8C39481384105900E10DB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AD8C394A1384105900E10DB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AD8C394C1384105900E10DB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AD8C39501384105900E10DB0 /* iPodLibMFCCTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iPodLibMFCCTest-Info.plist"; sourceTree = "<group>"; };
+		AD8C39521384105900E10DB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD8C39541384105900E10DB0 /* IP-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IP-Prefix.pch"; sourceTree = "<group>"; };
+		AD8C39551384105900E10DB0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AD8C39571384105900E10DB0 /* IPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAppDelegate.h; sourceTree = "<group>"; };
+		AD8C39581384105900E10DB0 /* IPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAppDelegate.m; sourceTree = "<group>"; };
+		AD8C395B1384105900E10DB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		AD8C395D1384105900E10DB0 /* IPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPViewController.h; sourceTree = "<group>"; };
+		AD8C395E1384105900E10DB0 /* IPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPViewController.m; sourceTree = "<group>"; };
+		AD8C39611384105900E10DB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/IPViewController.xib; sourceTree = "<group>"; };
+		AD8C39681384105900E10DB0 /* iPodLibMFCCTestTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPodLibMFCCTestTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD8C39701384105900E10DB0 /* iPodLibMFCCTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iPodLibMFCCTestTests-Info.plist"; sourceTree = "<group>"; };
+		AD8C39721384105900E10DB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD8C39741384105900E10DB0 /* iPodLibMFCCTestTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iPodLibMFCCTestTests-Prefix.pch"; sourceTree = "<group>"; };
+		AD98A3CD1389146700F6FE76 /* libWordMatchIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWordMatchIOS.a; sourceTree = SOURCE_ROOT; };
+		AD98A3CF138915FB00F6FE76 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		AD98A3D11389161000F6FE76 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		AD98A3D31389162800F6FE76 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		ADA770B31389233B00486AF0 /* IPSongReaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSongReaderTest.h; sourceTree = "<group>"; };
+		ADA770B41389233B00486AF0 /* IPSongReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSongReaderTest.m; sourceTree = "<group>"; };
+		ADA770CB138945FA00486AF0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		ADA770CD1389460000486AF0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		ADA770CF1389460300486AF0 /* libWordMatchIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWordMatchIOS.a; sourceTree = SOURCE_ROOT; };
+		ADA770D11389460900486AF0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		ADA770D31389460F00486AF0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD8C39411384105900E10DB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD98A3D41389162800F6FE76 /* AudioToolbox.framework in Frameworks */,
+				AD98A3D0138915FB00F6FE76 /* Accelerate.framework in Frameworks */,
+				AD98A3CE1389146700F6FE76 /* libWordMatchIOS.a in Frameworks */,
+				AD63B3981387B4E500041189 /* AVFoundation.framework in Frameworks */,
+				AD63B3951387B4DF00041189 /* CoreMedia.framework in Frameworks */,
+				AD63B3961387B4DF00041189 /* MediaPlayer.framework in Frameworks */,
+				AD8C39491384105900E10DB0 /* UIKit.framework in Frameworks */,
+				AD8C394B1384105900E10DB0 /* Foundation.framework in Frameworks */,
+				AD8C394D1384105900E10DB0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD8C39641384105900E10DB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADA770D41389460F00486AF0 /* AVFoundation.framework in Frameworks */,
+				ADA770D21389460900486AF0 /* CoreMedia.framework in Frameworks */,
+				ADA770D01389460300486AF0 /* libWordMatchIOS.a in Frameworks */,
+				ADA770CE1389460000486AF0 /* AudioToolbox.framework in Frameworks */,
+				ADA770CC138945FA00486AF0 /* Accelerate.framework in Frameworks */,
+				AD8C39691384105900E10DB0 /* UIKit.framework in Frameworks */,
+				AD8C396A1384105900E10DB0 /* Foundation.framework in Frameworks */,
+				AD8C396B1384105900E10DB0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD63B3801387B3EE00041189 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD63B3871387B3EE00041189 /* Test */,
+				AD63B3891387B3EE00041189 /* libWordMatchIOS.a */,
+				AD63B38B1387B3EE00041189 /* libWordMatchOSX.a */,
+				AD63B38D1387B3EE00041189 /* iPhoneTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD8C39391384105900E10DB0 = {
+			isa = PBXGroup;
+			children = (
+				AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */,
+				AD8C394E1384105900E10DB0 /* iPodLibMFCCTest */,
+				AD8C396E1384105900E10DB0 /* iPodLibMFCCTestTests */,
+				AD8C39471384105900E10DB0 /* Frameworks */,
+				AD8C39451384105900E10DB0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD8C39451384105900E10DB0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD8C39441384105900E10DB0 /* iPodLibMFCCTest.app */,
+				AD8C39681384105900E10DB0 /* iPodLibMFCCTestTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD8C39471384105900E10DB0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD98A3D31389162800F6FE76 /* AudioToolbox.framework */,
+				AD98A3D11389161000F6FE76 /* CoreAudio.framework */,
+				AD98A3CF138915FB00F6FE76 /* Accelerate.framework */,
+				AD98A3CD1389146700F6FE76 /* libWordMatchIOS.a */,
+				AD63B3971387B4E500041189 /* AVFoundation.framework */,
+				AD63B3931387B4DF00041189 /* CoreMedia.framework */,
+				AD63B3941387B4DF00041189 /* MediaPlayer.framework */,
+				AD8C39481384105900E10DB0 /* UIKit.framework */,
+				AD8C394A1384105900E10DB0 /* Foundation.framework */,
+				AD8C394C1384105900E10DB0 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AD8C394E1384105900E10DB0 /* iPodLibMFCCTest */ = {
+			isa = PBXGroup;
+			children = (
+				AD8C39571384105900E10DB0 /* IPAppDelegate.h */,
+				AD8C39581384105900E10DB0 /* IPAppDelegate.m */,
+				AD8C395A1384105900E10DB0 /* MainWindow.xib */,
+				AD8C395D1384105900E10DB0 /* IPViewController.h */,
+				AD8C395E1384105900E10DB0 /* IPViewController.m */,
+				AD8C39601384105900E10DB0 /* IPViewController.xib */,
+				AD8C394F1384105900E10DB0 /* Supporting Files */,
+				AD441AFF13866707005359F5 /* IPSongReader.h */,
+				AD441B0013866707005359F5 /* IPSongReader.m */,
+			);
+			path = iPodLibMFCCTest;
+			sourceTree = "<group>";
+		};
+		AD8C394F1384105900E10DB0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD8C39501384105900E10DB0 /* iPodLibMFCCTest-Info.plist */,
+				AD8C39511384105900E10DB0 /* InfoPlist.strings */,
+				AD8C39541384105900E10DB0 /* IP-Prefix.pch */,
+				AD8C39551384105900E10DB0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AD8C396E1384105900E10DB0 /* iPodLibMFCCTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				AD85FC771389526C00371916 /* sine_440hz_44100khz_10sec.wav */,
+				AD8C396F1384105900E10DB0 /* Supporting Files */,
+				ADA770B31389233B00486AF0 /* IPSongReaderTest.h */,
+				ADA770B41389233B00486AF0 /* IPSongReaderTest.m */,
+			);
+			path = iPodLibMFCCTestTests;
+			sourceTree = "<group>";
+		};
+		AD8C396F1384105900E10DB0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ADA770D31389460F00486AF0 /* AVFoundation.framework */,
+				ADA770D11389460900486AF0 /* CoreMedia.framework */,
+				ADA770CF1389460300486AF0 /* libWordMatchIOS.a */,
+				ADA770CD1389460000486AF0 /* AudioToolbox.framework */,
+				ADA770CB138945FA00486AF0 /* Accelerate.framework */,
+				AD8C39701384105900E10DB0 /* iPodLibMFCCTestTests-Info.plist */,
+				AD8C39711384105900E10DB0 /* InfoPlist.strings */,
+				AD8C39741384105900E10DB0 /* iPodLibMFCCTestTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD8C39431384105900E10DB0 /* iPodLibMFCCTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD8C397B1384105900E10DB0 /* Build configuration list for PBXNativeTarget "iPodLibMFCCTest" */;
+			buildPhases = (
+				AD8C39401384105900E10DB0 /* Sources */,
+				AD8C39411384105900E10DB0 /* Frameworks */,
+				AD8C39421384105900E10DB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD63B3901387B3F600041189 /* PBXTargetDependency */,
+			);
+			name = iPodLibMFCCTest;
+			productName = iPodLibMFCCTest;
+			productReference = AD8C39441384105900E10DB0 /* iPodLibMFCCTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AD8C39671384105900E10DB0 /* iPodLibMFCCTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD8C397E1384105900E10DB0 /* Build configuration list for PBXNativeTarget "iPodLibMFCCTestTests" */;
+			buildPhases = (
+				AD8C39631384105900E10DB0 /* Sources */,
+				AD8C39641384105900E10DB0 /* Frameworks */,
+				AD8C39651384105900E10DB0 /* Resources */,
+				AD8C39661384105900E10DB0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD8C396D1384105900E10DB0 /* PBXTargetDependency */,
+			);
+			name = iPodLibMFCCTestTests;
+			productName = iPodLibMFCCTestTests;
+			productReference = AD8C39681384105900E10DB0 /* iPodLibMFCCTestTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD8C393B1384105900E10DB0 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = AD8C393E1384105900E10DB0 /* Build configuration list for PBXProject "iPodLibMFCCTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AD8C39391384105900E10DB0;
+			productRefGroup = AD8C39451384105900E10DB0 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AD63B3801387B3EE00041189 /* Products */;
+					ProjectRef = AD63B37F1387B3EE00041189 /* WordMatch.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				AD8C39431384105900E10DB0 /* iPodLibMFCCTest */,
+				AD8C39671384105900E10DB0 /* iPodLibMFCCTestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AD63B3871387B3EE00041189 /* Test */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = Test;
+			remoteRef = AD63B3861387B3EE00041189 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AD63B3891387B3EE00041189 /* libWordMatchIOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWordMatchIOS.a;
+			remoteRef = AD63B3881387B3EE00041189 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AD63B38B1387B3EE00041189 /* libWordMatchOSX.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWordMatchOSX.a;
+			remoteRef = AD63B38A1387B3EE00041189 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AD63B38D1387B3EE00041189 /* iPhoneTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iPhoneTest.app;
+			remoteRef = AD63B38C1387B3EE00041189 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD8C39421384105900E10DB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8C39531384105900E10DB0 /* InfoPlist.strings in Resources */,
+				AD8C395C1384105900E10DB0 /* MainWindow.xib in Resources */,
+				AD8C39621384105900E10DB0 /* IPViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD8C39651384105900E10DB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8C39731384105900E10DB0 /* InfoPlist.strings in Resources */,
+				AD85FC791389527D00371916 /* sine_440hz_44100khz_10sec.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AD8C39661384105900E10DB0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD8C39401384105900E10DB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8C39561384105900E10DB0 /* main.m in Sources */,
+				AD8C39591384105900E10DB0 /* IPAppDelegate.m in Sources */,
+				AD8C395F1384105900E10DB0 /* IPViewController.m in Sources */,
+				AD441B0113866707005359F5 /* IPSongReader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD8C39631384105900E10DB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADA770B51389233B00486AF0 /* IPSongReaderTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD63B3901387B3F600041189 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WordMatchIOS;
+			targetProxy = AD63B38F1387B3F600041189 /* PBXContainerItemProxy */;
+		};
+		AD8C396D1384105900E10DB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD8C39431384105900E10DB0 /* iPodLibMFCCTest */;
+			targetProxy = AD8C396C1384105900E10DB0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AD8C39511384105900E10DB0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD8C39521384105900E10DB0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AD8C395A1384105900E10DB0 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD8C395B1384105900E10DB0 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		AD8C39601384105900E10DB0 /* IPViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD8C39611384105900E10DB0 /* en */,
+			);
+			name = IPViewController.xib;
+			sourceTree = "<group>";
+		};
+		AD8C39711384105900E10DB0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD8C39721384105900E10DB0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AD8C39791384105900E10DB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AD8C397A1384105900E10DB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		AD8C397C1384105900E10DB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iPodLibMFCCTest/IP-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../WordMatch\"";
+				INFOPLIST_FILE = "iPodLibMFCCTest/iPodLibMFCCTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AD8C397D1384105900E10DB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iPodLibMFCCTest/IP-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../WordMatch\"";
+				INFOPLIST_FILE = "iPodLibMFCCTest/iPodLibMFCCTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		AD8C397F1384105900E10DB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iPodLibMFCCTest.app/iPodLibMFCCTest";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iPodLibMFCCTestTests/iPodLibMFCCTestTests-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "iPodLibMFCCTestTests/iPodLibMFCCTestTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../WordMatch\"";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		AD8C39801384105900E10DB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iPodLibMFCCTest.app/iPodLibMFCCTest";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iPodLibMFCCTestTests/iPodLibMFCCTestTests-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "iPodLibMFCCTestTests/iPodLibMFCCTestTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../WordMatch\"";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD8C393E1384105900E10DB0 /* Build configuration list for PBXProject "iPodLibMFCCTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8C39791384105900E10DB0 /* Debug */,
+				AD8C397A1384105900E10DB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD8C397B1384105900E10DB0 /* Build configuration list for PBXNativeTarget "iPodLibMFCCTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8C397C1384105900E10DB0 /* Debug */,
+				AD8C397D1384105900E10DB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD8C397E1384105900E10DB0 /* Build configuration list for PBXNativeTarget "iPodLibMFCCTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8C397F1384105900E10DB0 /* Debug */,
+				AD8C39801384105900E10DB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AD8C393B1384105900E10DB0 /* Project object */;
+}
