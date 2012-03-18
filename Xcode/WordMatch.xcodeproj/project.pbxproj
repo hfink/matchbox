@@ -56,9 +56,6 @@
 		AD8B7D8C1317DCD600A06B7D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8B7D8B1317DCD600A06B7D /* CoreFoundation.framework */; };
 		AD8B7DB11318121600A06B7D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8B7DB01318121600A06B7D /* AudioToolbox.framework */; };
 		AD8B7DB5131813D300A06B7D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8B7DB01318121600A06B7D /* AudioToolbox.framework */; };
-		AD8C559C13254B0700828918 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C559A13254B0700828918 /* Accelerate.framework */; };
-		AD8C559D13254B0700828918 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C559B13254B0700828918 /* AudioToolbox.framework */; };
-		AD8C559F13254B0F00828918 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8C559E13254B0F00828918 /* CoreFoundation.framework */; };
 		AD957DF71312D5390035D5B9 /* libWordMatchOSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD957DE61312D51C0035D5B9 /* libWordMatchOSX.a */; };
 		AD97EE0B131D5E37002B6019 /* TriangleFilter_Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD97EE09131D5E37002B6019 /* TriangleFilter_Test.cpp */; };
 		AD9CBB8215160EAD0085D46D /* CABitOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = AD9CBB7715160EAD0085D46D /* CABitOperations.h */; };
@@ -87,6 +84,11 @@
 		AD9CBB9A15160ECA0085D46D /* CAMath.h in Headers */ = {isa = PBXBuildFile; fileRef = AD9CBB9815160ECA0085D46D /* CAMath.h */; };
 		AD9CBB9C15160EF10085D46D /* CALogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = AD9CBB9B15160EF10085D46D /* CALogMacros.h */; };
 		AD9CBB9D15160EF10085D46D /* CALogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = AD9CBB9B15160EF10085D46D /* CALogMacros.h */; };
+		AD9CBBF51516177E0085D46D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9CBBF41516177E0085D46D /* Accelerate.framework */; };
+		AD9CBBF81516178B0085D46D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9CBBF71516178B0085D46D /* CoreFoundation.framework */; };
+		AD9CBBFA151617910085D46D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9CBBF9151617910085D46D /* AudioToolbox.framework */; };
+		AD9CBBFB151617D30085D46D /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD150C1B1312D40B000DE334 /* libWordMatchIOS.a */; };
+		AD9CBC0D151618670085D46D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9CBC0C151618670085D46D /* CoreMedia.framework */; };
 		ADA2043E13215F180081DD52 /* 04-blumentopf-3.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = ADA2043D13215F0A0081DD52 /* 04-blumentopf-3.wav */; };
 		ADA20440132160BC0081DD52 /* 02-pullover-4.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = ADA2043F132160B50081DD52 /* 02-pullover-4.wav */; };
 		ADD850951318240F0011430A /* sine_40hz_1_sec_norm_16khz.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = ADD85093131824060011430A /* sine_40hz_1_sec_norm_16khz.wav */; };
@@ -108,7 +110,6 @@
 		ADDE79C8132628E100A285C9 /* 02-pullover-4.wav in Resources */ = {isa = PBXBuildFile; fileRef = ADA2043F132160B50081DD52 /* 02-pullover-4.wav */; };
 		ADE2C82A1321556B0022C6C9 /* DTWMFCC_Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADE2C8281321556A0022C6C9 /* DTWMFCC_Test.cpp */; };
 		ADE2C82D132156470022C6C9 /* 02-pullover-2.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = ADE2C82C132156350022C6C9 /* 02-pullover-2.wav */; };
-		ADF3761E13255EF000516C45 /* libWordMatchIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD150C1B1312D40B000DE334 /* libWordMatchIOS.a */; };
 		ADF3762313255FB300516C45 /* TriangleFilter_Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD97EE09131D5E37002B6019 /* TriangleFilter_Test.cpp */; };
 		ADF3762413255FD000516C45 /* AudioFileReader_Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD8B7D6C1317D13600A06B7D /* AudioFileReader_Test.cpp */; };
 		ADF3762A1325608700516C45 /* MFCCProcessor_Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD158126131F7B650052503A /* MFCCProcessor_Test.cpp */; };
@@ -126,13 +127,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = AD957DE51312D51C0035D5B9;
 			remoteInfo = WordMatchOSX;
-		};
-		ADF3762113255F8800516C45 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AD8543911312C74700F743C0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD150C1A1312D40B000DE334;
-			remoteInfo = WordMatchIOS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -196,9 +190,6 @@
 		AD8B7D831317DC6F00A06B7D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		AD8B7D8B1317DCD600A06B7D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		AD8B7DB01318121600A06B7D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
-		AD8C559A13254B0700828918 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
-		AD8C559B13254B0700828918 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
-		AD8C559E13254B0F00828918 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		AD957DE61312D51C0035D5B9 /* libWordMatchOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWordMatchOSX.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD97EE09131D5E37002B6019 /* TriangleFilter_Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TriangleFilter_Test.cpp; path = WordMatch/TriangleFilter_Test.cpp; sourceTree = "<group>"; };
 		AD9CBB7715160EAD0085D46D /* CABitOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CABitOperations.h; path = ../CAPublicUtility/CABitOperations.h; sourceTree = "<group>"; };
@@ -214,6 +205,11 @@
 		AD9CBB8115160EAD0085D46D /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAXException.h; path = ../CAPublicUtility/CAXException.h; sourceTree = "<group>"; };
 		AD9CBB9815160ECA0085D46D /* CAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAMath.h; path = ../CAPublicUtility/CAMath.h; sourceTree = "<group>"; };
 		AD9CBB9B15160EF10085D46D /* CALogMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CALogMacros.h; path = ../CAPublicUtility/CALogMacros.h; sourceTree = "<group>"; };
+		AD9CBBF41516177E0085D46D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
+		AD9CBBF71516178B0085D46D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		AD9CBBF9151617910085D46D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		AD9CBC01151618170085D46D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AD9CBC0C151618670085D46D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		ADA2043D13215F0A0081DD52 /* 04-blumentopf-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "04-blumentopf-3.wav"; path = "../matlab/samples/named/04-blumentopf-3.wav"; sourceTree = "<group>"; };
 		ADA2043F132160B50081DD52 /* 02-pullover-4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "02-pullover-4.wav"; path = "../matlab/samples/named/02-pullover-4.wav"; sourceTree = "<group>"; };
 		ADC34F7F1312CD6E00FD3BB7 /* Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Test; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,14 +237,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADF3761E13255EF000516C45 /* libWordMatchIOS.a in Frameworks */,
-				AD8C559F13254B0F00828918 /* CoreFoundation.framework in Frameworks */,
-				AD8C559C13254B0700828918 /* Accelerate.framework in Frameworks */,
+				AD9CBC0D151618670085D46D /* CoreMedia.framework in Frameworks */,
+				AD9CBBFB151617D30085D46D /* libWordMatchIOS.a in Frameworks */,
+				AD9CBBFA151617910085D46D /* AudioToolbox.framework in Frameworks */,
+				AD9CBBF81516178B0085D46D /* CoreFoundation.framework in Frameworks */,
+				AD9CBBF51516177E0085D46D /* Accelerate.framework in Frameworks */,
 				ADDE79B313261D2400A285C9 /* libboost_test_exec_monitor-xgcc43-mt-1_46_iOS_43_ARM.a in Frameworks */,
 				ADDE79B513261D4600A285C9 /* libboost_test_exec_monitor-xgcc43-mt-1_46_iOS_43_SIM_x86.a in Frameworks */,
 				ADDE79B713261D5D00A285C9 /* libboost_unit_test_framework-xgcc43-mt-1_46_iOS_43_ARM.a in Frameworks */,
 				ADDE79B613261D5000A285C9 /* libboost_unit_test_framework-xgcc43-mt-1_46_iOS_43_SIM_x86.a in Frameworks */,
-				AD8C559D13254B0700828918 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +296,7 @@
 		AD85438F1312C74700F743C0 = {
 			isa = PBXGroup;
 			children = (
+				AD9CBC0C151618670085D46D /* CoreMedia.framework */,
 				AD8B7D7F1317D71100A06B7D /* TestSamples */,
 				AD8B7D401317B9DD00A06B7D /* Libraries */,
 				AD8543C91312C84000F743C0 /* Sources */,
@@ -325,6 +323,7 @@
 			children = (
 				AD8543C81312C81D00F743C0 /* OSX */,
 				AD8543C71312C81500F743C0 /* iOS */,
+				AD9CBC01151618170085D46D /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -332,9 +331,9 @@
 		AD8543C71312C81500F743C0 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				AD8C559E13254B0F00828918 /* CoreFoundation.framework */,
-				AD8C559A13254B0700828918 /* Accelerate.framework */,
-				AD8C559B13254B0700828918 /* AudioToolbox.framework */,
+				AD9CBBF9151617910085D46D /* AudioToolbox.framework */,
+				AD9CBBF71516178B0085D46D /* CoreFoundation.framework */,
+				AD9CBBF41516177E0085D46D /* Accelerate.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -379,7 +378,7 @@
 		AD8B7D401317B9DD00A06B7D /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				ADDE79A713261CF000A285C9 /* Bost Test Static */,
+				ADDE79A713261CF000A285C9 /* Boost Test Static */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -440,7 +439,7 @@
 			name = CoreAudioUtilities;
 			sourceTree = "<group>";
 		};
-		ADDE79A713261CF000A285C9 /* Bost Test Static */ = {
+		ADDE79A713261CF000A285C9 /* Boost Test Static */ = {
 			isa = PBXGroup;
 			children = (
 				ADDE79A813261CF000A285C9 /* libboost_prg_exec_monitor-xgcc42-mt-1_46_OSX_10_6_32_64.a */,
@@ -453,7 +452,7 @@
 				ADDE79AF13261CF000A285C9 /* libboost_unit_test_framework-xgcc43-mt-1_46_iOS_43_ARM.a */,
 				ADDE79B013261CF000A285C9 /* libboost_unit_test_framework-xgcc43-mt-1_46_iOS_43_SIM_x86.a */,
 			);
-			name = "Bost Test Static";
+			name = "Boost Test Static";
 			path = ../boost_ext/lib;
 			sourceTree = "<group>";
 		};
@@ -521,7 +520,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				ADF3762213255F8800516C45 /* PBXTargetDependency */,
 			);
 			name = iPhoneTest;
 			productName = iPhoneTest;
@@ -705,11 +703,6 @@
 			target = AD957DE51312D51C0035D5B9 /* WordMatchOSX */;
 			targetProxy = AD957DF51312D5340035D5B9 /* PBXContainerItemProxy */;
 		};
-		ADF3762213255F8800516C45 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AD150C1A1312D40B000DE334 /* WordMatchIOS */;
-			targetProxy = ADF3762113255F8800516C45 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -800,7 +793,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/WordMatchIOS.dst;
@@ -841,7 +837,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/WordMatchIOS.dst;
