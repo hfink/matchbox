@@ -133,24 +133,23 @@
             
         }
         
-    } else {
-        
-        bool success = WMGetPreProcessInfoForFile((CFURLRef)[self fileA], 
-                                                  [self clipBeginThresholdDB], 
-                                                  [self clipEndThresholdDB], 
-                                                  &file_a_info);
-        
-        NSLog(@"For file %@", [self fileA]);
-        NSLog(@"Peak: %f", file_a_info.max_peak);
-        NSLog(@"Begin: %f", file_a_info.threshold_start_time);        
-        NSLog(@"End: %f", file_a_info.threshold_end_time);                
-        NSLog(@"Norm Factor: %f", file_a_info.normalization_factor);                        
-        
-        if (!success) {
-            NSLog(@"Could not calculate pre process info on startup for file A");
-        }
-        
     }
+        
+    bool success = WMGetPreProcessInfoForFile((CFURLRef)[self fileA], 
+                                              [self clipBeginThresholdDB], 
+                                              [self clipEndThresholdDB], 
+                                              &file_a_info);
+    
+    NSLog(@"For file %@", [self fileA]);
+    NSLog(@"Peak: %f", file_a_info.max_peak);
+    NSLog(@"Begin: %f", file_a_info.threshold_start_time);        
+    NSLog(@"End: %f", file_a_info.threshold_end_time);                
+    NSLog(@"Norm Factor: %f", file_a_info.normalization_factor);                        
+    
+    if (!success) {
+        NSLog(@"Could not calculate pre process info on startup for file A");
+    }
+        
     
     //same thing for file b
     
@@ -171,16 +170,16 @@
             
         }
         
-    } else {
-        bool success = WMGetPreProcessInfoForFile((CFURLRef)[self fileB], 
-                                                  [self clipBeginThresholdDB], 
-                                                  [self clipEndThresholdDB], 
-                                                  &file_b_info);
-        
-        if (!success) {
-            NSLog(@"Could not calculate pre process info on startup for file B");
-        }        
     }
+    
+    success = WMGetPreProcessInfoForFile((CFURLRef)[self fileB], 
+                                         [self clipBeginThresholdDB], 
+                                         [self clipEndThresholdDB], 
+                                         &file_b_info);
+    
+    if (!success) {
+        NSLog(@"Could not calculate pre process info on startup for file B");
+    }        
     
     [file_manager release];
     
