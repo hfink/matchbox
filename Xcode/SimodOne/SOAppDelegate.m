@@ -76,11 +76,12 @@
         NSLog(@"Error occured during AVSession configuration: %@", 
               audioSessionError);
     }
+        
+    voice_recorder_ = [[SOVoiceRecorder alloc] init];
     
     //TODO: check what happens if you have connected with headphones...
     
-    UInt32 route = kAudioSessionOverrideAudioRoute_Speaker;
-    
+    UInt32 route = kAudioSessionOverrideAudioRoute_Speaker; 
     OSStatus result = AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,
                                                sizeof (route),
                                                &route);
@@ -89,7 +90,6 @@
         NSLog(@"Error setting audio route to speaker during initialization.");
     }       
     
-    voice_recorder_ = [[SOVoiceRecorder alloc] init];
     
     // we set the current file in our app's documents directory
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
