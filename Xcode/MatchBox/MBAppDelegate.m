@@ -47,20 +47,7 @@
     if (audioSessionError != nil) {
         NSLog(@"Error occured during AVSession configuration: %@", 
               audioSessionError);
-    }
-    
-    //TODO: check what happens if you have connected with headphones...
-    
-    UInt32 route = kAudioSessionOverrideAudioRoute_Speaker;
-    
-    OSStatus result = AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,
-                                               sizeof (route),
-                                               &route);
-    
-    if (result != noErr) {
-        NSLog(@"Error setting audio route to speaker during initialization.");
-    }           
-    
+    }    
     
     // Override point for customization after application launch.
     // Add the main view controller's view to the window and display.

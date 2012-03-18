@@ -235,7 +235,7 @@
 		AD81AB771336031A006820FF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = AD81AB7A1336031A006820FF /* Build configuration list for PBXProject "MatchBox" */;
 			compatibilityVersion = "Xcode 3.2";
