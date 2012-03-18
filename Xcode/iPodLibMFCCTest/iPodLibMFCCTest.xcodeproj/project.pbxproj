@@ -301,6 +301,9 @@
 /* Begin PBXProject section */
 		AD8C393B1384105900E10DB0 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = AD8C393E1384105900E10DB0 /* Build configuration list for PBXProject "iPodLibMFCCTest" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;

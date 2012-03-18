@@ -215,6 +215,9 @@
 /* Begin PBXProject section */
 		AD8542DD1312BCC900F743C0 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
 			buildConfigurationList = AD8542E01312BCC900F743C0 /* Build configuration list for PBXProject "SimodOne" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
