@@ -89,8 +89,7 @@
         NSLog(@"Error setting audio route to speaker during initialization.");
     }       
     
-    voice_recorder_a_ = [[SOVoiceRecorder alloc] init];
-    voice_recorder_b_ = [[SOVoiceRecorder alloc] init];
+    voice_recorder_ = [[SOVoiceRecorder alloc] init];
     
     // we set the current file in our app's documents directory
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
@@ -229,8 +228,7 @@
 
 - (void)dealloc
 {
-    [voice_recorder_a_ release];
-    [voice_recorder_b_ release];    
+    [voice_recorder_ release];    
     [_window release];
     [qualitativeResultLabel release];
     [thresholdLabel release];
@@ -378,8 +376,8 @@
     
     memset(&file_a_info, 0, sizeof(WMAudioFilePreProcessInfo));        
     
-    if ([voice_recorder_a_ isRecording]) {
-        [voice_recorder_a_ stopRecording];
+    if ([voice_recorder_ isRecording]) {
+        [voice_recorder_ stopRecording];
         
         bool success = WMGetPreProcessInfoForFile((CFURLRef)[self fileA], 
                                                   [self clipBeginThresholdDB], 
@@ -393,11 +391,13 @@
         [recordButtonA setTitle:@"Record" forState:UIControlStateNormal];
         [playButtonA setEnabled:YES];
         [activityIndicatorA stopAnimating];
+        [recordButtonB setEnabled:YES];        
     } else {
-        [voice_recorder_a_ startRecordingIntoFile:[self fileA]];        
+        [voice_recorder_ startRecordingIntoFile:[self fileA]];        
         [recordButtonA setTitle:@"Stop" forState:UIControlStateNormal];
         [playButtonA setEnabled:NO];        
         [activityIndicatorA startAnimating];
+        [recordButtonB setEnabled:NO];
     }
 }
 
@@ -448,8 +448,8 @@
     
     memset(&file_b_info, 0, sizeof(WMAudioFilePreProcessInfo));         
     
-    if ([voice_recorder_b_ isRecording]) {
-        [voice_recorder_b_ stopRecording];
+    if ([voice_recorder_ isRecording]) {
+        [voice_recorder_ stopRecording];
         
         bool success = WMGetPreProcessInfoForFile((CFURLRef)[self fileB], 
                                                   [self clipBeginThresholdDB], 
@@ -463,8 +463,10 @@
         [recordButtonB setTitle:@"Record" forState:UIControlStateNormal];
         [playButtonB setEnabled:YES];
         [activityIndicatorB stopAnimating];
+        [recordButtonA setEnabled:YES];        
     } else {
-        [voice_recorder_b_ startRecordingIntoFile:[self fileB]];        
+        [recordButtonA setEnabled:NO];
+        [voice_recorder_ startRecordingIntoFile:[self fileB]];        
         [recordButtonB setTitle:@"Stop" forState:UIControlStateNormal];
         [playButtonB setEnabled:NO];        
         [activityIndicatorB startAnimating];

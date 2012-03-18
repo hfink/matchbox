@@ -25,8 +25,7 @@
 
 @interface SOAppDelegate : NSObject <UIApplicationDelegate, AVAudioPlayerDelegate> {
     
-    SOVoiceRecorder* voice_recorder_a_;
-    SOVoiceRecorder* voice_recorder_b_;    
+    SOVoiceRecorder* voice_recorder_;
     
     UIButton *quantitativeResultButton;
     UILabel *quantitativeResultLabel;
